@@ -29,7 +29,6 @@ class Portfolio(object):
             self.mf_list += new_string
         
         return "cash: $%s \nstock: %s \nmutual funds: %s" % (self.cashBalance, self.stock_list, self.mf_list)
-        # TODO: make this print nicely as in the HW assignment
 
      def history(self):
         print self.transactions
@@ -58,16 +57,27 @@ class Portfolio(object):
 
         else: return "I have no idea what you mean. Please try again."
 
-     def sellStock(self, stock, shares):
-        pass
-        # see sellMutualFund
-     
+     def sellStock(self, symbol, share_amt):
+        for i in  range(len(self.stockBalance)):
+            if self.stockBalance[i]['symbol'] == symbol: 
+                num_shares_owned = self.stockBalance[i]['shares']
+                stock_to_sell = self.stockBalance[i]['object']
+                x = i
+        if num_shares_owned >= share_amt:
+            stock_to_sell.calc_sell_price()
+            total_sell_price = stock_to_sell.sell_price * share_amt
+            self.cashBalance += total_sell_price
+            self.transactions += "Sold %s shares of %s at a price of $%s, for a total of $%s.\n" % (share_amt, symbol, stock_to_sell.sell_price, total_sell_price)
+            self.stockBalance[x]['shares'] = 0
+
+     # mutual funds ought to only have a price of 1
      def buyMutualFund(self, shares, fund):
         purchase_amount = shares * fund.price
         if (purchase_amount <= self.cashBalance):
             self.cashBalance -= purchase_amount
-            self.mfBalance.append([shares, fund.name])
-            self.transactions += ("Purchased %s shares of %s fund at %s per share, for a total of %s.\n" % (shares, fund.name, fund.price, purchase_amount))
+            self.mfBalance[len(self.mfBalance)] = {"symbol": fund.name, "shares": shares, "object": fund}
+            
+            self.transactions += ("Purchased %s shares of %s fund at $%s per share, for a total of $%s.\n" % (shares, fund.name, fund.price, purchase_amount))
 
         elif (purchase_amount > self.cashBalance):
             return "That purchase exceeds your cash balance of %s. Please enter a smaller purchase." % self.cashBalance
@@ -75,39 +85,38 @@ class Portfolio(object):
         else: return "I have no idea what you mean. Please try again."
 
      def sellMutualFund(self, symbol, share_amt):
-        pass
-        # look up the fund in the mf dict
-        # make sure you own at least as many shares as share_amt
-        # calculate the fund's selling price
-        # cashBalance += fund_name.sell_price * share_amt
+        for i in  range(len(self.mfBalance)):
+            if self.mfBalance[i]['symbol'] == symbol: 
+                num_shares_owned = self.mfBalance[i]['shares']
+                fund_to_sell = self.mfBalance[i]['object']
+                x = i
+        if num_shares_owned >= share_amt:
+            fund_to_sell.calc_sell_price()
+            total_sell_price = fund_to_sell.sell_price * share_amt
+            self.cashBalance += total_sell_price
+            self.transactions += "Sold %s shares of %s at a price of $%s, for a total of $%s.\n" % (share_amt, symbol, fund_to_sell.sell_price, total_sell_price)
+            self.mfBalance[x]['shares'] = 0
+            
+        else:
+            return "You do not have that many shares." 
 
-class Asset(object):
 
+class Stock(object):
     def __init__(self, price, name):
         self.price = price
         self.name = name
 
-    def buy(self, shares, title): 
-        if self.check_fraction(shares) == True:
-            self.check_purchase(shares)
-
-    def check_purchase(self, shares, title):
-        if shares * self.
-    
-
-
-class Stock(Asset):
-
-    def check_fraction(self, shares):
-        if shares % 1 == 0: return True
-        
     def calc_sell_price(self):
         self.sell_price = self.price * random.uniform(0.5, 1.5)
+        self.sell_price = round(self.sell_price, 2)
 
-class MutualFund(Asset):
+class MutualFund(object):
 
-    def check_fraction(self):
-        return True
+    def __init__(self, name):
+        self.name = name
+        self.price = 1
         
     def calc_sell_price(self):
         self.sell_price = self.price * random.uniform(0.9, 1.2)
+        self.sell_price = round(self.sell_price, 2)
+        

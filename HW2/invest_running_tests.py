@@ -1,6 +1,6 @@
-import invest
+import invest_final
 
-portfolio=invest.Portfolio()
+portfolio=invest_final.Portfolio()
 print(portfolio)
 portfolio.history()
 
@@ -12,18 +12,18 @@ portfolio.withdrawCash(50)
 portfolio.history()
 print(portfolio)
 
-s = invest.Stock(20 , "HFH")
+s = invest_final.Stock(20 , "HFH")
 s.name
 s.price 
 portfolio.buyStock(5, s) 
 portfolio.history() 
 print(portfolio) 
 
-mf1 = invest.MutualFund(5, "BRT")
+mf1 = invest_final.MutualFund("BRT")
 mf1.name
 mf1.price
 
-mf2 = invest.MutualFund (2, "GHT")
+mf2 = invest_final.MutualFund ("GHT")
 mf2.price
 mf2.name
 
