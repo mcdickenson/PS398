@@ -70,7 +70,6 @@ class Portfolio(object):
             self.transactions += "Sold %s shares of %s at a price of $%s, for a total of $%s.\n" % (share_amt, symbol, stock_to_sell.sell_price, total_sell_price)
             self.stockBalance[x]['shares'] = 0
 
-     # mutual funds ought to only have a price of 1
      def buyMutualFund(self, shares, fund):
         purchase_amount = shares * fund.price
         if (purchase_amount <= self.cashBalance):
