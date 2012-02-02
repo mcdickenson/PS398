@@ -2,6 +2,7 @@
 Computational Frameworks, POLS 398
 Spring 2012, Duke University
 Matt Dickenson """
+# try using Exceptions
 
 import random
 import ystockquote
@@ -39,15 +40,17 @@ class Portfolio(object):
         self.transactions += ("$%.2f added.\n" % amount)
 
      def withdrawCash(self, amount):
-        self.cashBalance -= amount
+        self.cashBalance -= amount # don't withdraw negative money
+                                   # check the amt to be withdrawn
         self.transactions += ("$%.2f withdrawn. \n" % amount)
 
-     def buyStock(self, shares, stock):
+        def buyStock(self, shares, stock): # what if i'm buying for the 2
         purchase_amount = shares * stock.price
         if (shares % 1 == 0) & (purchase_amount <= self.cashBalance):
             self.cashBalance -= purchase_amount
-            self.stockBalance[len(self.stockBalance)] = {"symbol": stock.name, "shares": shares, "object": stock}
-            
+           self.stockBalance[len(self.stockBalance)] = {"symbol": stock.name, "shares": shares, "object": stock} # the way this is being used it might as well be a list
+                                                                                                                 # what is returned if this works?
+              
             self.transactions += ("Purchased %s shares of %s stock at $%.2f per share, for a total of $%.2f.\n" % (shares, stock.name, stock.price, purchase_amount))
 
         elif (shares % 1 == 0) & (purchase_amount > self.cashBalance):
@@ -69,8 +72,9 @@ class Portfolio(object):
             total_sell_price = stock_to_sell.sell_price * share_amt
             self.cashBalance += total_sell_price
             self.transactions += "Sold %s shares of %s at a price of $%.2f, for a total of $%.2f.\n" % (share_amt, symbol, stock_to_sell.sell_price, total_sell_price)
-            self.stockBalance[x]['shares'] = 0
-
+            self.stockBalance[x]['shares'] = 0 # this should be num_shares_owned - share_amt
+                                               # how do I know if it worked?
+ 
      def buyMutualFund(self, shares, fund):
         purchase_amount = shares * fund.price
         if (purchase_amount <= self.cashBalance):
@@ -105,7 +109,8 @@ class Stock(object):
     def __init__(self, price, name):
         self.price = price
         self.name = name
-
+        # make object printable with a def __str__()--see Matthias' code
+ 
     def calc_sell_price(self):
         self.sell_price = self.price * random.uniform(0.5, 1.5)
         self.sell_price = round(self.sell_price, 2)

@@ -1,0 +1,523 @@
+\documentclass[12pt,letter]{article}
+\usepackage{amsmath}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{amssymb}
+\usepackage{dcolumn}
+\usepackage{fullpage}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage[longnamesfirst]{natbib}
+\usepackage{rotating}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{enumerate}
+\usepackage{hyperref}
+
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobat�s bookmarks
+    pdftoolbar=true,        % show Acrobat�s toolbar?
+    pdfmenubar=true,        % show Acrobat�s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={FitH},    % fits the width of the page to the window
+    % pdftitle={Leadership Transitions and Violence in Mexican Drug Trafficking Organizations, 2006-2010},    % title
+    pdfauthor={Matt Dickenson},     % author
+    % pdfsubject={Violence},   % subject of the document
+    pdfcreator={Matt Dickenson},   % creator of the document
+    pdfproducer={Producer}, % producer of the document
+    pdfkeywords={keywords}, % list of keywords
+    pdfnewwindow=true,      % links in new window
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=black,          % color of internal links
+    linkbordercolor={0 0 0},  %border color
+    citebordercolor={0 0 0},
+    citecolor=black,        % color of links to bibliography
+    filecolor=black,      % color of file links
+    urlcolor=blue,         % color of external links
+}
+
+
+\begin{document}
+
+\title{Computational Frameworks for Social Science}
+
+\author{Matt Dickenson\thanks{Notes for Josh Cutler's PS 398 course, Duke
+    University, Spring 2012.}}
+
+\date{\text{Current as of: }\today}
+
+\maketitle
+
+\section{Introduction}
+
+\begin{table}[h!]
+\begin{center}
+\caption{The Software World According to Josh Cutler}
+% people will tell you it doesn't look like this but it does
+\begin{tabular}{ccc}
+\\
+Software Engineers & Computer Scientists & Hackers/Coders \\
+\hline
+IBM & Google or PhD & Start-ups \\
+Wear Ties & Beards & Build Apps \\
+\end{tabular}
+\end{center}
+\end{table}
+% All three of these are useful, and we will draw from each of
+% them. Today we'll talk about source control, which is firmly in the
+% software engineering world. 
+
+\subsection{Source Control} We will use \texttt{Git} as our source
+control. \texttt{Git} was a sea change in CS. Git can save versions
+$A$ and $A+1$ simultaneously, so that you can work with multiple
+versoins of code and cooperate with other people. To use:
+\\
+\texttt{git init} \\ % this creates a ``change set'', which is a list of
+                     % files and their changes
+\texttt{git add text.txt} \\ % tells git to track that file
+\texttt{commit -m ``first commit''} \\ % committing a change set indicates a unitary block of
+            % code. more on this later
+
+Once we commit, this flushes the change set and creates ``first
+commit'' in the git log.
+
+~\\
+\texttt{git add text.text} \\ % adds to the change set
+\texttt{commit -m ``after edits''} \\ % adds ``after edits'' to the git log
+
+To fully preserve for posterity: % what if my laptop blows up?
+~\\ \texttt{git push .} \\ % sends something to git
+
+To create a new version of yourself: % matt 2.0
+~\\ \texttt{git pull .} \\ % recreate from git
+
+The key idea here is that you can push to/pull from arbitrary
+places. There is no hierarchy for what is the True version. 
+
+\subsubsection{A Word on Branching}
+Branching is how code gets built. Branching is a way to expand a
+codebase while keeping an earlier version stable. When someone talks about the ``hot
+new $\alpha$ version'', they are talking about a branch. For instance,
+we may push a package to CRAN (v1.0), then start work on an update
+(v2.0). In the meantime, we find out a bug in v1.0 that we need to
+fix. With branching, this isn't a problem. 
+
+% draw lots of pretty pictures or project GitHub onto a screen
+
+\subsubsection{Naming Versions}
+Consider a version $X.Y.Z$. We commit $X.Y.Z+1$ when we have fixed a
+bug. We commit $X.Y+1.Z$ when we have added a feature. We commit $X+1.Y.Z$
+when we want to charge people more money. 
+
+\subsubsection{Commit History}
+A basic rule of thumb is: if you can't describe what you did in a
+single line, it's too big a jump. 
+
+Sometimes in professional software you will see ``commit wars'' where
+a couple of people just push the same junk back and forth until
+someone fires them. For example, one guy may indent his Python code
+with two spaces, while another uses four. Agree on this
+early. Communicate. 
+
+
+\subsection{Testing}
+
+Automated testing, that is. We're going to use code that we write to
+test our other code. Specifically, we're going to use ``unit tests''
+(as opposed to ``integration testing''). Testing is
+contentious--people will fight about, leave companies over, or start
+companies because of this. 
+
+A motivating example is BDD vs. TDD--behavioral driven design
+\emph{versus} test driven design. BDD people are masturbatory and
+annoying. TDD people write tests first and then code. They write a
+series of tests that suitable code should pass, and then design
+code. Others write code and then test it, but they think of the same
+test cases they did when they were coding, so they may overlook
+problems. Your choice will likely depend on how long you are going to
+have to maintain the code. Technically, TDD code has to fail a test
+before there is a bug.
+
+But we are talking at a non-philosophical level about unit
+tests. Reasons to use TDD:
+
+\begin{itemize}
+\item if someone else inherits your code, it helps them to have a test
+  suite to detect hairy portions of code
+\item it helps readers to see what the code is actually supposed to do
+\item you can refactor (rewrite) your code with more confidence, since
+  you can quickly check all known relevant tests (without TDD, you
+  will undoubtedly introduce bugs; with TDD you will be at least as
+  good as you were before) % to the extent that you want to make code
+                           % that is useful to others, you will have
+                           % to rewrite
+\item it helps you be lazy--most people don't have enough mental RAM
+  to remember everything a program does
+\item you will write better code if you know you have to test it
+\item if you truly understand what code is supposed to do, you should
+  be able to assert what output it should give you
+\end{itemize}
+
+Python is dynamic (duck) code. The important thing to remember is that
+there are more bugs that can be introduced than, for example, C++. To
+see what we're talking about, let's actually write some code.
+
+% inclass.py and inclasstest.py
+
+The two things that we check for are \emph{correctness} and
+\emph{robustness}. Correctness asks, ``does the code do what we want it
+to when we give it the right input?'' Robustness asks, ``how does the
+code handle unexpected inputs?'' In Python's \texttt{unittest} library, a test can have three
+outcomes: ``.'' (pass), ``F'' (fail), or ``E'' (error). The key point:
+have a failure plan. This is important, for example, when writing a
+web scraper. HTML is supposed to look a certain way, but in reality it
+never does. 
+
+The process is iterative: 
+\begin{enumerate}
+\item see a bug
+\item write a test
+\item fix the code so that it satisfies the test
+\item repeat
+\end{enumerate}
+
+Again, the argument for using code is that your mind will be more open
+(and thus write more appropriate tests) before you develop the tunnel
+vision that comes with writing code in a certain way. 
+
+\newpage
+\section{Object-Oriented Programming}
+% begin with code review from last week
+% tests that would fail (but no one used): 
+% ``Dr.''
+% ``Some ellipses...''
+% Note that tests must start with ``test_''
+% This is so that you can write helper functions that don't start with
+% test
+% Coder talk: \texttt{foo} and \texttt{bar} are vernacular
+
+\subsection{Mini-Homework}
+Restructure homeworks on github so that the root looks like \texttt{/HW1} and
+use \texttt{/HW2} for the next one.
+
+\subsection{What is OOP?}
+\begin{table}[h!]
+\begin{center}
+\caption{Three Styles of Programming}
+\begin{tabular}{ccc}
+\\
+Procedural & Functional & Object-Oriented (OOP) \\
+\hline
+Probably what you think of & You don't care about this & Philosophy of
+representation\\
+C, R & & Python\\
+Sufficient for small projects & &  \\
+Very little hierarchy or structure & list comprehensions, etc. &
+tightly couples data w/methods \\
+% no coupling in procedural  
+\end{tabular}
+\end{center}
+\end{table}
+
+Consider an object \texttt{Book}. In \texttt{R}, this would have a bunch of
+characteristics like ``author'' and ``pages''. In OOP, every book
+that exists is an instance of the class ``books.'' In fact,
+\emph{everything is an object} in Python: numbers, strings,
+classes. Think of classes as a way to give your object some
+structure. 
+
+% subtype polymorphism means that the humble ``+'' can do totally
+% different things to strings vs. integers. Some (like
+% \texttt{__lt__}) can even be defined
+
+\subsection{Why OOP?}
+To stay DRY: Don't Repeat Yourself. Ultimately, you will be writing
+less code using OOP--even though it won't seem that way at first. A
+lot of it comes down to being able to say, ``This is a
+\texttt{thing}. It should have \texttt{this} info and \texttt{these}
+methods.'' Any code can be written procedurally \emph{or} as OOP, but
+the choice is which is simpler. 
+
+\subsection{Inheritance} % this may be what sells OOP this best
+% see code from today that begins with ``class Animal(object:''
+% the filename is polymorphism.py
+
+Python is a method-passing language, which means it does something
+called ``dynamic dispatch.'' Say we defined:
+
+\begin{verbatim} 
+class Animal(object): 
+  def __init__(self,name): 
+    self.name = name
+
+class Cat(Animal): 
+  def talk(self): 
+    return ``Meow!''
+\end{verbatim}
+
+
+So when if we set \texttt{a} equal to \texttt{Animal(``Fido'')} and
+\texttt{b} equal to \texttt{Cat(``Sally'')}, then when we call
+\texttt{b.talk()}, it will search within class Cat first, and then
+class Animal if it doesn't find anything. % Note that this is ex45 in
+                                % Shaw's book.
+
+This is known as \emph{polymorphism}, but it won't mean much to you
+until you practice.
+
+As the example \texttt{sports.py} will show, there is a trade-off
+between generality and specificity in how much you want a subclass to
+inherit from a superior class. Practicing this will force you to think
+about:
+\begin{itemize}
+\item What should exist at the object level?
+\item How should those things interact with each other?
+\end{itemize}
+
+\textbf{Pro-tip:} Move as far away from \texttt{global} variables as
+possible.
+
+\newpage
+\section{Pragmatic Programming}
+
+\subsection{Data types}
+There are three data types in Python, shown in Table \ref{datatypes}.
+
+\begin{table}[h!]
+\begin{center}
+\caption{Data Types}
+\label{datatypes}
+\begin{tabular}{|c|c|c|}
+\multicolumn{1}{c}{Name} & \multicolumn{1}{c}{Code} & \multicolumn{1}{c}{Details} \\
+\hline
+tuple & \texttt{()}, \texttt{a=(1,2)} & immutable, i.e. you can't change it \\
+\hline 
+list &  \texttt{[]}, \texttt{a=[], a[0] = ``foo'', a[1]=``bar''} & \\
+\hline
+dictionary & \texttt{\{\}}, \texttt{a[``foo'']=''bar''} & use of keys
+\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+% code review
+
+\subsection{Exceptions}
+
+Any time Python ``explodes'' it is because an exception has been
+raised. \texttt{Exception} is a class, and all types of exceptions
+inherit from this class. Any exception based on the class
+\texttt{Exception} will have the attributes \texttt{msg} (what prints
+when the exception is raised) and
+\texttt{stack trace} (which identifies where the error occurred). Note that ``raise'' is a technical term in
+Python. 
+% see code inclass3.py
+
+\begin{verbatim}
+class CustomException(Exception): # inherits from Exception
+  def __init__(self, value):
+    self.value = value
+  
+  def __str__(self):
+    return self.value
+
+def i_call_a_function_with_errors():
+  try:
+    print "Calling a function...."
+    #function_with_generic_error()
+    #function_with_custom_error()
+    #function_with_unknown_error(1)
+    print "Tada!"
+  except CustomException as inst: # `as' gives us access to the exception
+    print "Custom Error Caught! Error({0})".format(inst.value)
+  except: # any exception is caught, even ones you don't know about
+    print "Default Error Caught!"
+  else: # if nothing broke, then run this block
+    print "No error raised."
+    traceback.print_exc() # this prints the traceback
+  finally: # this block is always run
+    print "Goodbye!"
+  
+def function_with_generic_error():
+  raise Exception, "Foo!" # this method doesn't know what to do with
+the exception
+  
+def function_with_custom_error():
+  raise CustomException, "Foo Bar!" # this will be handled in the
+function above}
+  
+def function_with_unknown_error(foo):
+  foo.bar()
+\end{verbatim}
+
+Caught exceptions are ones that keep the user from doing something the
+programmer didn't want them to do. Uncaught exceptions cause
+problems. 
+
+In a Python test suite, you set up a \texttt{try} block to run some
+code where you think a problem might happen. As soon as an exception
+is thrown in your \texttt{try} block, it doesn't try anything else. 
+
+\textbf{Rule of thumb:} If you know what to do with an error, handle
+it. If you don't, let it percolate up. 
+
+Exceptions are something that you've been dealing with up to now but
+(maybe) didn't even know about. 
+
+\subsection{Algorithms}
+Having an instict for better and worse algorithms will let you know
+whether solving your problem will take hours or years.\footnotemark
+\footnotetext{``No one in stats gets a Ph.D. without coding and the only
+  way people get Ph.D.'s without coding in our discipline is because
+  there are some dumb people who have made their way up, but those
+  guys are going to die soon.'' -- Scott DeMarchi.} An algorithm can
+be defined as ``a series of steps that achieve a desired outcome.''
+
+Consider the task of sorting a list. This is not a problem you will
+ever have to solve because better people have already done it, but
+it's easy to visualize. We use algorithms to solve hard problems. In
+mathematics it's known as an NP problem. (This is just nerd's way of
+saying ``hard.'') Most problems in game theory are NP complete. 
+
+In political science, you might be using a data set with 18 million
+events. But the thing you're interested in might require
+$18,000,000^2$ or even $18,000,000^3$ observations. 18 million cubed
+is a big number.
+
+To put this in a Python context, say we want to sort a list $[y_i,
+... y_n]$. A terribly inefficient way to do this would be to randomly
+shuffle and then check to see if they're in order. There are $n!$ ways
+to shuffle the list, so the problem grows factorially. 
+
+In programming, we use ``big O'' notation to talk about
+complexity. The $O$ means $\forall x f(x) < cf(x)$. So if we have a
+problem $n^2 + n$, we denote it $O(n^2)$ and call it ``quadratic
+complexity.'' Complexity of the class $O(n)$ is called ``linear,'' and
+so on. It tells us how the number of operations goes up as $n$
+grows. We use it to speak about \emph{average} complexity of
+problems--after all, we can only speak in averages. 
+
+% look these up because there are great visualizaitons
+
+
+\subsubsection{Selection sort}
+\begin{verbatim}
+
+k = 0, L= [] \\
+Loop through n-k \\
+    find smallest number at j \\
+    swap L[k] with L[j] \\
+    k++
+
+              [5,1,15,7,111]  # of things to check
+Rd 1: k=0,j=1 [1,5,15,7,111]    5
+Rd 2: k=1,j=1 [1,5,15,7,111]    4
+Rd 3: k=2,j=1 [1,5,7,15,111]    3...
+Rd 4: k=3,j=3
+\end{verbatim}
+
+\subsubsection{A Brief Primer/Refresher in Discrete Math}
+$\sum_{i=1}^{n} i = {n(n+1) \over 2}$, which is a $O(n^2)$ (quadratic)
+complex problem. How do you prove it? 
+\begin{eqnarray*}
+\sum_{i=1}^{n} i &=& n + (n-1) + (n-2) + ... + 3 + 2 + 1 \\
+2 \times \sum_{i=1}^{n} i&=& n+ (n-1) + ... + 2 + 1 + 1 + 2 + ... + (n-1) + (n - 2) \\
+&=& (n+1) + (n+1) + ... \\
+&=& n(n+1) \\
+\end{eqnarray*}
+
+Go back to the example above. How many tries would the best case take?
+5. The worst case? 5. And the average case? You guessed it--5. 
+
+\subsubsection{Merge Sort}
+
+This method would take the list to be sort it, split it in half again
+and again until they were all disaggregated to the unit level. It would sort those and
+reassemble (merge) them into a two-ple (get it?). This reduces the
+list sort to an $O(n log(n))$ problem. (In this case we're not even
+throwing away little numbers or constants from the $n$.)
+
+Try this out. Come up with a list of numbers, maintain a spot in
+them. It's fairly easy to sort two things and interweave them. It will
+take $n log_2(n)$ sorts. 
+
+% compare this to mapreduce() in Python, which does log(n) aggregation
+% steps in parrallel
+
+
+\subsubsection{What should I care about in optimizing an algorithm?}
+Some people will care about the time it takes. Others will care about
+the (memory) space it take. Most people who care about memory work on rocket
+ships or microwaves. Merge sort takes more space than selection sort,
+but uses less time. As with anything in life, it's a tradeoff. 
+
+\subsubsection{Back to NP}
+P means that the problem is in polynomial time class--not that your
+algorithm is in P time (it may be exponential) but that the ideal
+answer is in P time. Computational game theorists sometimes look at
+\emph{whether} something is solvable in polynomial time. If it isn't,
+we call it $NP$ time--that is, not solvable. If you can prove that
+$P=NP$, you can break all cryptography in the world, make a lot of
+money, and retire. If somebody says a problem is ``NP,'' that means
+don't waste your time. (Actually they'll say ``NP-hard,''
+``NP-complete'' and so on--that just means someone way more
+mathematically inclined than us has proven it so; don't argue.)
+
+\subsubsection{Quick Sort}
+There is a fourth sort, which we will not get into here, that most
+programs actually use. Quick sort is, on average $O (n log n)$, but
+its worst case is $n^2$. Again, it all comes back to what you care
+about this.
+
+% look it up on Wikipedia. Nothing we're doing is so esoteric that
+% someone hasn't covered it better than we could
+% http://www.sorting-algorithms.com/
+
+\begin{table}
+\begin{center}
+\caption{How long will it take to find $y_i$?}
+\begin{tabular}{ccccc}
+Method & List & Worst & Best & Average \\
+\hline
+Naive & $[y_1, ..., y_n]$ & $O(n) $ & $O(1)$ & $O({n\over2})$ \\
+Binary & sorted & O(log n) & \\
+\end{tabular}
+\end{center}
+\end{table}
+
+Don't stress too much about actually computing complexity
+classes--they've already been computed for almost anything interesting
+enough that you'd want to work on it. Just know how to choose between
+them when presented with options. 
+
+Remember that there is a trade-off between how much time you spend
+programming the algorithm and how much time it will save you. In
+general, think about how many times you will plausibly be running the
+algorithm. Most working programmers look for ``satisficing''
+solutions--fast enough and no faster. 
+ 
+~\\
+Homework:
+\begin{enumerate}
+\item generate arrays of numbers
+\item sort them
+\item count the time
+\item graph it (N on X axis, time on Y)
+\end{enumerate}
+
+Implement the sort algorithms first. Everything else will be trivial.
+
+\pagebreak
+\onehalfspacing
+\bibliographystyle{/Users/mcdickenson/Documents/apsr}
+\bibliography{/Users/mcdickenson/Library/textmf/bibtex/bib/RefLib.bib}
+
+\pagebreak
+% \section*{Tables}
+
+
+
+\end{document} 

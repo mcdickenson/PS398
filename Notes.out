@@ -1,0 +1,21 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Source Control}{section.1}% 2
+\BOOKMARK [3][-]{subsubsection.1.1.1}{A Word on Branching}{subsection.1.1}% 3
+\BOOKMARK [3][-]{subsubsection.1.1.2}{Naming Versions}{subsection.1.1}% 4
+\BOOKMARK [3][-]{subsubsection.1.1.3}{Commit History}{subsection.1.1}% 5
+\BOOKMARK [2][-]{subsection.1.2}{Testing}{section.1}% 6
+\BOOKMARK [1][-]{section.2}{Object-Oriented Programming}{}% 7
+\BOOKMARK [2][-]{subsection.2.1}{Mini-Homework}{section.2}% 8
+\BOOKMARK [2][-]{subsection.2.2}{What is OOP?}{section.2}% 9
+\BOOKMARK [2][-]{subsection.2.3}{Why OOP?}{section.2}% 10
+\BOOKMARK [2][-]{subsection.2.4}{Inheritance}{section.2}% 11
+\BOOKMARK [1][-]{section.3}{Pragmatic Programming}{}% 12
+\BOOKMARK [2][-]{subsection.3.1}{Data types}{section.3}% 13
+\BOOKMARK [2][-]{subsection.3.2}{Exceptions}{section.3}% 14
+\BOOKMARK [2][-]{subsection.3.3}{Algorithms}{section.3}% 15
+\BOOKMARK [3][-]{subsubsection.3.3.1}{Selection sort}{subsection.3.3}% 16
+\BOOKMARK [3][-]{subsubsection.3.3.2}{A Brief Primer/Refresher in Discrete Math}{subsection.3.3}% 17
+\BOOKMARK [3][-]{subsubsection.3.3.3}{Merge Sort}{subsection.3.3}% 18
+\BOOKMARK [3][-]{subsubsection.3.3.4}{What should I care about in optimizing an algorithm?}{subsection.3.3}% 19
+\BOOKMARK [3][-]{subsubsection.3.3.5}{Back to NP}{subsection.3.3}% 20
+\BOOKMARK [3][-]{subsubsection.3.3.6}{Quick Sort}{subsection.3.3}% 21
