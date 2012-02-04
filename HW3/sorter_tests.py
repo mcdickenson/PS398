@@ -2,7 +2,7 @@
 import unittest
 import sorter
 
-class TestInvestCode(unittest.TestCase):
+class TestSorderCode(unittest.TestCase):
 
     def setUp(self):
         self.nearly_sorted = [1,3,2,4,5,7,8,6,10,9]
@@ -16,22 +16,26 @@ class TestInvestCode(unittest.TestCase):
     # correctness tests:
 
     def test_selection_nearly_sorted(self):
-        self.AssertEqual(sorter.selection(self.nearly_sorted), self.correct_nearly_sorted)
+        x = sorter.selection(self.nearly_sorted)
+        self.assertEqual(x, self.correct_nearly_sorted)
 
     def test_selection_few_unique(self):
-        self.AssertEqual(sorter.selection(self.few_unique), self.correct_few_unique)
+        x = sorter.selection(self.few_unique)
+        self.assertEqual(x, self.correct_few_unique)
 
     def test_selection_reversed(self):
-        self.AssertEqual(sorter.selection(self.reversed), self.correct_reversed)
+        x = sorter.selection(self.reversed)
+        self.assertEqual(x, self.correct_reversed)
 
     def test_quick3_nearly_sorted(self):
-        self.AssertEqual(sorter.quick3(self.nearly_sorted), self.correct_nearly_sorted)
+        x = sorter.quick3(self.nearly_sorted)
+        self.assertEqual(x, self.correct_nearly_sorted)
 
     def test_quick3_few_unique(self):
-        self.AssertEqual(sorter.quick3(self.few_unique), self.correct_few_unique)
+        self.assertEqual(sorter.quick3(self.few_unique), self.correct_few_unique)
 
     def test_quick3_reversed(self):
-        self.AssertEqual(sorter.quick3(self.reversed), self.correct_reversed)
+        self.assertEqual(sorter.quick3(self.reversed), self.correct_reversed)
 
         # TODO: add tests for self.random
 
