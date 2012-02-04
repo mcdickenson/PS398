@@ -39,16 +39,16 @@ class TestSorterCode(unittest.TestCase):
         x = sorter.bubble(self.reversed)
         self.assertEqual(x, self.correct_reversed)
 
-    def test_quicksort3_nearly_sorted(self):
-        x = sorter.quicksort3(self.nearly_sorted)
+    def test_quicksort_nearly_sorted(self):
+        x = sorter.quicksort(self.nearly_sorted)
         self.assertEqual(x, self.correct_nearly_sorted)
 
-    def test_quicksort3_few_unique(self):
-        x = sorter.quicksort3(self.few_unique)
+    def test_quicksort_few_unique(self):
+        x = sorter.quicksort(self.few_unique)
         self.assertEqual(x, self.correct_few_unique)
 
-    def test_quicksort3_reversed(self):
-        x = sorter.quicksort3(self.reversed)
+    def test_quicksort_reversed(self):
+        x = sorter.quicksort(self.reversed)
         self.assertEqual(x, self.correct_reversed)
 
         # TODO: add tests for self.random
