@@ -36,7 +36,7 @@ def bubble(LIST): # complexity = O(n^2)
     
     
 
-def quicksort3(LIST): # complexity = O(NlogN)
+def quicksort3(LIST): # complexity = O(NlogN) 
     while listChecker(LIST) & numChecker(LIST, 1):
         pivot_point = int(random.uniform(1, len(LIST))) # choose random pivot point
         swap(LIST, int(len(LIST)-1), pivot_point)
@@ -44,13 +44,16 @@ def quicksort3(LIST): # complexity = O(NlogN)
         # three-way partition
         index = 1 
         minIndex = 1 
-        endIndex = len(LIST)-1
+        endIndex = len(LIST)
         while index < endIndex:
             if LIST[index] < LIST[len(LIST)-1]:
-                swap(LIST, index, minIndex)
+                swap(LIST, index+1, minIndex+1)
+                index +=1
+                minIndex +=1
             elif LIST[index] == LIST[endIndex-1]:
-                swap(LIST, index, --endIndex)
-            index+=1
+                endIndex -=1
+                swap(LIST, index, endIndex-1)
+            else: index+=1
 
         # move pivot point toward middle of list
         new_pivot_point = min(endIndex-minIndex, len(LIST)-endIndex+1)
@@ -58,8 +61,8 @@ def quicksort3(LIST): # complexity = O(NlogN)
         start2 = len(LIST)-new_pivot_point+1
         LIST[minIndex:stop1], LIST[start2:len(LIST)-1] = LIST[start2:len(LIST)-1], LIST[minIndex:stop1]
 
-        first_part = bubble(LIST[0:minIndex])
-        second_part = bubble(LIST[len(LIST)-pivot_point+minIndex+1:len(LIST)-1])
+        first_part = quicksort3(LIST[0:minIndex])
+        second_part = quicksort3(LIST[len(LIST)-pivot_point+minIndex+1:len(LIST)-1])
         sorted_list = first_part + second_part
         return sorted_list
 

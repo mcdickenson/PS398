@@ -2,7 +2,7 @@
 import unittest
 import sorter
 
-class TestSorderCode(unittest.TestCase):
+class TestSorterCode(unittest.TestCase):
 
     def setUp(self):
         self.nearly_sorted = [1,3,2,4,5,7,8,6,10,9]
