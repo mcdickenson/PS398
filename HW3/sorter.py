@@ -12,11 +12,12 @@ def selection(LIST): # complexity = O(N^2)
 
 def bubble(LIST): # complexity = O(n^2)
     while listChecker(LIST) & numChecker(LIST, 1):
-        for index in range(len(LIST)-1):
+        for index in range(len(LIST)):
             swaps = 0
-            if LIST[index] > LIST[index + 1]:
-                LIST[index], LIST[index + 1] = LIST[index + 1], LIST[index]
-                swaps =+ 1
+            for sub_index in range(len(LIST)-1):            
+                if LIST[sub_index] > LIST[sub_index + 1]:
+                    LIST[sub_index], LIST[sub_index + 1] = LIST[sub_index + 1], LIST[sub_index]
+                    swaps =+ 1
             if swaps == 0:
                 return LIST
         return LIST
