@@ -7,7 +7,7 @@ Matt Dickenson """
 import random
 
 def selection(LIST): # complexity = O(N^2)
-    while listChecker(LIST) & numChecker(LIST, 1): # makes sure we're dealing with list of numbers
+    while listChecker(LIST) & numChecker(LIST, 0): # makes sure we're dealing with list of numbers
         for index in range(len(LIST)):  # check over whole list
             minIndex = index            # end of ordered portion
             for sub_index in range(index+1, len(LIST)): # check between ordered portion thru end of list
