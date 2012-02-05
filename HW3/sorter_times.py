@@ -6,7 +6,7 @@ import sorter
 
 
 # recorded time will be average of 100 trials on 90 random lists
-maxDraws = 100
+maxDraws = 250
 repetitions = 100
 
 selection_sort_times = []
