@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=pdflatex 2010.7.21)  1 FEB 2012 21:50
+This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=pdflatex 2010.7.21)  8 FEB 2012 20:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -462,27 +462,27 @@ Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on input line 423.
 
-[9] [10] [11]
+[9] [10] [11] [12] [13] [14] [15]
 No file Notes.bbl.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 523.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 523.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 744.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 744.
 (./Notes.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 523.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 744.
 Package rerunfilecheck Info: File `Notes.out' has not changed.
-(rerunfilecheck)             Checksum: A684E850B32A76661E8E745F69E8015D;1429.
+(rerunfilecheck)             Checksum: 9C8456E9E43639D27DFAAAEA4A071B84;2121.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 6299 strings out of 493747
- 90892 string characters out of 3143546
- 169570 words of memory out of 3000000
- 9407 multiletter control sequences out of 15000+200000
+ 6326 strings out of 493747
+ 91277 string characters out of 3143546
+ 169659 words of memory out of 3000000
+ 9421 multiletter control sequences out of 15000+200000
  13564 words of font info for 53 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 31i,13n,28p,229b,440s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 31i,16n,28p,229b,440s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 ></usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
 </usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
@@ -496,10 +496,10 @@ live/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
 ive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texliv
 e/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive
 /2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on Notes.pdf (11 pages, 170012 bytes).
+Output written on Notes.pdf (15 pages, 183013 bytes).
 PDF statistics:
- 216 PDF objects out of 1000 (max. 8388607)
- 188 compressed objects within 2 object streams
- 45 named destinations out of 1000 (max. 500000)
- 169 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 279 PDF objects out of 1000 (max. 8388607)
+ 246 compressed objects within 3 object streams
+ 58 named destinations out of 1000 (max. 500000)
+ 257 words of extra memory for PDF output out of 10000 (max. 10000000)
 

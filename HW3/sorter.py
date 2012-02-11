@@ -28,6 +28,7 @@ def quicksort(LIST): # complexity = O(NlogN)
     else:
         pivot_point = LIST[0]
         lessThanPivot = quicksort([x for x in LIST[1:] if x < pivot_point]) # recursive
+        # make a bucket of equal values--thanks Shahryar!
         greaterThanPivot = quicksort([x for x in LIST[1:] if x >= pivot_point])
         return lessThanPivot + [pivot_point] + greaterThanPivot
 

@@ -499,16 +499,235 @@ general, think about how many times you will plausibly be running the
 algorithm. Most working programmers look for ``satisficing''
 solutions--fast enough and no faster. 
  
-~\\
-Homework:
-\begin{enumerate}
-\item generate arrays of numbers
-\item sort them
-\item count the time
-\item graph it (N on X axis, time on Y)
-\end{enumerate}
+% ~\\
+% Homework:
+% \begin{enumerate}
+% \item generate arrays of numbers
+% \item sort them
+% \item count the time
+% \item graph it (N on X axis, time on Y)
+% \end{enumerate}
 
-Implement the sort algorithms first. Everything else will be trivial.
+% Implement the sort algorithms first. Everything else will be
+% trivial.
+
+
+\section{Data Structures}
+\subsection{A Note on Naming}
+In Python, use UpperCamelCasing to name classes and lowerCamelCasing
+to name variables or methods. Variables that are member variables of a
+class are preceded by two underscores: ``\_\_oneTwo''. These are
+conventions that are meaningful to Pythonistas, and should be
+meaningful to you as a reader of code and a contributor to projects.
+
+\subsection{Review of Sorting Algorithms}
+Take home points:
+\begin{itemize}
+\item Use \texttt{time.clock()} to benchmark runtimes.
+\item Know what your data looks like. (Are there many unique values?)
+\item Bubble sort is bad.
+\end{itemize}
+
+\subsection{Intro to Data Structures}
+Why would you use one data structure over another? Because of what you
+want to do with it. There are several classes of data structures, with
+many variations on each class--look at Wikipedia. Let's talk about how
+lists and arrays work, and when you should use them. We typically care
+about how quickly we can add, delete, or find something. (See Table
+\ref{data_structures}.)
+
+\begin{table}
+\begin{center}
+\caption{Data Structures and Their Usefulness}
+\label{data_structures}
+\begin{tabular}{cccccc}
+& Arrays & Lists & Queues/Stacks & Dictionary & Trees  \\
+\hline
+Add & O(1) or O(n) & O(1), always & O(1)  & O(1) & O(log n)\footnotemark \\ 
+Delete & O(n) & O(1) &  O(1) & O(1) & O(log n) \\
+Find & O(n) & O(n) & O(n), but we don't care & O(n) & O(log n)  \\
+\hline
+\footnotetext{O(log n) time for a balanced binary search tree. The
+  same goes for deleting.}
+\end{tabular}
+\end{center}
+\end{table}
+
+
+\subsection{Arrays}
+Before getting into the use of specific data structures, it is
+important to think about how they are represented on your
+computer. Your memory, sometimes referred to as RAM, is known as the
+machine's ``heap'' in computer science. When we tell the computer that
+an object has a certain schema, it allocates a certain amount of space
+based on how much space an object of that schema may take. 
+
+An array looks like \texttt{a = [1,2,''a'']}. When you do this, your
+computer gives the object \texttt{a} exactly 3 spaces (an imprecise
+term for the moment) of memory. We can index these things quickly
+because we are keeping track. However, the tradeoff is that adding
+something to list list is difficult. If we run
+\texttt{a.append(``b'')}, the computer creates a whole new object with
+four spaces and deletes the old one. The actual process of renewing
+the list over and over can be very time consuming. 
+
+\subsection{Lists (or ``Vectors'')}
+Lists are arrays that do not allow direct indexing. Rather than
+allocating a block of memory, a list is stored as items that each
+point to the next item in the list. The only way to get the second
+thing out of memory is to get the first thing out of memory and ask it
+where the second thing is hiding. If we want the fourth (or the
+$n^{th}$ element, that can become a lot of asking. To find something,
+we have to use an algorithm, typically starting at the middle and
+working our way out. 
+
+The benefit of a list is that you can add things to it
+indefinitely. Furthermore, they can grow indefinitely as well because
+Python does not allocate a fixed space for the list when it was
+created. 
+
+\subsection{Queues}
+(To build a queue, you need a list or an array. We're working our way
+up.)
+
+Queues only support enqueue or dequeue (adding something to the end,
+or removing from the front, of a line). You could use either an array
+or a list to store these. Which is better? A list, because we aren't
+going to be doing searching, just adding and deleting. 
+
+Queues are managed by the rule of FIFO (First-In-First-Out).
+
+This is not a natively supported data type in Python, so if you want
+one you'll have to build it yourself, or \texttt{import from
+  collections deque}. Python also does not differentiate between arrays and
+lists, but in \texttt{R} it does make a difference. 
+
+\subsection{Stack}
+As the name would suggest, this can be best visualized as a stack of
+things. Stacks support LIFO (Last-In-First-Out). Again, you only add
+or remove things. Things can only get pushed onto or popped off of the stack. 
+
+\begin{table}
+\begin{center}
+\caption{A Stack}
+\label{stackfig}
+\begin{tabular}{|c|}
+\multicolumn{1}{c}{} \\
+\hline
+``b'' \\
+\hline
+``a'' \\
+\hline
+2 \\
+\hline
+1 \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+As with lists and arrays, Python conflates the difference between
+stacks and queues. If you're working with data of known size, this
+isn't a huge problem. 
+
+What's going on under the hood here? When you call a function, it gets
+put in your stack. Your computer has a huge chunk of memory for the
+stack. In the pseudocode below, the user calls \texttt{a}, which in
+turn calls \texttt{b}, which in turn calls \texttt{c} and returns
+1. How does something get popped off? A function is popped off when it
+returns. A recursive function just puts itself on the stack over and
+over again.\footnotemark \footnotetext{``When you try to push something onto the stack when the
+stack is full, you have overflown the stack.''} Fortunately, Python tries to help you (in the terminal at
+least) and tries to keep you from overflowing the stack with recursive
+functions. 
+
+\begin{verbatim}
+def a():
+    b()
+
+def b():
+    c()
+
+def c():
+    a = 1
+
+>>> a()
+>>> 1
+\end{verbatim}
+
+When a problem happens, the stack trace is returned, which will tell
+you all of the functions that failed to catch it. (Tattle-tale.)
+
+Because a computer core only does one thing at a time, a stack is an
+efficient way to handle it. An eight-core computer has eight
+stacks. 
+
+\subsection{Dictionary/Hashtable}
+
+Dictionaries provide a quick lookup for arbitrary things. It is called
+a hashtable because it uses a hash function: it assigns a unique
+identifier (typically a number) to the object that the arbitrary key
+should point to. 
+\begin{verbatim}
+a = {}
+a["foo"] = "bar"
+\end{verbatim}
+
+When we do the above code, we tell the computer ``a + `foo' = memory
+location.'' The pointer that gets us from input to output is the hash
+function. The main point here is that you shouldn't be doing a lot of
+searching through a dictionary, because it is bad for that. What
+dictionaries are good for is adding and removing a lot of things very
+quickly, and to access them (but not sort them). This is one of the
+most commonly used data structures for a reason: you don't know how
+many data points you will have, but you want to get to them
+quickly. Understanding lists and dictionaries are the most important
+points for today. 
+
+\subsection{Trees}
+
+Trees come in many shapes, but it is easiest to visualize a binary
+tree (think game theory; each node has at most two branches). The top is the root, anything that doesn't
+have another node after it is a leaf, and the distance between the
+root and the farthest leaf is the height of the tree. Depending on the
+properties you enforce for your tree, you can get interesting
+patterns. If you put numbers into your tree in a certain way, you can
+access them very quickly: everything to the right is bigger than its
+parent node, everything to the left is smaller than its parent node. 
+
+The nodes of the tree are stored with pointers to the other
+items. Each node points to its right and left child (which may be
+empty if the node is a leaf). 
+
+You can think of a list as a degenerate case of a tree. These are
+pretty easy to create, so many people make their own. Useful terms to
+keep in mind are ``max heap'' and ``min heap,'' in which the greatest
+number (or the smallest number) is on top. There is also an importance
+heap, which is beyond the scope of the current discussion.
+
+\subsection{Graphs}
+
+Graphs are a computer scientist's favorite thing. They consist of
+nodes and edges. Nodes can contain or not contain things, depending on
+what you want the graph to look like. Edges can be weighted or
+unweighted, depending on your problem. Weighted edges are interesting
+(an NP hard problem) in the travelling salesman problem. In this
+problem, the edges are weighted by the mileage between the
+cities. Edges can be directed or non-directed, which governs how the
+graph can be traversed. A graph is ``cyclic'' if you can get back to
+your starting point for any smaller portion of the graph.
+
+To make things more confusing, people like to abbreviate. A DAG is a
+Directed Acyclic Graph. Trees can be thought of as degenerate cases of
+graphs, and are by definition DAGs.
+
+No one uses graphs in Python, but you will for
+your homework. You will handle them as objects. Another way is with an adjacency matrix (which can be
+weighted or binary). 
+
+
+
+
 
 \pagebreak
 \onehalfspacing
@@ -517,6 +736,8 @@ Implement the sort algorithms first. Everything else will be trivial.
 
 \pagebreak
 % \section*{Tables}
+
+
 
 
 
