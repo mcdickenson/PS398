@@ -78,11 +78,22 @@ class LinkedList(object):
             
 
     def addNodeAfter(self, new_value, after_node):
-        isUnique = checkUniqueValue(self, after_node)
+        isUnique = self.checkUniqueValue(after_node)
+        current = self.head
+        added = False
         if isUnique:
-            pass
+            while added == False:
+                if current.value == after_node:
+                    current.next, current.next.next = Node(new_value), current.next
+                    self.length += 1
+                    #current.next.next = holder
+                    added = True
+                else: current = current.next
+                
+        elif isUnique == None:
+            print "WARNING: No node with value %d in list. No changes made." % after_node
         else:
-            print "WARNING: %d does not uniquely identify nodes in list." % after_node
+            print "WARNING: %d does not uniquely identify nodes in list. No changes made." % after_node
 
 
 
