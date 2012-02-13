@@ -17,6 +17,7 @@ class Node(object):
 
     def setNext(self, childValue, childNext = None):
         self.next = Node(childValue, childNext)  
+
         
 
 class LinkedList(object):
@@ -102,13 +103,30 @@ class LinkedList(object):
                 if current.next.value == before_node:
                     current.next, current.next.next = Node(new_value), current.next
                     self.length += 1
-                    #current.next.next = holder
                     added = True
                 else: current = current.next                
         elif isUnique == None:
-            print "WARNING: No node with value %d in list. No changes made." % after_node
+            print "WARNING: No node with value %d in list. No changes made." % before_node
         else:
-            print "WARNING: %d does not uniquely identify nodes in list. No changes made." % after_node
+            print "WARNING: %d does not uniquely identify nodes in list. No changes made." % before_node
+
+
+    def removeNode(self, node_to_remove):
+        ''' Note: this function currently cannot remove the head of a list.'''
+        isUnique = self.checkUniqueValue(node_to_remove)
+        current = self.head
+        removed = False
+        if isUnique:
+            while removed == False:
+                if current.next.value == node_to_remove:
+                    current.next, current = current.next.next, None
+                    self.length -=1
+                    removed = True
+                else: current = current.next                
+        elif isUnique == None:
+            print "WARNING: No node with value %d in list. No changes made." % node_to_remove
+        else:
+            print "WARNING: %d does not uniquely identify nodes in list. Consider using removeNodesByValue(). No changes made." % node_to_remove
 
 
 

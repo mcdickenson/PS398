@@ -38,6 +38,11 @@ class TestListCode(unittest.TestCase):
         self.practiceList.addNodeBefore(7,12)
         self.expectedOutput3 =  "5 -> 7 -> 12 -> 9 -> 2 -> END"
         self.assertEqual(str(self.practiceList), self.expectedOutput3)
+
+    def test_remove_node(self):
+        self.practiceList.removeNode(12)
+        self.expectedOutput4 = "5 -> 9 -> 2 -> END"
+        self.assertEqual(str(self.practiceList), self.expectedOutput4)
     
     # robustness tests: 
 
