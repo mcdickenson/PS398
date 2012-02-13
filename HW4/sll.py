@@ -57,6 +57,33 @@ class LinkedList(object):
         self.tail = self.tail.next
         self.length += 1
 
+    def checkUniqueValue(self, value_to_check):
+        appearances_count = 0
+        temp_length = len(self)
+        x = self.head
+        while temp_length > 0:
+            if x.value == value_to_check:
+                appearances_count += 1            
+            temp_length -= 1
+            x = x.next
+        #if appearances_count == 0:
+        #    print "%d does not appear in this list." % value_to_check
+        #elif appearances_count == 1:
+        #    print "%d is a unique value." % value_to_check
+        #else
+        #    print "%d appears %d times in this list." % (value_to_check, appearances_count)
+        if appearances_count == 0: return None
+        elif appearances_count ==1: return True
+        elif appearances_count >1: return False 
+            
+
+    def addNodeAfter(self, new_value, after_node):
+        isUnique = checkUniqueValue(self, after_node)
+        if isUnique:
+            pass
+        else:
+            print "WARNING: %d does not uniquely identify nodes in list." % after_node
+
 
 
 

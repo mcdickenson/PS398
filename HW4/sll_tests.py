@@ -10,6 +10,9 @@ class TestListCode(unittest.TestCase):
         self.practiceList.addNode(9)
         self.practiceList.addNode(2)
         self.expectedOutput1 = "5 -> 12 -> 9 -> 2 -> END"
+        self.nonUniqueList = sll.LinkedList(1)
+        self.nonUniqueList.addNode(2)
+        self.nonUniqueList.addNode(1)
 
 
     # correctness tests:
@@ -17,6 +20,14 @@ class TestListCode(unittest.TestCase):
 
     def test_display_list(self):
         self.assertEqual(str(self.practiceList), self.expectedOutput1)
+
+    def test_unique_list_false(self):
+        x = self.nonUniqueList.checkUniqueValue(1)
+        self.assertEqual(x, False)
+
+    def test_unique_list_true(self):
+        x = self.nonUniqueList.checkUniqueValue(2)
+        self.assertEqual(x, True) 
 
     
     # robustness tests: 
