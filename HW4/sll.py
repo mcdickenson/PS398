@@ -75,7 +75,20 @@ class LinkedList(object):
         #    print "%d appears %d times in this list." % (value_to_check, appearances_count)
         if appearances_count == 0: return None
         elif appearances_count ==1: return True
-        elif appearances_count >1: return False 
+        elif appearances_count >1: return False
+
+    def instanceCounter(self, value_to_count):
+        '''Caution: only counts instances after the head of the list.'''
+        instance_count = 0
+        temp_length = len(self)-1
+        x = self.head.next
+        while temp_length > 0:
+            if x.value == value_to_count:
+                instance_count += 1            
+            temp_length -= 1
+            x = x.next
+        return instance_count  
+            
             
     def addNodeAfter(self, new_value, after_node):
         isUnique = self.checkUniqueValue(after_node)
@@ -127,6 +140,23 @@ class LinkedList(object):
             print "WARNING: No node with value %d in list. No changes made." % node_to_remove
         else:
             print "WARNING: %d does not uniquely identify nodes in list. Consider using removeNodesByValue(). No changes made." % node_to_remove
+
+
+    def removeNodesByValue(self, value_to_remove):
+        ''' Note: this function currently cannot remove the head of a list.'''
+        occurrences_of_value = self.instanceCounter(value_to_remove)
+        current = self.head
+        removed = False
+        if occurrences_of_value > 0:
+            while removed == False:
+                if current.next.value == value_to_remove:
+                    current.next, current = current.next.next, None
+                    self.length -=1
+                    removed = True
+                else: current = current.next
+            self.removeNodesByValue(value_to_remove)                    
+        else:
+            print "All nodes with value of %d (except list head) removed." % value_to_remove
 
 
 

@@ -13,10 +13,17 @@ class TestListCode(unittest.TestCase):
         self.nonUniqueList = sll.LinkedList(1)
         self.nonUniqueList.addNode(2)
         self.nonUniqueList.addNode(1)
-
+        self.lotsOfTwos = sll.LinkedList(1)
+        self.lotsOfTwos.addNode(2)
+        self.lotsOfTwos.addNode(3)
+        self.lotsOfTwos.addNode(2)
+        self.lotsOfTwos.addNode(4)
+        self.lotsOfTwos.addNode(2)
+        self.lotsOfTwos.addNode(5)
+        self.lotsOfTwos.addNode(2)
+        self.lotsOfTwos.addNode(6)
 
     # correctness tests:
-
 
     def test_display_list(self):
         self.assertEqual(str(self.practiceList), self.expectedOutput1)
@@ -43,6 +50,11 @@ class TestListCode(unittest.TestCase):
         self.practiceList.removeNode(12)
         self.expectedOutput4 = "5 -> 9 -> 2 -> END"
         self.assertEqual(str(self.practiceList), self.expectedOutput4)
+
+    def test_remove_by_value(self):
+        self.lotsOfTwos.removeNodesByValue(2)
+        self.expectedOutput5 = "1 -> 3 -> 4 -> 5 -> 6 -> END"
+        self.assertEqual(str(self.lotsOfTwos), self.expectedOutput5)
     
     # robustness tests: 
 
