@@ -34,6 +34,10 @@ class TestListCode(unittest.TestCase):
         self.expectedOutput2 =  "5 -> 12 -> 13 -> 9 -> 2 -> END"
         self.assertEqual(str(self.practiceList), self.expectedOutput2)
 
+    def test_add_node_before(self):
+        self.practiceList.addNodeBefore(7,12)
+        self.expectedOutput3 =  "5 -> 7 -> 12 -> 9 -> 2 -> END"
+        self.assertEqual(str(self.practiceList), self.expectedOutput3)
     
     # robustness tests: 
 
