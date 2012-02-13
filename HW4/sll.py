@@ -40,7 +40,7 @@ class LinkedList(object):
             while temp_length > 0:
                 temp_value = x.value
                 if temp_length == 1:
-                    output_text += str(temp_value)
+                    output_text += str(temp_value) + " -> END"
                     temp_length -= 1
                     break
                 elif temp_length >1:

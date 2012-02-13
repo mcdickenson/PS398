@@ -1,15 +1,15 @@
 # /Users/mcdickenson/github/PS398/HW3/
 import unittest
-import sorter
+import sll
 
 class TestListCode(unittest.TestCase):
 
     def setUp(self):
         self.practiceList = sll.LinkedList(5)
         self.practiceList.addNode(12)
-        self.practiceList.addNodeAfter(9,12)
-        self.practiceList.addNodeAfter(2, 9)
-        self.expectedOutput1 = "practiceList: 5 -> 12 -> 9 -> 2 -> END"
+        self.practiceList.addNode(9)
+        self.practiceList.addNode(2)
+        self.expectedOutput1 = "5 -> 12 -> 9 -> 2 -> END"
 
 
     # correctness tests:
@@ -21,8 +21,8 @@ class TestListCode(unittest.TestCase):
     
     # robustness tests: 
 
-    def test_bad_start_value(self):
-        self.assertEqual(self.badList = sll.LinkedList("five"), "Bad start value. Please enter a start value of type int().")
+    # def test_bad_start_value(self):
+        # self.assertEqual(sll.LinkedList("five"), "Bad start value. Please enter a start value of type int().")
 
 
 if __name__ == '__main__':
