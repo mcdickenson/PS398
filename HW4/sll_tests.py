@@ -27,7 +27,12 @@ class TestListCode(unittest.TestCase):
 
     def test_unique_list_true(self):
         x = self.nonUniqueList.checkUniqueValue(2)
-        self.assertEqual(x, True) 
+        self.assertEqual(x, True)
+
+    def test_add_node_after(self):
+        self.practiceList.addNodeAfter(13,12)
+        self.expectedOutput2 =  "5 -> 12 -> 13 -> 9 -> 2 -> END"
+        self.assertEqual(str(self.practiceList), self.expectedOutput2)
 
     
     # robustness tests: 
