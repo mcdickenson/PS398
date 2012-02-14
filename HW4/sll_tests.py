@@ -55,6 +55,11 @@ class TestListCode(unittest.TestCase):
         self.lotsOfTwos.removeNodesByValue(2)
         self.expectedOutput5 = "1 -> 3 -> 4 -> 5 -> 6 -> END"
         self.assertEqual(str(self.lotsOfTwos), self.expectedOutput5)
+
+    def test_reverse_list(self):
+        self.practiceList = self.practiceList.reverse()
+        self.expectedOutput6 = "2 -> 9 -> 12 -> 5 -> END" 
+        self.assertEqual(str(self.practiceList), self.expectedOutput6)
     
     # robustness tests: 
 

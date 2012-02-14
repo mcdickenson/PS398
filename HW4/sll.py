@@ -19,7 +19,6 @@ class Node(object):
         self.next = Node(childValue, childNext)  
 
         
-
 class LinkedList(object):
     """ A class for linked lists, preferably singly-linked and unique values."""
     def __init__(self, _value = None):
@@ -157,6 +156,27 @@ class LinkedList(object):
             self.removeNodesByValue(value_to_remove)                    
         else:
             print "All nodes with value of %d (except list head) removed." % value_to_remove
+
+
+    def reverse(self): 
+        '''Note: currently only works for non-cyclical lists.'''
+        if len(self) == 1:
+            return self
+        elif len(self) == 2:
+            self.head, self.tail = self.tail, self.head
+            self.head.next, self.tail.next = self.tail, None
+            return self.head, self.tail
+        else: pass
+
+    def midpointFinder(self):
+        if len(self) % 2 == 1: 
+            return (len(self) / 2) + 1
+        elif len(self) % 2 == 0: 
+            return (len(self)/ 2), (len(self)/ 2 + 1) 
+        
+        
+            
+            
 
 
 
