@@ -68,12 +68,6 @@ class LinkedList(object):
                 appearances_count += 1            
             temp_length -= 1
             x = x.next
-        #if appearances_count == 0:
-        #    print "%d does not appear in this list." % value_to_check
-        #elif appearances_count == 1:
-        #    print "%d is a unique value." % value_to_check
-        #else
-        #    print "%d appears %d times in this list." % (value_to_check, appearances_count)
         if appearances_count == 0: return None
         elif appearances_count ==1: return True
         elif appearances_count >1: return False
@@ -84,7 +78,7 @@ class LinkedList(object):
         instance_count = 0
         temp_length = len(self)-1
         x = self.head.next
-        while temp_length > 0:
+        while (temp_length > 0) & (x != None):
             if x.value == value_to_count:
                 instance_count += 1            
             temp_length -= 1
@@ -101,7 +95,6 @@ class LinkedList(object):
                 if current.value == after_node:
                     current.next, current.next.next = Node(new_value), current.next
                     self.length += 1
-                    #current.next.next = holder
                     added = True
                 else: current = current.next                
         elif isUnique == None:
@@ -113,6 +106,7 @@ class LinkedList(object):
     def addNodeBefore(self, new_value, before_node):
         isUnique = self.checkUniqueValue(before_node)
         current = self.head
+        #if current.value == before_node: self.head, self.head.next = Node(new_value), self.head
         added = False
         if isUnique:
             while added == False:
@@ -147,9 +141,12 @@ class LinkedList(object):
 
     def removeNodesByValue(self, value_to_remove):
         ''' Note: this function currently cannot remove the head of a list.'''
-        occurrences_of_value = self.instanceCounter(value_to_remove)
         current = self.head
+        if current.value == value_to_remove: 
+            self.head = self.head.next
+            self.length -=1
         removed = False
+        occurrences_of_value = self.instanceCounter(value_to_remove)
         if occurrences_of_value > 0:
             while removed == False:
                 if current.next.value == value_to_remove:
@@ -159,7 +156,7 @@ class LinkedList(object):
                 else: current = current.next
             self.removeNodesByValue(value_to_remove)                    
         else:
-            print "All nodes with value of %d (except list head) removed." % value_to_remove
+            print "All nodes with value of %d removed." % value_to_remove
 
 
     def reverse(self): 
@@ -202,17 +199,10 @@ class LinkedList(object):
                 self.removeNode(popped_value)             
                 removed = True
             else: current = current.next
-        return popped_value            
+        return popped_value           
 
     def hasCycle(self): 
         if self.tail.next == None: return False
         else: return True
         
-        
-            
-            
-
-
-
-
-        
+                
