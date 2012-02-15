@@ -95,6 +95,7 @@ class LinkedList(object):
                 if current.value == after_node:
                     current.next, current.next.next = Node(new_value), current.next
                     self.length += 1
+                    self.tail = self.tail.next
                     added = True
                 else: current = current.next                
         elif isUnique == None:
@@ -125,6 +126,10 @@ class LinkedList(object):
         ''' Note: this function currently cannot remove the head of a list.'''
         isUnique = self.checkUniqueValue(node_to_remove)
         current = self.head
+        if current.value == node_to_remove: 
+            self.head = self.head.next
+            self.length -=1
+            return
         removed = False
         if isUnique:
             while removed == False:
