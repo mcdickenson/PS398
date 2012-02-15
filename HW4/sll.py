@@ -171,22 +171,21 @@ class LinkedList(object):
             self.head.next, self.tail.next = self.tail, None
             return self.head, self.tail
         else:
-            finished = len(self)            
-            reversedList = LinkedList(self.popper)
-            reversedList.addNode(self.head.value)
+            finished = len(self)
+            x = self.popper()
+            y = self.head.value            
+            reversedList = LinkedList(x)
+            reversedList.addNode(y)
             current = self.head
             started = len(reversedList)
             while started < finished:
                 if current.next == None:
-                    reversedList.addNode(self.popper)
-                    started = len(reversedList)
+                    reversedList.addNodeBefore(self.popper(), y)
+                    started = len(reversedList) 
                 else: 
                     current = current.next
+            return reversedList
 
-        # go through list, checking current.next
-        # if current.next isn't pointing to anything (ie if current.next.next == None)
-        # make current.next point to current, current point to None
-        # start over
 
     def midpointFinder(self):
         if len(self) % 2 == 1: 
