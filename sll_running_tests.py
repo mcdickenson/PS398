@@ -1,9 +1,10 @@
+# /Users/mcdickenson/github/PS398/HW4/
 import sll
 
-y = sll.LinkedList(1)
-y.head
-print y.head
-y.head.value
+# y = sll.LinkedList(1)
+# y.head
+# print y.head
+# y.head.value
 
 practiceList = sll.LinkedList(1)
 print(practiceList)
@@ -33,7 +34,7 @@ print a
 ### Other things you can do with that list:
 # command:              # output:
 # -------------------------------------
-a.length()              # 4
+print a.length()        # 4
 a.hasCycle()            # False
 b = a.reverse()         # [nothing printed]
 print b                 # 2 -> 9 -> 12 -> 5 -> END
