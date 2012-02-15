@@ -203,7 +203,11 @@ class LinkedList(object):
                 removed = True
             else: current = current.next
         return popped_value            
-        
+
+    def hasCycle(self): 
+        current = self.head
+        if self.tail.next == None: return False
+        else: return True
         
         
             

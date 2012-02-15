@@ -63,8 +63,8 @@ class TestListCode(unittest.TestCase):
     
     # robustness tests: 
 
-    # def test_bad_start_value(self):
-        # self.assertEqual(sll.LinkedList("five"), "Bad start value. Please enter a start value of type int().")
+    def test_bad_start_value(self):
+        self.assertEqual(str(sll.LinkedList("five")), "Bad start value. Please enter a start value of type int().")
 
 
 if __name__ == '__main__':
