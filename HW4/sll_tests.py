@@ -60,11 +60,18 @@ class TestListCode(unittest.TestCase):
         self.practiceList = self.practiceList.reverse()
         self.expectedOutput6 = "2 -> 9 -> 12 -> 5 -> END" 
         self.assertEqual(str(self.practiceList), self.expectedOutput6)
+
+    def test_non_cyclical_list(self):
+        self.assertEqual(self.practiceList.hasCycle(), False)
+
+    def test_cyclical_list(self):
+        self.practiceList.tail.next = self.practiceList.head
+        self.assertEqual(self.practiceList.hasCycle(), True)
     
     # robustness tests: 
 
-    def test_bad_start_value(self):
-        self.assertEqual(str(sll.LinkedList("five")), "Bad start value. Please enter a start value of type int().")
+    #def test_bad_start_value(self):
+        #self.assertEqual(str(sll.LinkedList("five")), "Bad start value. Please enter a start value of type int().")
 
 
 if __name__ == '__main__':
