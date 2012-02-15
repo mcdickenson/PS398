@@ -107,7 +107,10 @@ class LinkedList(object):
     def addNodeBefore(self, new_value, before_node):
         isUnique = self.checkUniqueValue(before_node)
         current = self.head
-        #if current.value == before_node: self.head, self.head.next = Node(new_value), self.head
+        if current.value == before_node: 
+            self.head, self.head.next = Node(new_value), self.head
+            self.length += 1
+            return
         added = False
         if isUnique:
             while added == False:
@@ -123,7 +126,6 @@ class LinkedList(object):
 
 
     def removeNode(self, node_to_remove):
-        ''' Note: this function currently cannot remove the head of a list.'''
         isUnique = self.checkUniqueValue(node_to_remove)
         current = self.head
         if current.value == node_to_remove: 
@@ -145,7 +147,6 @@ class LinkedList(object):
 
 
     def removeNodesByValue(self, value_to_remove):
-        ''' Note: this function currently cannot remove the head of a list.'''
         current = self.head
         if current.value == value_to_remove: 
             self.head = self.head.next
@@ -165,17 +166,19 @@ class LinkedList(object):
 
 
     def reverse(self): 
-        '''Note: currently only works for non-cyclical lists.'''
+        '''Note: currently only supported for non-cyclical lists.'''
+        cycStatus = self.hasCycle()
         if len(self) == 1:
             return self
         elif len(self) == 2:
             self.head, self.tail = self.tail, self.head
-            self.head.next, self.tail.next = self.tail, None
-            return self.head, self.tail
+            if cycStatus == False:
+                self.head.next, self.tail.next = self.tail, None
+            return self
         else:
             finished = len(self)
             x = self.popper()
-            y = self.head.value            
+            y = self.head.value           
             reversedList = LinkedList(x)
             reversedList.addNode(y)
             current = self.head
