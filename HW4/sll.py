@@ -52,10 +52,12 @@ class LinkedList(object):
         finally:
             return output_text
 
+
     def addNode(self, new_value):
         self.tail.setNext(new_value)
         self.tail = self.tail.next
         self.length += 1
+
 
     def checkUniqueValue(self, value_to_check):
         appearances_count = 0
@@ -75,6 +77,7 @@ class LinkedList(object):
         if appearances_count == 0: return None
         elif appearances_count ==1: return True
         elif appearances_count >1: return False
+
 
     def instanceCounter(self, value_to_count):
         '''Caution: only counts instances after the head of the list.'''
@@ -105,6 +108,7 @@ class LinkedList(object):
             print "WARNING: No node with value %d in list. No changes made." % after_node
         else:
             print "WARNING: %d does not uniquely identify nodes in list. No changes made." % after_node
+
 
     def addNodeBefore(self, new_value, before_node):
         isUnique = self.checkUniqueValue(before_node)
@@ -166,13 +170,41 @@ class LinkedList(object):
             self.head, self.tail = self.tail, self.head
             self.head.next, self.tail.next = self.tail, None
             return self.head, self.tail
-        else: pass
+        else:
+            finished = len(self)            
+            reversedList = LinkedList(self.popper)
+            reversedList.addNode(self.head.value)
+            current = self.head
+            started = len(reversedList)
+            while started < finished:
+                if current.next == None:
+                    reversedList.addNode(self.popper)
+                    started = len(reversedList)
+                else: 
+                    current = current.next
+
+        # go through list, checking current.next
+        # if current.next isn't pointing to anything (ie if current.next.next == None)
+        # make current.next point to current, current point to None
+        # start over
 
     def midpointFinder(self):
         if len(self) % 2 == 1: 
             return (len(self) / 2) + 1
         elif len(self) % 2 == 0: 
             return (len(self)/ 2), (len(self)/ 2 + 1) 
+
+    def popper(self):
+        current = self.head
+        removed = False
+        while removed == False:
+            if current.next == None:
+                popped_value = current.value
+                self.removeNode(popped_value)             
+                removed = True
+            else: current = current.next
+        return popped_value            
+        
         
         
             
