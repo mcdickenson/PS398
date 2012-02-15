@@ -56,6 +56,13 @@ class TestListCode(unittest.TestCase):
         self.expectedOutput5 = "1 -> 3 -> 4 -> 5 -> 6 -> END"
         self.assertEqual(str(self.lotsOfTwos), self.expectedOutput5)
 
+    def test_remove_node_value_at_list_head(self):
+        self.lotsOfTwos.head.value = 2
+        self.lotsOfTwos.removeNodesByValue(2)
+        self.expectedOutput7 = "3 -> 4 -> 5 -> 6 -> END"
+        self.lotsOfTwos.length +=1
+        self.assertEqual(str(self.lotsOfTwos), self.expectedOutput7)
+
     def test_reverse_list(self):
         self.practiceList = self.practiceList.reverse()
         self.expectedOutput6 = "2 -> 9 -> 12 -> 5 -> END" 
