@@ -167,8 +167,9 @@ class LinkedList(object):
 
     def reverse(self): 
         '''Note: currently only supported for non-cyclical lists.'''
-        cycStatus = self.hasCycle()
+        
         if len(self) == 1:
+            cycStatus = self.hasCycle()
             return self
         elif len(self) == 2:
             self.head, self.tail = self.tail, self.head
