@@ -7,24 +7,67 @@ Matt Dickenson """
 # Which libraries do we need? 
 import urllib2
 from BeautifulSoup import BeautifulSoup
-from
+# http://doc.scrapy.org/en/latest/intro/overview.html
+from scrapy.item import Item, Field
 
+# Which site do we want to scrape? 
 # Optional: get user input 
 page_to_scrape = raw_input("Enter the URL to scrape > ")
-#page_to_scrape = 
+# expected input: http://www.thisIsASite.com/
+#page_to_scrape = aWebSite
 
-#Open a webpage
+# What is the domain name of that site?
+remove_http = page_to_scrape.split('//')[-1]
+remove_final_slash  = remove_http.rstrip('/')
+domainName = remove_final_slash
+
+
+#Open the webpage
 webpage = urllib2.urlopen(page_to_scrape) # comparable to open() in csvstuff.py
+
 #Parse it
 soup = BeautifulSoup(webpage.read())
 soup.prettify()
 
 # How many pages do we want?
 startpage = 1
-endPage = 172 # check Gelman's max page count manually
+endPage = 172 # checked Gelman's max page count manually
 
 # What info do we want? 
 Headers = ["Post Number", "Tweets", "Likes", "Comments", "Title", "Date", "Author", "Categories", "Graphics", "Length", "Videos"]
+
+class Post(Item):
+    url = Field()
+    name = Field()
+    tweets = Field()
+    likes = Field()
+    comments = Field()
+    title = Field()
+    date = Field()
+    author = Field()
+    categories = Field()
+    graphics = Field()
+    length = Field()
+    videos = Field()
+
+class myCrawler(CrawlSpider):
+    name = domainName
+    allowed_domains = [domainName]
+    start_urls = page_to_scrape
+    rules = [Rule(SgmlLinkExtractor(allow=['/page/\d+']), 'parse_torrent')]
+
+    def parse_post(self, response):
+        x = HtmlXPathSelector(response)
+
+        post = Post()
+        post['url'] = response.url
+        post['name'] = x.select("//h1/text()").extract()
+        post['description'] = x.select("//div[@id='description']").extract()
+
+        
+        post['size'] = x.select("//div[@id='info-left']/p[2]/text()[2]").extract()
+        return torrent
+
 
 # Open output file
 
@@ -35,116 +78,4 @@ csvwriter.writerow(Headers)
 
 postCounter = 1
 
-# Loop through every page
-for i in range(endPage-(startpage-1)):
-    pageNum = i + startpage
 
-    # Navigate to the page
-    ie.navigate("http://www.themonkeycage.org/page/"+str(pageNum)+"/")
-    time.sleep(1)
-    initialText = ie.pageGetText()
-    soupA = BeautifulSoup(initialText)
-    
-    # Extract posts on a page
-    headers = soupA.findAll("h2","entry-title")
-    
-    posts = []
-    for entry in headers:
-        url = re.search('href=".*?"',str(entry.find("a"))).group(0)
-        url = url.lstrip("href=")
-        url = url.rstrip('"')
-        url = url.lstrip('"')
-        
-        posts.append(url)
-        
-    # Loop through all posts on a page
-    for postPage in posts:
-        # Navigate to single post
-        ie.navigate(postPage)
-        time.sleep(1)
-        text = ie.pageGetText()
-        soup = BeautifulSoup(text)
-
-        #Get Title
-        postTitle = re.sub("â",'"',re.sub("â",'"',re.sub("â","'",util.clean_html(str(soup.find("h1","entry-title"))))))
-
-        #Get Date
-
-        postDate = str(soup.find("abbr", "published")["title"])
-
-        # Get Categories
-        postCategories = []
-        categoryHeader = soup.findAll("p","headline_meta")[1]
-        linkHeads = BeautifulSoup(str(categoryHeader)).findAll("a")
-        for cat in linkHeads:
-            postCategories.append(util.clean_html(str(cat)))
-    
-        # Get Author
-        postAuthor = util.clean_html(str(soup.find("span","author vcard fn")))
-        # Get Comments
-        commentHeader = soup.findAll("p","headline_meta")[0]
-        NumComments = re.search("[0-9]+? comment",util.clean_html(str(commentHeader))).group(0)
-        postNumComments = int(re.search("[0-9]+?",NumComments).group(0))
-        postNumber = postCount
-
-        # Get Images
-        textDiv = soup.find("div","format_text entry-content")
-        textSearch = BeautifulSoup(str(textDiv))
-        postImgCount = len(textSearch.findAll("img")) - 1
-        
-        # Get Word Count
-        cleanText = util.clean_html(str(textDiv))
-        words = cleanText.split()
-        postWordCount = len(words)
-
-        # Get Grade Level
-        postGradeLevel = grade_level(cleanText)
-
-        # Get Video Count
-        postVidCount = 0
-        for frame in textSearch.findAll("iframe"):
-            if re.search("youtube",frame["src"]) != None:
-                postVidCount += 1
-                
-        # Download Text
-        minFile = open(str(postNumber)+".txt","wb")
-        minFile.write(cleanText)
-        minFile.close()
-
-        postCount += 1
-        # Get Twitter and Facebook Counts
-        for iframe in soup.findAll('iframe'):
-            #Twitter Button
-            try:
-                if iframe["title"] == "Twitter Tweet Button":
-                   ie.navigate(str(iframe["src"]))
-                   time.sleep(1)
-                   tweetText = ie.pageGetText()
-                   try:
-                       tweet = re.search("This page has been shared [0-9]+? times",tweetText).group(0)
-
-                       tweetCount = int(re.search("[0-9]+",tweet).group(0))
-                       
-                   except:
-                       tweetCount = 0
-                       
-            except:
-                pass
-            #Facebook Button
-            try:
-                if re.search("facebook",str(iframe)) != None and iframe["scrollbars"] == "no" :
-                   ie.navigate(str(iframe["src"]))
-                   time.sleep(1)
-                   fbText = ie.pageGetText()
-                   fbSoup = BeautifulSoup(fbText)
-                   
-                   widgetVals = fbSoup.findAll("div","connect_widget_button_count_count")
-                   likeCount = int(util.clean_html(str(widgetVals[1])))
-                   
-            except:
-                pass
-
-        # Write To CSV
-        csvwriter.writerow([postNumber, tweetCount, likeCount, postNumComments, postTitle, postDate, postAuthor, postCategories, postImgCount, postWordCount, postVidCount, postGradeLevel])
-        
-readFile.close()
