@@ -7,6 +7,11 @@ Matt Dickenson """
 
 # Which libraries do we need? 
 import urllib2, urllib, datetime, re, string, os, csv, sys, os, time
+#from nltk import util
+import nltk
+from nltk import util
+from nltk.util import clean_html
+import cookielib
 from twill import get_browser
 from BeautifulSoup import BeautifulSoup
 # http://doc.scrapy.org/en/latest/intro/overview.html
@@ -88,56 +93,58 @@ for i in range(endPage - (startPage-1)):
 
     # Loop through all posts on a page
     for postPage in posts:
+    
         # Navigate to single post
         sub_page = urllib2.urlopen(postPage)
-        
         
         time.sleep(1)
         text = BeautifulSoup(sub_page.read())
         text.prettify()
-        soup = BeautifulSoup(text)
-
+        
         #Get Title
-        postTitle = re.sub("â",'"',re.sub("â",'"',re.sub("â","'",util.clean_html(str(soup.find("h1","title"))))))
+        postTitle = re.sub("â",'"',re.sub("â",'"',re.sub("â","'",clean_html(str(text.find("h1","title"))))))
 
         #Get Date
 
-        postDate = str(soup.find("postdate")['span']) # not sure about this line
+        postDate = str(text.find("postdate",'span')) # not sure about this line
 
         # Get Categories
         postCategories = []
-        categoryHeader = soup.findAll("span","postcat")[1]
+        categoryHeader = text.findAll("span","postcat")
         linkHeads = BeautifulSoup(str(categoryHeader)).findAll("a")
         for cat in linkHeads:
-            postCategories.append(util.clean_html(str(cat)))
+            postCategories.append(clean_html(str(cat)))
     
         # Get Author
-        postAuthor = util.clean_html(str(soup.find("span","postauthor")))
-        # Get Comments
-        commentHeader = soup.findAll("a","#comments")[0]
+        postAuthor = clean_html(str(text.find("span","postauthor")))
 
-        NumComments = re.search("[0-9]+? comment",util.clean_html(str(commentHeader))).group(0)
-        postNumComments = int(re.search("[0-9]+?",NumComments).group(0))
-        postNumber = postCounter
+        # Get Comments # TODO: FIX THIS
+        #commentHeader = text("a")
+
+        #NumComments = re.search("[0-9]+? comment",clean_html(str(commentHeader)))
+        #NumComments = NumComments.group(0)
+        #postNumComments = int(re.search("[0-9]+?",NumComments).group(0))
+        #postNumber = postCounter
 
         # Get Images
-        textDiv = soup.find("div","p")
+        textDiv = text.find("div","p")
         textSearch = BeautifulSoup(str(textDiv))
         postImgCount = len(textSearch.findAll("img")) - 1
         
         # Get Word Count
-        cleanText = util.clean_html(str(textDiv))
+        cleanText = clean_html(str(textDiv))
         words = cleanText.split()
         postWordCount = len(words)
 
         # Get Video Count
-        postVidCount = 0
-        for frame in textSearch.findAll("iframe"):
-            if re.search("youtube",frame["src"]) != None:
-                postVidCount += 1
+        #postVidCount = 0
+        #for frame in textSearch.findAll("iframe"):
+        #    if re.search("youtube",frame["src"]) != None:
+        #        postVidCount += 1
                 
         # Write To CSV
-        csvwriter.writerow([postNumber, postNumComments, postTitle, postDate, postAuthor, postCategories, postImgCount, postWordCount, postVidCount])
+        #csvwriter.writerow([postNumber, postNumComments, postTitle, postDate, postAuthor, postCategories, postImgCount, postWordCount, postVidCount])
+        csvwriter.writerow([postCounter, postTitle, postDate, postAuthor, postCategories, postImgCount, postWordCount])
 
         postCounter += 1
     

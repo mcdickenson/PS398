@@ -1,6 +1,6 @@
 # -*- coding: cp1252 -*-
 import urllib2, urllib, datetime, re, string, os, csv, sys, os, time
-from nltk import util
+import nltk
 from cPAMIE import PAMIE
 from BeautifulSoup import BeautifulSoup
 import cookielib
