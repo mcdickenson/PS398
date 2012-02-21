@@ -6,6 +6,7 @@ Matt Dickenson """
 
 # Which libraries do we need? 
 import urllib2
+import time
 from BeautifulSoup import BeautifulSoup
 # http://doc.scrapy.org/en/latest/intro/overview.html
 from scrapy.item import Item, Field
@@ -21,21 +22,14 @@ remove_http = page_to_scrape.split('//')[-1]
 remove_final_slash  = remove_http.rstrip('/')
 domainName = remove_final_slash
 
-
-#Open the webpage
-webpage = urllib2.urlopen(page_to_scrape) # comparable to open() in csvstuff.py
-
-#Parse it
-soup = BeautifulSoup(webpage.read())
-soup.prettify()
-
 # How many pages do we want?
-startpage = 1
+startPage = 1
 endPage = 172 # checked Gelman's max page count manually
 
 # What info do we want? 
 Headers = ["Post Number", "Tweets", "Likes", "Comments", "Title", "Date", "Author", "Categories", "Graphics", "Length", "Videos"]
 
+# How do we want to store it? 
 class Post(Item):
     url = Field()
     name = Field()
@@ -50,24 +44,6 @@ class Post(Item):
     length = Field()
     videos = Field()
 
-class myCrawler(CrawlSpider):
-    name = domainName
-    allowed_domains = [domainName]
-    start_urls = page_to_scrape
-    rules = [Rule(SgmlLinkExtractor(allow=['/page/\d+']), 'parse_torrent')]
-
-    def parse_post(self, response):
-        x = HtmlXPathSelector(response)
-
-        post = Post()
-        post['url'] = response.url
-        post['name'] = x.select("//h1/text()").extract()
-        post['description'] = x.select("//div[@id='description']").extract()
-
-        
-        post['size'] = x.select("//div[@id='info-left']/p[2]/text()[2]").extract()
-        return torrent
-
 
 # Open output file
 
@@ -77,5 +53,39 @@ csvwriter = csv.writer(readFile)
 csvwriter.writerow(Headers)
 
 postCounter = 1
+
+# Loop through pages
+for i in range(endPage - (startPage-1)):
+pageNum = i + startpage
+
+    # Navigate to the page
+    #go(str(page_to_scrape)+'/page/'+str(pageNum)+"/")
+    #time.sleep(1)
+    #initialText = show()
+    #soupA = BeautifulSoup(initialText)
+
+    #Open the webpage
+    webpage = urllib2.urlopen(page_to_scrape) # comparable to open() in csvstuff.py
+
+    #Parse it
+    soup = BeautifulSoup(webpage.read())
+    soup.prettify()
+
+    
+    
+    # Extract posts on a page
+    headers = soupA.findAll("h2","entry-title")
+    
+    posts = []
+    for entry in headers:
+        url = re.search('href=".*?"',str(entry.find("a"))).group(0)
+        url = url.lstrip("href=")
+        url = url.rstrip('"')
+        url = url.lstrip('"')
+        
+        posts.append(url)
+    
+
+
 
 

@@ -5,7 +5,7 @@ from twill.commands import *
 go("http://www.python.org/")
 b.showforms()   
 b.showlinks()   # all pages linked to by all pages in history
-b.show()        # show page source (HTML)
+show()        # show page source (HTML)
 
 # http://twill.idyll.org/commands.html
 # follow
