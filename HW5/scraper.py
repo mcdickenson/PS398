@@ -7,6 +7,7 @@ Matt Dickenson """
 
 # Which libraries do we need? 
 import urllib2, urllib, datetime, re, string, os, csv, sys, os, time
+from twill import get_browser
 from BeautifulSoup import BeautifulSoup
 # http://doc.scrapy.org/en/latest/intro/overview.html
 from scrapy.item import Item, Field
@@ -24,7 +25,7 @@ domainName = remove_final_slash
 
 # How many pages do we want?
 startPage = 1
-endPage = 172 # checked Gelman's max page count manually
+endPage = 3 # checked Gelman's max page count manually: 172
 
 # What info do we want? 
 Headers = ["Post Number", "Tweets", "Likes", "Comments", "Title", "Date", "Author", "Categories", "Graphics", "Length", "Videos"]
@@ -92,7 +93,8 @@ for i in range(endPage - (startPage-1)):
         
         
         time.sleep(1)
-        text = show()
+        text = BeautifulSoup(sub_page.read())
+        text.prettify()
         soup = BeautifulSoup(text)
 
         #Get Title
