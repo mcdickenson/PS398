@@ -97,18 +97,15 @@ for i in range(endPage - (startPage-1)):
     
         # Navigate to single post
         sub_page = urllib2.urlopen(postPage)
-        
         time.sleep(1)
         text = BeautifulSoup(sub_page.read())
         text.prettify()
         #print text
         
-        
         #Get Title
         postTitle = re.sub("â",'"',re.sub("â",'"',re.sub("â","'",clean_html(str(text.find("h2","posttitle"))))))
 
         #Get Date
-
         postDate = clean_html(str(text.find('span','postdate'))) 
 
         # Get Categories
@@ -135,17 +132,19 @@ for i in range(endPage - (startPage-1)):
         #print NumComments
         #print postNumComments
         
-        
-
         # Get Images
-        textDiv = text.find("div","p")
+        textDiv = text.find("div", "postentry")
         textSearch = BeautifulSoup(str(textDiv))
-        postImgCount = len(textSearch.findAll("img")) - 1
+        #print textSearch
+        postImgCount = len(textSearch.findAll("img"))
+        print "Image count: %d" % postImgCount
         
         # Get Word Count
-        cleanText = clean_html(str(textDiv))
-        words = cleanText.split()
+        postText = clean_html(str(textDiv))
+        #print postText
+        words = postText.split()
         postWordCount = len(words)
+        print "Word count: %d" % postWordCount
 
         # Get Video Count
         #postVidCount = 0
