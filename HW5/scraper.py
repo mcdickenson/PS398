@@ -33,8 +33,9 @@ startPage = 1
 endPage = 3 # checked Gelman's max page count manually: 172
 
 # What info do we want? 
-Headers = ["Post Number", "Tweets", "Likes", "Comments", "Title", "Date", "Author", "Categories", "Graphics", "Length", "Videos"]
-
+#Headers = ["Post Number", "Tweets", "Likes", "Comments", "Title", "Date", "Author", "Categories", "Graphics", "Length", "Videos"]
+Headers = ["Post Number", "Title", "Date", "Author", "Categories", "Graphics", "Length"]
+csvwriter.writerow([postCounter, postTitle, postDate, postAuthor, postCategories, postImgCount, postWordCount])
 # How do we want to store it? 
 class Post(Item):
     url = Field()
@@ -102,7 +103,7 @@ for i in range(endPage - (startPage-1)):
         text.prettify()
         
         #Get Title
-        postTitle = re.sub("â",'"',re.sub("â",'"',re.sub("â","'",clean_html(str(text.find("h1","title"))))))
+        postTitle = re.sub("â",'"',re.sub("â",'"',re.sub("â","'",clean_html(str(text.find("h2","posttitle"))))))
 
         #Get Date
 

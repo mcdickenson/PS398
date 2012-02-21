@@ -1,0 +1,76 @@
+Post Number,Tweets,Likes,Comments,Title,Date,Author,Categories,Graphics,Length,Videos
+1,Joshua Clover update,None,Andrew,['Zombies'],-1,1
+2,Factual &#8211; a new place to find data,None,Aleks Jakulin,['Statistical computing'],-1,1
+3,Standardized writing styles and standardized graphing styles,None,Andrew,"['Literature', 'Statistical graphics']",-1,1
+4,Not as ugly as you look,None,Andrew,['Sociology'],-1,1
+5,Rare name analysis and wealth convergence,None,Aleks Jakulin,"['Economics', 'Miscellaneous Statistics']",-1,1
+6,Sports examples in class,None,Andrew,"['Sports', 'Teaching']",-1,1
+7,"Believe the statistics, not your lying eyes",None,Andrew,"['Political Science', 'Zombies']",-1,1
+8,"A previous discussion with Charles Murray about liberals, conservatives, and social class",None,Andrew,['Political Science'],-1,1
+9,&#8220;False-positive psychology&#8221;,None,Andrew,"['Decision Theory', 'Miscellaneous Statistics', 'Sociology']",-1,1
+10,Charles Murray on the new upper class,None,Andrew,['Political Science'],-1,1
+11,The tabloids strike again,None,Andrew,['Sociology'],-1,1
+12,"Extra babies on Valentine’s Day, fewer on Halloween?",None,Andrew,['Decision Theory'],-1,1
+13,Recently in the sister blog,None,Andrew,"['Miscellaneous Science', 'Political Science']",-1,1
+14,"Help with this problem, win valuable prizes",None,Phil,['Uncategorized'],-1,1
+15,Philosophy of Bayesian statistics: my reactions to Wasserman,None,Andrew,"['Bayesian Statistics', 'Miscellaneous Statistics']",-1,1
+16,"Meta-analysis, game theory, and incentives to do replicable research",None,Andrew,"['Decision Theory', 'Economics', 'Multilevel Modeling', 'Public Health']",-1,1
+17,Adding an error model to a deterministic model,None,Andrew,"['Bayesian Statistics', 'Miscellaneous Statistics']",-1,1
+18,"If an entire article in Computational Statistics and Data Analysis were put together from other, unacknowledged, sources, would that be a work of art?",None,Andrew,"['Literature', 'Zombies']",-1,1
+19,Familial Linkage between Neuropsychiatric Disorders and Intellectual Interests,None,Andrew,['Sociology'],-1,1
+20,"Charles Murray [perhaps] does a Tucker Carlson, provoking me to unleash the usual torrent of graphs",None,Andrew,"['Political Science', 'Zombies']",-1,1
+21,"The more likely it is to be X, the more likely it is to be Not X?",None,Phil,['Miscellaneous Statistics'],-1,1
+22,Philosophy of Bayesian statistics: my reactions to Hendry,None,Andrew,['Bayesian Statistics'],-1,1
+23,Bayesian model-building by pure thought: Some principles and examples,None,Andrew,"['Bayesian Statistics', 'Miscellaneous Statistics']",-1,1
+24,What is a prior distribution?,None,Andrew,"['Bayesian Statistics', 'Zombies']",-1,1
+25,&#8220;Turn a Boring Bar Graph into a 3D Masterpiece&#8221;,None,Andrew,"['Statistical graphics', 'Zombies']",-1,1
+26,More on the economic benefits of universities,None,Andrew,"['Economics', 'Sociology']",-1,1
+27,Web equation,None,Andrew,"['Statistical computing', 'Zombies']",-1,1
+28,Philosophy of Bayesian statistics: my reactions to Senn,None,Andrew,['Bayesian Statistics'],-1,1
+29,The inevitable problems with statistical significance and 95% intervals,None,Andrew,"['Bayesian Statistics', 'Miscellaneous Statistics']",-1,1
+30,Philosophy of Bayesian statistics: my reactions to Cox and Mayo,None,Andrew,['Bayesian Statistics'],-1,1
+31,"&#8220;the forces of native stupidity reinforced by that blind hostility to criticism, reform, new ideas and superior ability which is human as well as academic nature&#8221;",None,Andrew,['Political Science'],-1,1
+32,Statistical Murder,None,Aleks Jakulin,"['Economics', 'Public Health']",-1,1
+33,"A tax on inequality, or a tax to keep inequality at the current level?",None,Andrew,['Economics'],-1,1
+34,Convenient page of data sources from the Washington Post,None,Andrew,['Miscellaneous Statistics'],-1,1
+35,G+ > Skype,None,Andrew,['Teaching'],-1,1
+36,How many parameters are in a multilevel model?,None,Andrew,"['Bayesian Statistics', 'Multilevel Modeling']",-1,1
+37,Using predator-prey models on the Canadian lynx series,None,Andrew,['Bayesian Statistics'],-1,1
+38,Educational monoculture,None,Andrew,['Teaching'],-1,1
+39,Suggested resolution of the Bem paradox,None,Andrew,"['Sociology', 'Zombies']",-1,1
+40,Chris Schmid on Evidence Based Medicine,None,Andrew,"['Decision Theory', 'Miscellaneous Statistics', 'Public Health']",-1,1
+41,Difficulties in publishing non-replications of implausible findings,None,Andrew,"['Miscellaneous Science', 'Miscellaneous Statistics', 'Zombies']",-1,1
+42,Fight! (also a bit of reminiscence at the end),None,Andrew,"['Causal Inference', 'Zombies']",-1,1
+43,Advice on do-it-yourself stats education?,None,Andrew,"['Miscellaneous Statistics', 'Teaching']",-1,1
+44,Lessons learned from a recent R package submission,None,Andrew,"['Sociology', 'Statistical computing']",-1,1
+45,A counterfeit data graphic,None,Andrew,['Statistical graphics'],-1,1
+46,Judea Pearl on why he is &#8220;only a half-Bayesian&#8221;,None,Andrew,"['Bayesian Statistics', 'Causal Inference']",-1,1
+47,Stan: A (Bayesian) Directed Graphical Model Compiler,None,Andrew,"['Bayesian Statistics', 'Statistical computing']",-1,1
+48,"Bugs Bunny, the governor of Massachusetts, the Dow 36,000 guy, presidential qualifications, and Peggy Noonan",None,Andrew,['Political Science'],-1,1
+49,Prior beliefs about locations of decision boundaries,None,Andrew,"['Bayesian Statistics', 'Political Science']",-1,1
+50,Sharon Begley: Worse than Stephen Jay Gould?,None,Andrew,['Sociology'],-1,1
+51,Beautiful Line Charts,None,Aleks Jakulin,"['Economics', 'Statistical graphics']",-1,1
+52,Bob on Stan,None,Andrew,"['Bayesian Statistics', 'Statistical computing']",-1,1
+53,The Fixie Bike Index,None,Andrew,"['Economics', 'Sports']",-1,1
+54,Big corporations are more popular than you might realize,None,Andrew,['Political Science'],-1,1
+55,How to map geographically-detailed survey responses?,None,Andrew,"['Political Science', 'Statistical graphics']",-1,1
+56,&#8220;Groundbreaking or Definitive? Journals Need to Pick One&#8221;,None,Andrew,"['Decision Theory', 'Miscellaneous Science']",-1,1
+57,Excellence in Statistical Reporting Award,None,Andrew,"['Miscellaneous Statistics', 'Teaching']",-1,1
+58,Fun fight over the Grover search algorithm,None,Andrew,['Sociology'],-1,1
+59,R-squared for multilevel models,None,Andrew,['Multilevel Modeling'],-1,1
+60,A model rejection letter,None,Andrew,"['Sociology', 'Zombies']",-1,1
+61,Infographic on the economy,None,Andrew,"['Economics', 'Statistical graphics']",-1,1
+62,What are the important issues in ethics and statistics? I&#8217;m looking for your input!,None,Andrew,['Miscellaneous Statistics'],-1,1
+63,Where are the larger-than-life athletes?,None,Andrew,['Sports'],-1,1
+64,Controversy about average personality differences between men and women,None,Andrew,"['Miscellaneous Science', 'Political Science']",-1,1
+65,A blog full of examples for your statistics class,None,Andrew,['Teaching'],-1,1
+66,Toshiro Kageyama on professionalism,None,Andrew,['Sports'],-1,1
+67,Jobs in statistics research! In New Jersey!,None,Andrew,['Miscellaneous Statistics'],-1,1
+68,The blog of the Cultural Cognition Project,None,Andrew,['Political Science'],-1,1
+69,"Blogging, polemical and otherwise",None,Andrew,"['Economics', 'Sociology', 'Uncategorized']",-1,1
+70,Google correlate links statistics with minorities,None,Andrew,"['Sociology', 'Statistical graphics']",-1,1
+71,Econ debate about prices at a fancy restaurant,None,Andrew,"['Economics', 'Sociology']",-1,1
+72,Intro to splines&#8212;with cool graphs,None,Andrew,['Miscellaneous Statistics'],-1,1
+73,More on essentialism,None,Andrew,['Miscellaneous Science'],-1,1
+74,"A compelling reason to go to London, Ontario??",None,Andrew,['Statistical graphics'],-1,1
+75,Bayesian Anova found useful in ecology,None,Andrew,"['Bayesian Statistics', 'Miscellaneous Science', 'Multilevel Modeling']",-1,1
