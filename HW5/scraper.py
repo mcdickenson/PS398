@@ -35,7 +35,7 @@ endPage = 3 # checked Gelman's max page count manually: 172
 # What info do we want? 
 #Headers = ["Post Number", "Tweets", "Likes", "Comments", "Title", "Date", "Author", "Categories", "Graphics", "Length", "Videos"]
 Headers = ["Post Number", "Title", "Date", "Author", "Categories", "Graphics", "Length"]
-csvwriter.writerow([postCounter, postTitle, postDate, postAuthor, postCategories, postImgCount, postWordCount])
+
 # How do we want to store it? 
 class Post(Item):
     url = Field()
@@ -54,7 +54,7 @@ class Post(Item):
 
 # Open output file
 
-nameFile = "GelmanData-"+str(startPage)+"-"+str(endPage)+".csv"
+nameFile = "GelmanDataTest-"+str(startPage)+"-"+str(endPage)+".csv"
 readFile = open(nameFile,"wb")
 csvwriter = csv.writer(readFile)
 csvwriter.writerow(Headers)
@@ -107,7 +107,7 @@ for i in range(endPage - (startPage-1)):
 
         #Get Date
 
-        postDate = str(text.find("postdate",'span')) # not sure about this line
+        postDate = clean_html(str(text.find('span','postdate'))) 
 
         # Get Categories
         postCategories = []
@@ -147,6 +147,7 @@ for i in range(endPage - (startPage-1)):
         #csvwriter.writerow([postNumber, postNumComments, postTitle, postDate, postAuthor, postCategories, postImgCount, postWordCount, postVidCount])
         csvwriter.writerow([postCounter, postTitle, postDate, postAuthor, postCategories, postImgCount, postWordCount])
 
+        print "Started on page %d. Currently on page %d. Ending at page %d" % (startPage, postCounter, endPage)
         postCounter += 1
     
 
