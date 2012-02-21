@@ -27,7 +27,7 @@ class LinkedList(object):
             self.tail = self.head
             self.length = 1
         except:
-            print "Bad start value. Please enter a start value of type int()."
+            #print "Bad start value. Please enter a start value of type int()."
 
     def __len__(self):
         return self.length
@@ -51,6 +51,7 @@ class LinkedList(object):
             output_text = "List contains no elements."
         finally:
             return output_text
+        # this needs to print something different if the list is cyclical
 
 
     def addNode(self, new_value):
@@ -169,9 +170,9 @@ class LinkedList(object):
         '''Note: currently only supported for non-cyclical lists.'''
         
         if len(self) == 1:
-            cycStatus = self.hasCycle()
             return self
         elif len(self) == 2:
+            cycStatus = self.hasCycle()
             self.head, self.tail = self.tail, self.head
             if cycStatus == False:
                 self.head.next, self.tail.next = self.tail, None
@@ -213,5 +214,9 @@ class LinkedList(object):
     def hasCycle(self): 
         if self.tail.next == None: return False
         else: return True
+        # another way to do this without a tail node is to have two lookForward functions
+        # make one of them iterate by i = 1
+        # make the other iterate by j = 2
+        # if the two lookForward.values are ever equal, you have a cycle
         
                 

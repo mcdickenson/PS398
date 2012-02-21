@@ -726,7 +726,113 @@ your homework. You will handle them as objects. Another way is with an adjacency
 weighted or binary). 
 
 
+\section{Input/Output}
 
+% begin with code review, as usual
+
+% things to talk about
+% hasCycle
+% O(n) remove
+
+% there is a way to do reverse in O(n) time with one extra memory
+% space
+
+% exec() keyword in python is comparable to source() in R
+% BUT "if you are using the exec command, something has almost
+% definitely gone wrong"
+
+After a code review of last week's homework, we are done talking about
+algorithms and complexity for their own sake. Just know that as your
+problem gets big, you will feel the pain of picking a bad algorithm. 
+
+The slowest part of a computer is a hard drive, so most algorithms are
+optimized not only by time, but by minimizing the work you're doing on
+the hard disk. Given that everything else in your computer happens at
+the speed of light, going around a hard drive at 5000 or 7200 rpm is a
+snail's pace. This is why ``defragging'' would speed up a machine, and
+why the hard drive is the first thing to go bad. Wider availability of
+solid-state drives (SSD) will change the things we have to say, but
+for now they are not widespread enough that we can ignore hard disk
+read/write time. 
+
+% We won't go around proving the things we say today are true. People
+% have written other books on it. Cite those.
+
+Reading from a disk is really no different than reading data from the
+internet, or calling \texttt{print}. The machine is calling something
+called \texttt{stdout} and putting it on your screen. (Recall that in
+Zed Shaw's Python book you used \texttt{stdin} by calling
+\texttt{raw\_input()}.)
+
+\subsection{filestuff.py}
+There is a graceful way to open files. Use it. 
+
+(Note that the readfile.txt called by filestuff.py is just the text
+from our department home page.) 
+
+When you see ``\texttt{for l in f:}'' in Python, Python will
+understand that to mean using the native linebreaks in the file. 
+
+\texttt{f.seek(0)} is how we move the pointer back to the $0^{th}$
+byte of the file. A byte is one character in space representation. 
+
+\subsection{urlgrabbing.py}
+URL: \emph{U}niversal \emph{R}esource \emph{L}ocator/Lookup
+
+HTML is a contract for how you should structure the document so the
+web browser knows what to draw on the screen. When we talk today,
+we're discussing ``html in its proper form.'' This is an ideal that
+does not exist on 99 percent of the web. Fortunately, other people
+have solved this problem for you--use libraries.
+
+Here's an example of XML and what it allows you to to:
+\begin{verbatim}
+<thing>
+  <nested_thing>
+
+  <\nested_thing>
+<\thing>
+\end{verbatim}
+Notice that the identifiers inside the ``<>'' are arbitrary. You can
+find actual HTML anywhere by right-clicking and selecting ``view page
+source.''
+
+Here's a stylized example:
+\begin{verbatim}
+<html>
+  <head>         # not visible
+    <title>
+  <\head>
+
+  <body>
+    <h1>Foo</h1> # a header block (headers go from h1 to h6,
+decreasing in size)
+    <p>bar<\b>   # a paragraph tag
+    <a href="google.com">google</a> # a hyperlink
+    <img src = "pic.png"> # an image
+    <div>        # a divider
+    <table>      # care to guess?
+    <span>
+    <hr>
+
+  </body>
+</html>
+\end{verbatim}
+
+Libraries for parsing HTML are available in almost every language. A
+good one in Python is BeautifulSoup.\footnotemark \footnotetext{In OS
+  X, install from terminal using \texttt{easy\_install BeautifulSoup}
+  or \texttt{pip install BeautifulSoup}. }
+
+Before you go running off to spider everything, a few things to note:
+\begin{itemize}
+\item sitemap.xml = what to index
+\item robots.txt = what not to index
+\item rel=``nofollow'' = if you're a crawler, don't go there
+\end{itemize}
+
+Your laptop on an automated search is much faster than the way people
+normally use the internet. Use a delay--a second or two will suffice. 
 
 
 \pagebreak

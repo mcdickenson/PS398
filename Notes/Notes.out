@@ -30,3 +30,6 @@
 \BOOKMARK [2][-]{subsection.4.8}{Dictionary/Hashtable}{section.4}% 30
 \BOOKMARK [2][-]{subsection.4.9}{Trees}{section.4}% 31
 \BOOKMARK [2][-]{subsection.4.10}{Graphs}{section.4}% 32
+\BOOKMARK [1][-]{section.5}{Input/Output}{}% 33
+\BOOKMARK [2][-]{subsection.5.1}{filestuff.py}{section.5}% 34
+\BOOKMARK [2][-]{subsection.5.2}{urlgrabbing.py}{section.5}% 35
