@@ -23,33 +23,12 @@ from scrapy.item import Item, Field
 # expected input: http://www.thisIsASite.com/
 page_to_scrape = 'http://andrewgelman.com/'
 
-# What is the domain name of that site?
-remove_http = page_to_scrape.split('//')[-1]
-remove_final_slash  = remove_http.rstrip('/')
-domainName = remove_final_slash
-
 # How many pages do we want?
 startPage = 1
-endPage = 3 # checked Gelman's max page count manually: 172
+endPage = 10 # checked Gelman's max page count manually: 172
 
 # What info do we want? 
-#Headers = ["Post Number", "Tweets", "Likes", "Comments", "Title", "Date", "Author", "Categories", "Graphics", "Length", "Videos"]
 Headers = ["Post Number", "Title", "Date", "Author", "Categories", "Graphics", "Length","Comments"]
-
-# How do we want to store it? 
-class Post(Item):
-    url = Field()
-    name = Field()
-    tweets = Field()
-    likes = Field()
-    comments = Field()
-    title = Field()
-    date = Field()
-    author = Field()
-    categories = Field()
-    graphics = Field()
-    length = Field()
-    videos = Field()
 
 
 # Open output file
@@ -65,16 +44,10 @@ postCounter = 1
 for i in range(endPage - (startPage-1)):
     pageNum = i + startPage
 
-    # Navigate to the page
-    #go(str(page_to_scrape)+'/page/'+str(pageNum)+"/")
-    #time.sleep(1)
-    #initialText = show()
-    #soupA = BeautifulSoup(initialText)
-
     #Open the webpage
     current_page = str(page_to_scrape)+'/page/'+str(pageNum)+"/"
     time.sleep(1)
-    webpage = urllib2.urlopen(current_page) # comparable to open() in csvstuff.py
+    webpage = urllib2.urlopen(current_page) 
 
     #Parse it
     soup = BeautifulSoup(webpage.read())
@@ -100,7 +73,6 @@ for i in range(endPage - (startPage-1)):
         time.sleep(1)
         text = BeautifulSoup(sub_page.read())
         text.prettify()
-        #print text
         
         #Get Title
         postTitle = re.sub("â",'"',re.sub("â",'"',re.sub("â","'",clean_html(str(text.find("h2","posttitle"))))))
@@ -118,9 +90,8 @@ for i in range(endPage - (startPage-1)):
         # Get Author
         postAuthor = clean_html(str(text.find("span","postauthor")))
 
-        # Get Comments # TODO: FIX THIS
+        # Get Comments
         commentHeader = str(text.findAll('h3'))
-        #print commentHeader
         for item in commentHeader:
             if (re.search("[0-9]+? Comment",str(commentHeader)) != None) & (re.search("[0-9]+? Comment",str(commentHeader)) != 'One Comment') :
                 NumComments = re.search("[0-9]+? Comment",str(commentHeader)).group(0)
@@ -129,37 +100,23 @@ for i in range(endPage - (startPage-1)):
                 postNumComments = 0
             if NumComments == 'One Comment':
                 postNumComments = 1
-        #print NumComments
-        #print postNumComments
         
         # Get Images
         textDiv = text.find("div", "postentry")
         textSearch = BeautifulSoup(str(textDiv))
-        #print textSearch
         postImgCount = len(textSearch.findAll("img"))
-        print "Image count: %d" % postImgCount
         
         # Get Word Count
         postText = clean_html(str(textDiv))
-        #print postText
         words = postText.split()
         postWordCount = len(words)
-        print "Word count: %d" % postWordCount
-
-        # Get Video Count
-        #postVidCount = 0
-        #for frame in textSearch.findAll("iframe"):
-        #    if re.search("youtube",frame["src"]) != None:
-        #        postVidCount += 1
                 
         # Write To CSV
-        #csvwriter.writerow([postNumber, postNumComments, postTitle, postDate, postAuthor, postCategories, postImgCount, postWordCount, postVidCount])
         csvwriter.writerow([postCounter, postTitle, postDate, postAuthor, postCategories, postImgCount, postWordCount, postNumComments])
 
+        # Progress Bar
         print "Currently on post %d, page %d. Total of %d posts, %d pages." % (postCounter, pageNum, 25*(endPage-startPage+1), (endPage-startPage+1))
         postCounter += 1
     
-
-
 readFile.close()
 
