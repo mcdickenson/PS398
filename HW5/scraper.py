@@ -34,7 +34,7 @@ endPage = 3 # checked Gelman's max page count manually: 172
 
 # What info do we want? 
 #Headers = ["Post Number", "Tweets", "Likes", "Comments", "Title", "Date", "Author", "Categories", "Graphics", "Length", "Videos"]
-Headers = ["Post Number", "Title", "Date", "Author", "Categories", "Graphics", "Length"]
+Headers = ["Post Number", "Title", "Date", "Author", "Categories", "Graphics", "Length","Comments"]
 
 # How do we want to store it? 
 class Post(Item):
@@ -101,6 +101,8 @@ for i in range(endPage - (startPage-1)):
         time.sleep(1)
         text = BeautifulSoup(sub_page.read())
         text.prettify()
+        #print text
+        
         
         #Get Title
         postTitle = re.sub("â",'"',re.sub("â",'"',re.sub("â","'",clean_html(str(text.find("h2","posttitle"))))))
@@ -120,12 +122,20 @@ for i in range(endPage - (startPage-1)):
         postAuthor = clean_html(str(text.find("span","postauthor")))
 
         # Get Comments # TODO: FIX THIS
-        #commentHeader = text("a")
-
-        #NumComments = re.search("[0-9]+? comment",clean_html(str(commentHeader)))
-        #NumComments = NumComments.group(0)
-        #postNumComments = int(re.search("[0-9]+?",NumComments).group(0))
-        #postNumber = postCounter
+        commentHeader = str(text.findAll('h3'))
+        print commentHeader
+        for item in commentHeader:
+            if (re.search("[0-9]+? Comment",str(commentHeader)) != None) & (re.search("[0-9]+? Comment",str(commentHeader)) != 'One Comment') :
+                NumComments = re.search("[0-9]+? Comment",str(commentHeader)).group(0)
+                postNumComments = int(re.search("[0-9]+?",NumComments).group(0))
+            else:
+                postNumComments = 0
+            if NumComments == 'One Comment':
+                postNumComments = 1
+        #print NumComments
+        #print postNumComments
+        
+        
 
         # Get Images
         textDiv = text.find("div","p")
@@ -145,9 +155,10 @@ for i in range(endPage - (startPage-1)):
                 
         # Write To CSV
         #csvwriter.writerow([postNumber, postNumComments, postTitle, postDate, postAuthor, postCategories, postImgCount, postWordCount, postVidCount])
-        csvwriter.writerow([postCounter, postTitle, postDate, postAuthor, postCategories, postImgCount, postWordCount])
+        csvwriter.writerow([postCounter, postTitle, postDate, postAuthor, postCategories, postImgCount, postWordCount, postNumComments])
 
-        print "Started on page %d. Currently on page %d. Ending at page %d" % (startPage, postCounter, endPage)
+        print "Currently on post %d, page %d. Total of %d posts, %d pages." % (postCounter, pageNum, 25*(endPage-startPage+1), (endPage-startPage+1))
+        print str(NumComments)
         postCounter += 1
     
 
