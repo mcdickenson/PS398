@@ -123,7 +123,7 @@ for i in range(endPage - (startPage-1)):
 
         # Get Comments # TODO: FIX THIS
         commentHeader = str(text.findAll('h3'))
-        print commentHeader
+        #print commentHeader
         for item in commentHeader:
             if (re.search("[0-9]+? Comment",str(commentHeader)) != None) & (re.search("[0-9]+? Comment",str(commentHeader)) != 'One Comment') :
                 NumComments = re.search("[0-9]+? Comment",str(commentHeader)).group(0)
@@ -158,7 +158,6 @@ for i in range(endPage - (startPage-1)):
         csvwriter.writerow([postCounter, postTitle, postDate, postAuthor, postCategories, postImgCount, postWordCount, postNumComments])
 
         print "Currently on post %d, page %d. Total of %d posts, %d pages." % (postCounter, pageNum, 25*(endPage-startPage+1), (endPage-startPage+1))
-        print str(NumComments)
         postCounter += 1
     
 

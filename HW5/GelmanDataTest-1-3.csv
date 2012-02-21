@@ -1,16 +1,76 @@
 Post Number,Title,Date,Author,Categories,Graphics,Length,Comments
-1,&#8220;Readability&#8221; as freedom from the actual sensation of reading,"21 February 2012, 11:48 am",Andrew,['Literature'],-1,1,2 Comment
-2,How many data points do you really have?,"21 February 2012, 9:51 am",Andrew,"['Miscellaneous Statistics', 'Multilevel Modeling']",-1,1,2 Comment
-3,Joshua Clover update,"20 February 2012, 9:33 am",Andrew,['Zombies'],-1,1,2 Comment
-4,Factual &#8211; a new place to find data,"19 February 2012, 9:44 pm",Aleks Jakulin,['Statistical computing'],-1,1,2 Comment
-5,Standardized writing styles and standardized graphing styles,"19 February 2012, 9:23 am",Andrew,"['Literature', 'Statistical graphics']",-1,1,10 Comment
-6,Not as ugly as you look,"18 February 2012, 9:30 am",Andrew,['Sociology'],-1,1,7 Comment
-7,Rare name analysis and wealth convergence,"17 February 2012, 8:32 pm",Aleks Jakulin,"['Economics', 'Miscellaneous Statistics']",-1,1,8 Comment
-8,Sports examples in class,"17 February 2012, 9:08 am",Andrew,"['Sports', 'Teaching']",-1,1,18 Comment
-9,"Believe the statistics, not your lying eyes","17 February 2012, 7:56 am",Andrew,"['Political Science', 'Zombies']",-1,1,18 Comment
-10,"A previous discussion with Charles Murray about liberals, conservatives, and social class","16 February 2012, 10:25 pm",Andrew,['Political Science'],-1,1,18 Comment
-11,&#8220;False-positive psychology&#8221;,"16 February 2012, 9:02 am",Andrew,"['Decision Theory', 'Miscellaneous Statistics', 'Sociology']",-1,1,23 Comment
-12,Charles Murray on the new upper class,"15 February 2012, 9:00 pm",Andrew,['Political Science'],-1,1,40 Comment
-13,The tabloids strike again,"14 February 2012, 1:25 pm",Andrew,['Sociology'],-1,1,40 Comment
-14,"Extra babies on Valentine’s Day, fewer on Halloween?","14 February 2012, 9:05 am",Andrew,['Decision Theory'],-1,1,15 Comment
-15,Recently in the sister blog,"13 February 2012, 9:55 pm",Andrew,"['Miscellaneous Science', 'Political Science']",-1,1,15 Comment
+1,&#8220;Readability&#8221; as freedom from the actual sensation of reading,"21 February 2012, 11:48 am",Andrew,['Literature'],-1,1,2
+2,How many data points do you really have?,"21 February 2012, 9:51 am",Andrew,"['Miscellaneous Statistics', 'Multilevel Modeling']",-1,1,0
+3,Joshua Clover update,"20 February 2012, 9:33 am",Andrew,['Zombies'],-1,1,0
+4,Factual &#8211; a new place to find data,"19 February 2012, 9:44 pm",Aleks Jakulin,['Statistical computing'],-1,1,0
+5,Standardized writing styles and standardized graphing styles,"19 February 2012, 9:23 am",Andrew,"['Literature', 'Statistical graphics']",-1,1,1
+6,Not as ugly as you look,"18 February 2012, 9:30 am",Andrew,['Sociology'],-1,1,7
+7,Rare name analysis and wealth convergence,"17 February 2012, 8:32 pm",Aleks Jakulin,"['Economics', 'Miscellaneous Statistics']",-1,1,8
+8,Sports examples in class,"17 February 2012, 9:08 am",Andrew,"['Sports', 'Teaching']",-1,1,1
+9,"Believe the statistics, not your lying eyes","17 February 2012, 7:56 am",Andrew,"['Political Science', 'Zombies']",-1,1,0
+10,"A previous discussion with Charles Murray about liberals, conservatives, and social class","16 February 2012, 10:25 pm",Andrew,['Political Science'],-1,1,0
+11,&#8220;False-positive psychology&#8221;,"16 February 2012, 9:02 am",Andrew,"['Decision Theory', 'Miscellaneous Statistics', 'Sociology']",-1,1,2
+12,Charles Murray on the new upper class,"15 February 2012, 9:00 pm",Andrew,['Political Science'],-1,1,4
+13,The tabloids strike again,"14 February 2012, 1:25 pm",Andrew,['Sociology'],-1,1,0
+14,"Extra babies on Valentine’s Day, fewer on Halloween?","14 February 2012, 9:05 am",Andrew,['Decision Theory'],-1,1,1
+15,Recently in the sister blog,"13 February 2012, 9:55 pm",Andrew,"['Miscellaneous Science', 'Political Science']",-1,1,0
+16,"Help with this problem, win valuable prizes","13 February 2012, 7:05 pm",Phil,['Uncategorized'],-1,1,4
+17,Philosophy of Bayesian statistics: my reactions to Wasserman,"13 February 2012, 9:12 am",Andrew,"['Bayesian Statistics', 'Miscellaneous Statistics']",-1,1,3
+18,"Meta-analysis, game theory, and incentives to do replicable research","12 February 2012, 9:15 am",Andrew,"['Decision Theory', 'Economics', 'Multilevel Modeling', 'Public Health']",-1,1,7
+19,Adding an error model to a deterministic model,"11 February 2012, 9:01 am",Andrew,"['Bayesian Statistics', 'Miscellaneous Statistics']",-1,1,2
+20,"If an entire article in Computational Statistics and Data Analysis were put together from other, unacknowledged, sources, would that be a work of art?","10 February 2012, 9:50 am",Andrew,"['Literature', 'Zombies']",-1,1,1
+21,Familial Linkage between Neuropsychiatric Disorders and Intellectual Interests,"9 February 2012, 9:47 am",Andrew,['Sociology'],-1,1,6
+22,"Charles Murray [perhaps] does a Tucker Carlson, provoking me to unleash the usual torrent of graphs","8 February 2012, 9:07 am",Andrew,"['Political Science', 'Zombies']",-1,1,3
+23,"The more likely it is to be X, the more likely it is to be Not X?","7 February 2012, 7:25 pm",Phil,['Miscellaneous Statistics'],-1,1,1
+24,Philosophy of Bayesian statistics: my reactions to Hendry,"7 February 2012, 9:45 am",Andrew,['Bayesian Statistics'],-1,1,1
+25,Bayesian model-building by pure thought: Some principles and examples,"6 February 2012, 9:52 am",Andrew,"['Bayesian Statistics', 'Miscellaneous Statistics']",-1,1,5
+26,What is a prior distribution?,"5 February 2012, 9:30 am",Andrew,"['Bayesian Statistics', 'Zombies']",-1,1,3
+27,&#8220;Turn a Boring Bar Graph into a 3D Masterpiece&#8221;,"4 February 2012, 9:26 pm",Andrew,"['Statistical graphics', 'Zombies']",-1,1,1
+28,More on the economic benefits of universities,"4 February 2012, 9:16 am",Andrew,"['Economics', 'Sociology']",-1,1,1
+29,Web equation,"3 February 2012, 5:06 pm",Andrew,"['Statistical computing', 'Zombies']",-1,1,4
+30,Philosophy of Bayesian statistics: my reactions to Senn,"3 February 2012, 9:53 am",Andrew,['Bayesian Statistics'],-1,1,2
+31,The inevitable problems with statistical significance and 95% intervals,"2 February 2012, 9:00 am",Andrew,"['Bayesian Statistics', 'Miscellaneous Statistics']",-1,1,3
+32,Philosophy of Bayesian statistics: my reactions to Cox and Mayo,"1 February 2012, 9:45 am",Andrew,['Bayesian Statistics'],-1,1,1
+33,"&#8220;the forces of native stupidity reinforced by that blind hostility to criticism, reform, new ideas and superior ability which is human as well as academic nature&#8221;","31 January 2012, 9:53 am",Andrew,['Political Science'],-1,1,1
+34,Statistical Murder,"30 January 2012, 5:32 pm",Aleks Jakulin,"['Economics', 'Public Health']",-1,1,2
+35,"A tax on inequality, or a tax to keep inequality at the current level?","30 January 2012, 10:39 am",Andrew,['Economics'],-1,1,2
+36,Convenient page of data sources from the Washington Post,"30 January 2012, 9:45 am",Andrew,['Miscellaneous Statistics'],-1,1,2
+37,G+ > Skype,"29 January 2012, 2:58 pm",Andrew,['Teaching'],-1,1,5
+38,How many parameters are in a multilevel model?,"29 January 2012, 9:54 am",Andrew,"['Bayesian Statistics', 'Multilevel Modeling']",-1,1,0
+39,Using predator-prey models on the Canadian lynx series,"28 January 2012, 9:58 am",Andrew,['Bayesian Statistics'],-1,1,2
+40,Educational monoculture,"27 January 2012, 9:29 am",Andrew,['Teaching'],-1,1,4
+41,Suggested resolution of the Bem paradox,"26 January 2012, 9:11 am",Andrew,"['Sociology', 'Zombies']",-1,1,2
+42,Chris Schmid on Evidence Based Medicine,"25 January 2012, 9:15 am",Andrew,"['Decision Theory', 'Miscellaneous Statistics', 'Public Health']",-1,1,6
+43,Difficulties in publishing non-replications of implausible findings,"24 January 2012, 9:57 am",Andrew,"['Miscellaneous Science', 'Miscellaneous Statistics', 'Zombies']",-1,1,2
+44,Fight! (also a bit of reminiscence at the end),"23 January 2012, 9:02 am",Andrew,"['Causal Inference', 'Zombies']",-1,1,1
+45,Advice on do-it-yourself stats education?,"22 January 2012, 10:19 am",Andrew,"['Miscellaneous Statistics', 'Teaching']",-1,1,4
+46,Lessons learned from a recent R package submission,"21 January 2012, 5:19 pm",Andrew,"['Sociology', 'Statistical computing']",-1,1,8
+47,A counterfeit data graphic,"21 January 2012, 3:18 pm",Andrew,['Statistical graphics'],-1,1,0
+48,Judea Pearl on why he is &#8220;only a half-Bayesian&#8221;,"21 January 2012, 12:32 pm",Andrew,"['Bayesian Statistics', 'Causal Inference']",-1,1,9
+49,Stan: A (Bayesian) Directed Graphical Model Compiler,"20 January 2012, 9:23 pm",Andrew,"['Bayesian Statistics', 'Statistical computing']",-1,1,5
+50,"Bugs Bunny, the governor of Massachusetts, the Dow 36,000 guy, presidential qualifications, and Peggy Noonan","20 January 2012, 10:23 am",Andrew,['Political Science'],-1,1,2
+51,Prior beliefs about locations of decision boundaries,"20 January 2012, 9:16 am",Andrew,"['Bayesian Statistics', 'Political Science']",-1,1,0
+52,Sharon Begley: Worse than Stephen Jay Gould?,"19 January 2012, 9:27 am",Andrew,['Sociology'],-1,1,1
+53,Beautiful Line Charts,"18 January 2012, 6:11 pm",Aleks Jakulin,"['Economics', 'Statistical graphics']",-1,1,1
+54,Bob on Stan,"18 January 2012, 3:21 pm",Andrew,"['Bayesian Statistics', 'Statistical computing']",-1,1,5
+55,The Fixie Bike Index,"18 January 2012, 9:03 am",Andrew,"['Economics', 'Sports']",-1,1,2
+56,Big corporations are more popular than you might realize,"17 January 2012, 4:02 pm",Andrew,['Political Science'],-1,1,2
+57,How to map geographically-detailed survey responses?,"17 January 2012, 9:33 am",Andrew,"['Political Science', 'Statistical graphics']",-1,1,4
+58,&#8220;Groundbreaking or Definitive? Journals Need to Pick One&#8221;,"16 January 2012, 9:03 am",Andrew,"['Decision Theory', 'Miscellaneous Science']",-1,1,9
+59,Excellence in Statistical Reporting Award,"15 January 2012, 7:39 pm",Andrew,"['Miscellaneous Statistics', 'Teaching']",-1,1,1
+60,Fun fight over the Grover search algorithm,"15 January 2012, 3:20 pm",Andrew,['Sociology'],-1,1,7
+61,R-squared for multilevel models,"15 January 2012, 9:40 am",Andrew,['Multilevel Modeling'],-1,1,3
+62,A model rejection letter,"14 January 2012, 9:44 am",Andrew,"['Sociology', 'Zombies']",-1,1,1
+63,Infographic on the economy,"13 January 2012, 7:40 pm",Andrew,"['Economics', 'Statistical graphics']",-1,1,2
+64,What are the important issues in ethics and statistics? I&#8217;m looking for your input!,"13 January 2012, 9:31 am",Andrew,['Miscellaneous Statistics'],-1,1,2
+65,Where are the larger-than-life athletes?,"12 January 2012, 3:03 pm",Andrew,['Sports'],-1,1,1
+66,Controversy about average personality differences between men and women,"12 January 2012, 9:02 am",Andrew,"['Miscellaneous Science', 'Political Science']",-1,1,2
+67,A blog full of examples for your statistics class,"11 January 2012, 7:31 pm",Andrew,['Teaching'],-1,1,0
+68,Toshiro Kageyama on professionalism,"11 January 2012, 9:47 am",Andrew,['Sports'],-1,1,5
+69,Jobs in statistics research! In New Jersey!,"10 January 2012, 1:48 pm",Andrew,['Miscellaneous Statistics'],-1,1,0
+70,The blog of the Cultural Cognition Project,"10 January 2012, 9:27 am",Andrew,['Political Science'],-1,1,3
+71,"Blogging, polemical and otherwise","9 January 2012, 12:58 pm",Andrew,"['Economics', 'Sociology', 'Uncategorized']",-1,1,1
+72,Google correlate links statistics with minorities,"9 January 2012, 9:57 am",Andrew,"['Sociology', 'Statistical graphics']",-1,1,1
+73,Econ debate about prices at a fancy restaurant,"8 January 2012, 1:19 pm",Andrew,"['Economics', 'Sociology']",-1,1,1
+74,Intro to splines&#8212;with cool graphs,"8 January 2012, 12:17 pm",Andrew,['Miscellaneous Statistics'],-1,1,2
+75,More on essentialism,"8 January 2012, 9:07 am",Andrew,['Miscellaneous Science'],-1,1,3
