@@ -4,9 +4,10 @@ Spring 2012, Duke University
 Matt Dickenson """
 # /Users/mcdickenson/github/PS398/HW5/
 
-# Load libraries
+# Which libraries do we need? 
 import urllib2
 from BeautifulSoup import BeautifulSoup
+from
 
 # Optional: get user input 
 page_to_scrape = raw_input("Enter the URL to scrape > ")
@@ -17,16 +18,6 @@ webpage = urllib2.urlopen(page_to_scrape) # comparable to open() in csvstuff.py
 #Parse it
 soup = BeautifulSoup(webpage.read())
 soup.prettify()
-
-#Print out the target destinations for the links
-print "Links\n********************"
-for link in soup('a'):
-    print str(link['href']) # prints the href attribute of the 'a' linkes in soup
-  
-print "Headers\n********************"
-for header in soup(['h1', 'h2', 'h3']):
-    print "{0}: {1}".format(header.name, header.string) # object.name gives you the 'h1', 'h2', or 'h3'; in our example above it would be 'a'
-
 
 # How many pages do we want?
 startpage = 1
