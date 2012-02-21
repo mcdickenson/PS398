@@ -97,17 +97,17 @@ for i in range(endPage-(startpage-1)):
 
         #Get Date
 
-        postDate = str(soup.find("abbr", "published")["title"])
+        postDate = str(soup.find("postdate")['span']) # not sure about this line
 
         # Get Categories
         postCategories = []
-        categoryHeader = soup.findAll("p","headline_meta")[1]
+        categoryHeader = soup.findAll("span","postcat")[1]
         linkHeads = BeautifulSoup(str(categoryHeader)).findAll("a")
         for cat in linkHeads:
             postCategories.append(util.clean_html(str(cat)))
     
         # Get Author
-        postAuthor = util.clean_html(str(soup.find("span","author vcard fn")))
+        postAuthor = util.clean_html(str(soup.find("span","postauthor)))
         # Get Comments
         commentHeader = soup.findAll("p","headline_meta")[0]
         NumComments = re.search("[0-9]+? comment",util.clean_html(str(commentHeader))).group(0)
