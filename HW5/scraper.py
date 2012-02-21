@@ -5,8 +5,7 @@ Matt Dickenson """
 # /Users/mcdickenson/github/PS398/HW5/
 
 # Which libraries do we need? 
-import urllib2
-import time
+import urllib2, urllib, datetime, re, string, os, csv, sys, os, time
 from BeautifulSoup import BeautifulSoup
 # http://doc.scrapy.org/en/latest/intro/overview.html
 from scrapy.item import Item, Field
@@ -65,16 +64,16 @@ pageNum = i + startpage
     #soupA = BeautifulSoup(initialText)
 
     #Open the webpage
-    webpage = urllib2.urlopen(page_to_scrape) # comparable to open() in csvstuff.py
+    current_page = str(page_to_scrape)+'/page/'+str(pageNum)+"/")
+    time.sleep(1)
+    webpage = urllib2.urlopen(current_page) # comparable to open() in csvstuff.py
 
     #Parse it
     soup = BeautifulSoup(webpage.read())
     soup.prettify()
-
-    
-    
+        
     # Extract posts on a page
-    headers = soupA.findAll("h2","entry-title")
+    headers = soup.findAll("h2","posttitle")
     
     posts = []
     for entry in headers:
@@ -84,6 +83,35 @@ pageNum = i + startpage
         url = url.lstrip('"')
         
         posts.append(url)
+
+    # Loop through all posts on a page
+    for postPage in posts:
+        # Navigate to single post
+        sub_page = urllib2.urlopen(postPage)
+        
+        
+        time.sleep(1)
+        text = show()
+        soup = BeautifulSoup(text)
+
+        #Get Title
+        postTitle = re.sub("â",'"',re.sub("â",'"',re.sub("â","'",util.clean_html(str(soup.find("h1","title"))))))
+
+        #Get Date
+
+        postDate = str(soup.find("postdate")['span']) # not sure about this line
+
+        # Get Categories
+        postCategories = []
+        categoryHeader = soup.findAll("span","postcat")[1]
+        linkHeads = BeautifulSoup(str(categoryHeader)).findAll("a")
+        for cat in linkHeads:
+            postCategories.append(util.clean_html(str(cat)))
+    
+        # Get Author
+        postAuthor = util.clean_html(str(soup.find("span","postauthor)))
+        # Get Comments
+        commentHeader = soup.findAll("a","#comments")[0]
     
 
 
