@@ -1,3 +1,4 @@
+# -*- coding: cp1252 -*-
 """Homework 4: Data Structures
 Computational Frameworks, POLS 398
 Spring 2012, Duke University
@@ -12,9 +13,9 @@ from scrapy.item import Item, Field
 
 # Which site do we want to scrape? 
 # Optional: get user input 
-page_to_scrape = raw_input("Enter the URL to scrape > ")
+# page_to_scrape = raw_input("Enter the URL to scrape > ")
 # expected input: http://www.thisIsASite.com/
-#page_to_scrape = aWebSite
+page_to_scrape = 'http://andrewgelman.com/'
 
 # What is the domain name of that site?
 remove_http = page_to_scrape.split('//')[-1]
@@ -46,7 +47,7 @@ class Post(Item):
 
 # Open output file
 
-nameFile = "GelmanData-"+str(startpage)+"-"+str(endPage)+".csv"
+nameFile = "GelmanData-"+str(startPage)+"-"+str(endPage)+".csv"
 readFile = open(nameFile,"wb")
 csvwriter = csv.writer(readFile)
 csvwriter.writerow(Headers)
@@ -55,7 +56,7 @@ postCounter = 1
 
 # Loop through pages
 for i in range(endPage - (startPage-1)):
-pageNum = i + startpage
+    pageNum = i + startPage
 
     # Navigate to the page
     #go(str(page_to_scrape)+'/page/'+str(pageNum)+"/")
@@ -64,7 +65,7 @@ pageNum = i + startpage
     #soupA = BeautifulSoup(initialText)
 
     #Open the webpage
-    current_page = str(page_to_scrape)+'/page/'+str(pageNum)+"/")
+    current_page = str(page_to_scrape)+'/page/'+str(pageNum)+"/"
     time.sleep(1)
     webpage = urllib2.urlopen(current_page) # comparable to open() in csvstuff.py
 
@@ -109,11 +110,36 @@ pageNum = i + startpage
             postCategories.append(util.clean_html(str(cat)))
     
         # Get Author
-        postAuthor = util.clean_html(str(soup.find("span","postauthor)))
+        postAuthor = util.clean_html(str(soup.find("span","postauthor")))
         # Get Comments
         commentHeader = soup.findAll("a","#comments")[0]
+
+        NumComments = re.search("[0-9]+? comment",util.clean_html(str(commentHeader))).group(0)
+        postNumComments = int(re.search("[0-9]+?",NumComments).group(0))
+        postNumber = postCounter
+
+        # Get Images
+        textDiv = soup.find("div","p")
+        textSearch = BeautifulSoup(str(textDiv))
+        postImgCount = len(textSearch.findAll("img")) - 1
+        
+        # Get Word Count
+        cleanText = util.clean_html(str(textDiv))
+        words = cleanText.split()
+        postWordCount = len(words)
+
+        # Get Video Count
+        postVidCount = 0
+        for frame in textSearch.findAll("iframe"):
+            if re.search("youtube",frame["src"]) != None:
+                postVidCount += 1
+                
+        # Write To CSV
+        csvwriter.writerow([postNumber, postNumComments, postTitle, postDate, postAuthor, postCategories, postImgCount, postWordCount, postVidCount])
+
+        postCounter += 1
     
 
 
-
+readFile.close()
 
