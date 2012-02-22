@@ -25,7 +25,7 @@ page_to_scrape = 'http://andrewgelman.com/'
 
 # How many pages do we want?
 startPage = 1
-endPage = 10 # checked Gelman's max page count manually: 172
+endPage = 172 # checked Gelman's max page count manually: 172
 
 # What info do we want? 
 Headers = ["Post Number", "Title", "Date", "Author", "Categories", "Graphics", "Length","Comments"]
@@ -92,6 +92,7 @@ for i in range(endPage - (startPage-1)):
 
         # Get Comments
         commentHeader = str(text.findAll('h3'))
+        NumComments = ''
         for item in commentHeader:
             if (re.search("[0-9]+? Comment",str(commentHeader)) != None) & (re.search("[0-9]+? Comment",str(commentHeader)) != 'One Comment') :
                 NumComments = re.search("[0-9]+? Comment",str(commentHeader)).group(0)

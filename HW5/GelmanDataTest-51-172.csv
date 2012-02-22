@@ -1,0 +1,478 @@
+Post Number,Title,Date,Author,Categories,Graphics,Length,Comments
+1,How locavores could save the world?,"23 March 2010, 3:20 pm",Andrew,"['Decision Theory', 'Economics']",0,27,0
+2,"Hey, statistics is easy!","23 March 2010, 3:10 pm",Andrew,['Miscellaneous Statistics'],0,190,1
+3,pretty() ain&#8217;t always so pretty,"23 March 2010, 11:45 am",Andrew,['Statistical graphics'],4,1154,1
+4,Interviewer effects,"22 March 2010, 4:47 pm",Andrew,['Political Science'],0,216,0
+5,Good timing: The role of quantitative political science and political reporting in shaping perceptions,"22 March 2010, 11:01 am",Andrew,['Political Science'],1,418,2
+6,The man in the gray flannel hypothesis,"22 March 2010, 10:25 am",Andrew,['Miscellaneous Statistics'],0,20,0
+7,Simulation of a statistics blogosphere,"22 March 2010, 9:05 am",Andrew,['Bayesian Statistics'],0,2311,1
+8,"The old, old story: Effective graphics for conveying information vs. effective graphics for grabbing your attention","21 March 2010, 8:21 am",Andrew,"['Political Science', 'Statistical graphics']",1,653,1
+9,"Multilevel modeling, lots of levels","19 March 2010, 9:43 pm",Andrew,['Multilevel Modeling'],0,394,0
+10,This page intentionally left blank,"19 March 2010, 9:15 am",Andrew,['Art'],0,135,6
+11,Goofy Fox News poll questions,"19 March 2010, 4:24 am",Andrew,['Political Science'],0,230,1
+12,Getting confidence into the scaffolding &#8211; even if Bayes did or did not intend that.,"18 March 2010, 9:05 pm",keithor,['Bayesian Statistics'],0,348,2
+13,Lojack for Grandpa,"18 March 2010, 4:41 pm",Andrew,['Miscellaneous Science'],0,31,0
+14,"OK, OK. If four people email me about something, I&#8217;ll blog on it.","18 March 2010, 1:14 pm",Andrew,['Bayesian Statistics'],0,718,1
+15,Confusion about Bayesian model checking,"18 March 2010, 12:51 pm",Andrew,['Bayesian Statistics'],0,745,6
+16,Redundant parameterization and inference for weakly-identified parameters,"18 March 2010, 12:19 pm",Andrew,"['Bayesian Statistics', 'Multilevel Modeling']",0,231,0
+17,A whole new kind of z-statistic,"17 March 2010, 3:11 pm",Andrew,['Zombies'],0,2,1
+18,More pretty pictures,"17 March 2010, 12:02 pm",Andrew,['Statistical graphics'],0,187,6
+19,Test failures,"17 March 2010, 7:26 am",Andrew,"['Bayesian Statistics', 'Miscellaneous Science']",0,193,4
+20,Sifting and Sieving,"17 March 2010, 4:26 am",Andrew,"['Decision Theory', 'Miscellaneous Science', 'Multilevel Modeling']",0,329,1
+21,"Love p-values for what they are, don&#8217;t try to make them what they&#8217;re not","16 March 2010, 2:32 pm",Andrew,['Bayesian Statistics'],0,474,3
+22,Secret weapon and multilevel modeling,"16 March 2010, 11:30 am",Andrew,['Multilevel Modeling'],0,260,0
+23,The Ultimate Idiot&#8217;s Guide to Being an African Junta,"16 March 2010, 9:49 am",Andrew,['Political Science'],1,19,0
+24,Take the Junk Charts quiz and win a free book,"15 March 2010, 12:35 pm",Andrew,['Statistical graphics'],0,11,0
+25,When experts disagree &#8211; plot them along with their uncertainties.,"15 March 2010, 10:00 am",keithor,['Bayesian Statistics'],0,169,6
+26,P-p-p-p-popper,"15 March 2010, 8:50 am",Andrew,"['Bayesian Statistics', 'Miscellaneous Statistics', 'Sociology']",0,356,1
+27,The Economics of Butch Cassidy and the Sundance Kid,"15 March 2010, 8:47 am",Andrew,['Economics'],0,42,3
+28,Clippin&#8217; it,"14 March 2010, 2:47 pm",Andrew,['Miscellaneous Science'],0,188,1
+29,The 1870 census,"13 March 2010, 10:14 am",Andrew,"['Literature', 'Statistical graphics']",1,241,4
+30,"Shooting down B.S. claims about divorce predictions, part 2 (Somewhere, Karl Popper is smiling ruefully)","13 March 2010, 9:23 am",Andrew,"['Miscellaneous Statistics', 'Sociology']",0,916,1
+31,Of psychiatrists and statisticians,"12 March 2010, 2:29 pm",Andrew,"['Miscellaneous Science', 'Miscellaneous Statistics']",0,647,1
+32,Bring out the rabbit ears,"12 March 2010, 9:45 am",Andrew,['Decision Theory'],0,190,9
+33,"Personally, I prefer to write about literature, but, yes, I recognize that these sorts of entries are the bread and butter of this blog. (The posts on bad graphics are the red meat, of course, but that&#8217;s another story. And, do we offer any vegetables?)","11 March 2010, 2:20 pm",Andrew,['Multilevel Modeling'],0,291,4
+34,"Some zombies, some of the time","11 March 2010, 11:55 am",Andrew,['Zombies'],0,27,7
+35,My second interaction with Eliot Spitzer,"11 March 2010, 9:12 am",Andrew,"['Economics', 'Political Science']",0,1010,0
+36,Wittgenstein would be amused,"10 March 2010, 4:21 pm",Andrew,['Literature'],0,88,6
+37,Relative power of the upper and lower house in different countries?,"10 March 2010, 3:05 pm",Andrew,['Political Science'],0,74,1
+38,Model checking: it&#8217;s not just for statisticians,"10 March 2010, 9:15 am",Andrew,"['Literature', 'Miscellaneous Statistics']",0,503,8
+39,This is what is done,"9 March 2010, 2:58 pm",Andrew,['Statistical graphics'],0,509,1
+40,"Campaigning, governing, and the complexity of political speeches","9 March 2010, 9:01 am",Andrew,['Political Science'],0,41,0
+41,More evidence that &#8220;rent-seeking&#8221; is economist-speak for &#8220;something I don&#8217;t like&#8221;,"9 March 2010, 8:44 am",Andrew,['Economics'],0,28,1
+42,What if everything happened according to plan?,"8 March 2010, 1:57 pm",Andrew,"['Economics', 'Political Science']",1,158,6
+43,Cutting chartjunk and red tape,"8 March 2010, 11:12 am",Andrew,['Statistical graphics'],0,200,0
+44,Are High-Quality Schools Enough to Close the Achievement Gap? Evidence from a Bold Social Experiment in Harlem,"8 March 2010, 9:12 am",Andrew,"['Causal Inference', 'Economics', 'Political Science', 'Teaching']",1,1478,4
+45,Graph of the week,"8 March 2010, 7:25 am",Andrew,"['Economics', 'Political Science', 'Statistical graphics']",1,229,7
+46,Criticizing statistical methods for mediation analysis,"7 March 2010, 11:14 am",Andrew,['Causal Inference'],0,1260,5
+47,No comment,"5 March 2010, 2:45 pm",Andrew,['Causal Inference'],0,110,1
+48,Global Warming / Evolution analogy not so bad after all?,"5 March 2010, 12:43 pm",Phil,[],0,210,4
+49,Building a Better Teacher,"5 March 2010, 9:28 am",Andrew,['Teaching'],0,1425,5
+50,&#8220;Infochimps: Find any Dataset in the World&#8221;,"4 March 2010, 2:49 pm",Andrew,['Miscellaneous Statistics'],0,11,6
+51,Causality and Statistical Learning,"4 March 2010, 9:09 am",Andrew,['Causal Inference'],0,5650,1
+52,Fitting a mulitlevel ordered categorical regression,"3 March 2010, 8:00 pm",Andrew,"['Multilevel Modeling', 'Statistical computing']",0,302,3
+53,"House effects, retro-style","3 March 2010, 9:39 am",Andrew,"['Political Science', 'Statistical graphics']",1,293,0
+54,High school interview,"2 March 2010, 10:45 pm",Andrew,"['Miscellaneous Statistics', 'Teaching']",0,331,1
+55,Who&#8217;s your favorite expert?,"2 March 2010, 4:53 pm",Andrew,['Political Science'],0,113,7
+56,Update on zombie dynamics,"2 March 2010, 11:42 am",Andrew,"['Economics', 'Zombies']",0,25,0
+57,Rasmussen razzmatazz,"2 March 2010, 9:30 am",Andrew,['Political Science'],1,157,5
+58,Bayes fits the data less closely than maximum likelihood,"1 March 2010, 9:52 am",Andrew,['Bayesian Statistics'],0,139,0
+59,Cauty and Drummond and DeWitt,"28 February 2010, 3:27 pm",Andrew,['Economics'],0,82,3
+60,Freakonomics 2: What went wrong?,"28 February 2010, 12:32 pm",Andrew,"['Decision Theory', 'Economics']",0,743,6
+61,Bayesian survey sampling,"28 February 2010, 10:46 am",Andrew,['Bayesian Statistics'],0,238,2
+62,Self-restraint,"27 February 2010, 4:20 pm",Andrew,['Sociology'],0,19,1
+63,What&#8217;s most cool &#8211; the question mark in the name or the modelling of zombies?,"27 February 2010, 12:48 pm",keithor,['Zombies'],0,79,3
+64,"Red State, Blue State sales are a factor of 2^100 lower than they should&#8217;ve been","26 February 2010, 9:39 am",Andrew,"['Literature', 'Miscellaneous Statistics', 'Statistical graphics']",0,228,8
+65,Here&#8217;s an idea that should make everyone happy: middle-schoolers growing tobacco in school,"25 February 2010, 2:06 pm",Andrew,['Teaching'],0,320,0
+66,"&#8220;Would like to see a study of Internet substituting pimps. As it stands, this is an assertion without proof.&#8221;","25 February 2010, 9:22 am",Andrew,"['Economics', 'Literature']",0,823,5
+67,Exercise and Weight Loss: Shouldn&#8217;t somebody see if there&#8217;s a relationship?,"24 February 2010, 7:52 pm",Phil,"['Public Health', 'Sports']",0,1128,2
+68,Larry Wasserman&#8217;s (positive) review of &#8220;The Search for Certainty&#8221; by Krzysztof Burdzy,"24 February 2010, 1:37 pm",Andrew,['Miscellaneous Statistics'],0,1361,3
+69,The dentist and the statistician,"24 February 2010, 10:18 am",Andrew,['Decision Theory'],0,252,1
+70,Update on gardens in school,"24 February 2010, 6:57 am",Andrew,['Public Health'],0,235,2
+71,Gardens in school,"23 February 2010, 12:54 pm",Andrew,['Political Science'],0,2648,1
+72,The Democrats are gonna get hammered,"22 February 2010, 5:37 pm",Andrew,['Political Science'],2,196,6
+73,&#8220;The spirals feel like the Austin Powers time machine&#8221;,"22 February 2010, 4:22 pm",Andrew,['Statistical graphics'],1,37,3
+74,"Numbers Rule Your World: Genres and anti-genres, dopers, Superman, Iron Man, and Disneyland","22 February 2010, 9:57 am",Andrew,['Literature'],0,869,2
+75,Jaynesiana,"19 February 2010, 12:03 pm",Andrew,['Bayesian Statistics'],0,84,0
+76,Status and statistical graphics,"19 February 2010, 7:21 am",Andrew,"['Sociology', 'Statistical graphics']",0,469,7
+77,"Hey, does the BBC run corrections?","18 February 2010, 3:42 am",Andrew,['Political Science'],1,410,1
+78,One of the fastest generalized linear model implementations,"17 February 2010, 12:11 pm",Andrew,['Statistical computing'],0,236,5
+79,Exploratory and confirmatory data analysis,"16 February 2010, 4:32 pm",Andrew,"['Bayesian Statistics', 'Sociology', 'Statistical graphics']",0,2478,1
+80,The chorus of ablationists,"15 February 2010, 4:56 pm",Andrew,['Sociology'],0,948,9
+81,Doug Bates&#8217;s lmer book,"15 February 2010, 3:32 pm",Andrew,['Multilevel Modeling'],0,2,3
+82,Philosophy and the experience of Bayesian data analysis,"15 February 2010, 12:45 pm",Andrew,['Bayesian Statistics'],0,192,1
+83,Another Valentine&#8217;s Day entry,"15 February 2010, 11:52 am",Andrew,"['Miscellaneous Statistics', 'Statistical graphics']",2,52,5
+84,More Baye$,"15 February 2010, 11:17 am",Andrew,['Bayesian Statistics'],0,270,0
+85,Valentine&#8217;s Day statistical love poems,"14 February 2010, 10:26 am",Andrew,"['Literature', 'Miscellaneous Statistics']",0,653,6
+86,The Whiter Olympics,"13 February 2010, 9:39 am",Andrew,['Sports'],0,124,3
+87,Stabilizing feedback as a bad thing in scientific inference,"12 February 2010, 10:01 am",Andrew,"['Bayesian Statistics', 'Miscellaneous Statistics']",0,289,9
+88,Political science . . . tweeted by the Governator,"11 February 2010, 3:19 pm",Andrew,['Political Science'],1,171,5
+89,A Bayesian bestseller? Maybe not. Leading to a brief discussion of ethically-restricted inference,"11 February 2010, 4:54 am",Andrew,"['Bayesian Statistics', 'Literature']",0,696,5
+90,Generational effects,"10 February 2010, 10:37 am",Andrew,"['Political Science', 'Sociology']",0,242,2
+91,If I had known it was harmless I would&#8217;ve killed it myself,"9 February 2010, 2:30 pm",Andrew,['Literature'],0,106,6
+92,Get off that goddam cell phone!,"9 February 2010, 11:03 am",Andrew,['Teaching'],0,504,4
+93,When the log scale meets the linear scale,"8 February 2010, 2:54 pm",Andrew,"['Decision Theory', 'Economics']",0,383,8
+94,Krzysztof Burdzy replies to the reviews of Christian Robert and myself,"8 February 2010, 1:22 pm",Andrew,['Bayesian Statistics'],0,921,1
+95,Blog style,"7 February 2010, 2:21 pm",Andrew,['Literature'],0,364,2
+96,"What if senators represented people by income or race, not by state?","7 February 2010, 2:10 am",Andrew,['Political Science'],0,729,9
+97,Ma conférence à Ensae,"6 February 2010, 9:57 am",Andrew,['Political Science'],0,2,7
+98,A matter of perspective?,"5 February 2010, 2:32 pm",Phil,[],0,72,4
+99,Helping people fill out financial aid forms (at H&#038;R Block!) increases the rate of college attendance,"5 February 2010, 2:24 pm",Andrew,"['Causal Inference', 'Economics', 'Statistical graphics']",0,601,0
+100,Update on the coffee experiment,"5 February 2010, 2:12 pm",Andrew,['Causal Inference'],0,105,2
+101,Explorations in Statistics Research: An Undergraduate Summer Program,"5 February 2010, 1:21 pm",Andrew,['Miscellaneous Statistics'],0,60,0
+102,&#8220;Why do people vote against their own interests?&#8221;: An update,"5 February 2010, 11:02 am",Andrew,['Political Science'],0,765,3
+103,A propensity for bias?,"4 February 2010, 11:38 am",Andrew,['Causal Inference'],0,290,4
+104,Why do people write news stories against their own interests?,"4 February 2010, 8:13 am",Andrew,['Political Science'],3,1193,1
+105,"Oscar Wilde, George Orwell, Clark Kent, and posterior predictive checks","3 February 2010, 12:39 pm",Andrew,['Bayesian Statistics'],0,2750,6
+106,&#8220;We fully retract this paper from the published record&#8221;,"2 February 2010, 1:46 pm",Andrew,['Public Health'],0,288,2
+107,Problems with Census data,"2 February 2010, 1:21 pm",Andrew,"['Economics', 'Miscellaneous Statistics', 'Political Science']",1,346,5
+108,Sort of multiple comparisons problem,"2 February 2010, 12:10 pm",Andrew,['Multilevel Modeling'],0,512,4
+109,Talkin bout Doris Kearns Goodwin blues,"2 February 2010, 9:53 am",Andrew,"['Literature', 'Sociology']",0,272,4
+110,Arlen Specter&#8217;s running for reelection??,"1 February 2010, 11:20 am",Andrew,['Political Science'],0,43,9
+111,"The can, the clink, the pen, the slammer, the big house, up the river","1 February 2010, 10:42 am",Andrew,['Sociology'],0,99,6
+112,Stop me before I rant again,"1 February 2010, 9:21 am",Andrew,"['Decision Theory', 'Economics', 'Political Science']",0,506,7
+113,A randomized self-experimentation story: A plan to quit coffee,"31 January 2010, 12:44 pm",Andrew,['Miscellaneous Statistics'],0,524,5
+114,A prediction,"30 January 2010, 3:45 pm",Andrew,['Political Science'],0,59,3
+115,What it takes,"29 January 2010, 5:04 pm",Andrew,['Miscellaneous Statistics'],0,48,2
+116,Bob Erikson says my cute idea probably won&#8217;t work,"29 January 2010, 11:09 am",Andrew,"['Economics', 'Political Science']",0,102,2
+117,Some thoughts on final exams,"29 January 2010, 6:05 am",Andrew,['Teaching'],0,308,1
+118,Solutions to the final exam in my first-semester applied statistics class,"29 January 2010, 6:04 am",Andrew,"['Bayesian Statistics', 'Causal Inference', 'Miscellaneous Statistics', 'Statistical computing', 'Teaching']",0,2344,5
+119,"&#8220;Standard textbooks on chemistry do not discuss subjectivity in their introductions, and so statistical textbooks need not to do that either&#8221;","28 January 2010, 1:09 pm",Andrew,['Bayesian Statistics'],1,660,6
+120,Interview with the president of the University of California,"28 January 2010, 9:51 am",Andrew,['Teaching'],0,171,1
+121,Question on propensity score matching,"28 January 2010, 8:42 am",Andrew,"['Causal Inference', 'Miscellaneous Statistics']",0,500,4
+122,Forecasting in reverse: Can we use election returns to learn about economic history?,"27 January 2010, 11:25 am",Andrew,"['Economics', 'Political Science']",0,116,1
+123,Patterson update,"27 January 2010, 10:29 am",Andrew,['Literature'],0,93,0
+124,&#8220;Most emailed&#8221; != &#8220;Most blogged.&#8221; Does that tell us anything?,"26 January 2010, 7:17 pm",Phil,[],0,185,8
+125,"It&#8217;s not 1933, it&#8217;s 1930","26 January 2010, 12:39 pm",Andrew,"['Economics', 'Political Science']",0,412,3
+126,Tufte recommendation,"26 January 2010, 12:27 pm",Andrew,['Statistical graphics'],0,65,4
+127,What can search predict?,"26 January 2010, 8:52 am",Andrew,"['Economics', 'Miscellaneous Statistics', 'Statistical computing']",1,445,5
+128,Chart Wars: The Political Power of Data Visualization,"25 January 2010, 4:49 pm",Andrew,"['Political Science', 'Statistical graphics']",0,57,3
+129,The man with the golden gut,"25 January 2010, 12:59 pm",Andrew,['Literature'],0,1144,2
+130,A new kind of spam,"25 January 2010, 11:45 am",Andrew,"['Decision Theory', 'Economics']",0,158,1
+131,More on the estimation of war deaths,"25 January 2010, 3:21 am",Andrew,"['Political Science', 'Public Health']",0,905,0
+132,The Monster vs. the Centerfold: An interesting take on the Mass. Senate race,"24 January 2010, 4:02 pm",Andrew,['Political Science'],1,311,0
+133,The data (and the questions you ask) are more important than the analysis,"24 January 2010, 9:48 am",Andrew,['Miscellaneous Statistics'],0,88,9
+134,A problem with Turing&#8217;s run-around-the-house chess game?,"24 January 2010, 7:26 am",Andrew,"['Decision Theory', 'Sports']",0,309,1
+135,Quick summary of statistics for media,"23 January 2010, 1:49 pm",Aleks Jakulin,['Art'],1,7,2
+136,"Three Rivers in Machine Learning: Data, Computation and Risk","22 January 2010, 4:30 pm",Andrew,['Miscellaneous Statistics'],0,197,2
+137,Book titles,"22 January 2010, 4:07 am",Andrew,['Literature'],0,990,8
+138,Robert and Casella&#8217;s book on Monte Carlo Methods with R,"22 January 2010, 2:06 am",Andrew,"['Bayesian Statistics', 'Statistical computing']",0,885,8
+139,Testing for signficant difference between regression coefficients of two different models from same sample population,"21 January 2010, 2:40 pm",Andrew,['Miscellaneous Statistics'],0,531,2
+140,My final exam,"21 January 2010, 11:10 am",Andrew,['Miscellaneous Science'],0,1346,1
+141,Overexposure,"21 January 2010, 9:38 am",Andrew,['Literature'],0,152,2
+142,"Scott Brown is More Liberal Than Olympia Snowe, and Now He&#8217;s Pivotal, Too","20 January 2010, 3:09 pm",Andrew,['Political Science'],0,212,2
+143,Internal vs. external coherence in political ideology,"20 January 2010, 8:40 am",Andrew,['Political Science'],0,776,8
+144,Do Bike-Helmet Laws Discourage Bicycling?,"19 January 2010, 7:01 pm",Andrew,"['Economics', 'Public Health']",0,244,1
+145,Political influence of quasi-public organizations,"19 January 2010, 9:20 am",Andrew,['Political Science'],0,302,6
+146,The political philosophy of the private eye,"18 January 2010, 10:09 am",Andrew,['Literature'],0,687,5
+147,My talk at University College London this Monday,"18 January 2010, 3:55 am",Andrew,['Bayesian Statistics'],0,125,2
+148,Nate does Bayes,"17 January 2010, 4:25 pm",Andrew,['Bayesian Statistics'],0,13,0
+149,Bayesian statistics then and now,"17 January 2010, 2:14 pm",Andrew,['Bayesian Statistics'],0,2300,8
+150,"Nothing to do with statistical modeling or causal inference, and not much to do with social science either","15 January 2010, 10:54 am",Andrew,['Sociology'],0,21,8
+151,Where&#8217;s Ripley on the web?,"15 January 2010, 7:28 am",Andrew,['Miscellaneous Statistics'],0,216,6
+152,Thoughts on journalists who want to write about science,"14 January 2010, 10:13 am",Andrew,['Miscellaneous Science'],1,1214,9
+153,Graphical display of multilevel inferences,"14 January 2010, 8:39 am",Andrew,"['Multilevel Modeling', 'Statistical graphics']",0,764,2
+154,Postdoctoral Positions at Columbia and Berkeley: &#8220;Practical Tools for Multilevel/Hierarchical Modeling&#8221;,"13 January 2010, 11:14 am",Andrew,"['Bayesian Statistics', 'Multilevel Modeling', 'Statistical computing']",0,396,2
+155,The Russians are coming! The Russians are coming!,"13 January 2010, 10:31 am",Andrew,"['Economics', 'Political Science']",1,203,5
+156,This is just to say,"12 January 2010, 2:39 pm",Andrew,['Decision Theory'],0,49,1
+157,pourquoi michael jackson est blanc,"12 January 2010, 12:06 pm",Andrew,['Sociology'],3,346,1
+158,Europe vs. America: the grudge match,"11 January 2010, 6:12 pm",Andrew,"['Causal Inference', 'Economics']",0,509,7
+159,What do you do when you find that false stuff is being published?,"11 January 2010, 5:47 pm",Andrew,['Sociology'],0,605,7
+160,"Circle, purple, empty, orange, silver, and prefix codes","11 January 2010, 5:06 pm",Phil,['Miscellaneous Science'],0,788,8
+161,"Too clever by, hmmm, about 5% a year","11 January 2010, 10:00 am",Andrew,"['Miscellaneous Statistics', 'Political Science']",0,1053,1
+162,More on health care performance and cost,"10 January 2010, 1:50 pm",Andrew,['Economics'],1,90,6
+163,Objects of the class &#8220;Foghorn Leghorn&#8221;,"9 January 2010, 1:26 pm",Andrew,['Literature'],1,265,2
+164,Retirements,"8 January 2010, 12:05 pm",Andrew,['Political Science'],0,269,4
+165,Damn!,"7 January 2010, 2:03 pm",Andrew,['Miscellaneous Statistics'],0,185,2
+166,Bayesian data analysis: From theory to application and back again,"7 January 2010, 12:08 pm",Andrew,['Bayesian Statistics'],0,17,3
+167,Influential statisticians,"6 January 2010, 8:04 pm",Andrew,['Miscellaneous Statistics'],0,526,2
+168,Good timing,"6 January 2010, 2:26 pm",Andrew,['Economics'],0,67,3
+169,New kinds of spam,"6 January 2010, 2:11 pm",Andrew,['Decision Theory'],0,151,0
+170,"Climate change as a religion, and the more general use of &#8220;religion&#8221; as a term of insult","5 January 2010, 2:48 am",Andrew,['Political Science'],0,396,1
+171,Update on Universities and $,"4 January 2010, 4:03 pm",Andrew,['Economics'],0,9,0
+172,70 Years of Best Sellers,"4 January 2010, 10:55 am",Andrew,"['Economics', 'Literature']",0,2097,1
+173,Different sorts of survey bias,"4 January 2010, 3:59 am",Andrew,['Political Science'],0,36,0
+174,Recidivism statistics,"3 January 2010, 5:06 pm",Aleks Jakulin,['Political Science'],0,242,1
+175,The Jewish Factor in Blue States,"3 January 2010, 4:57 pm",Andrew,['Political Science'],0,399,7
+176,A half-decade of blogging,"2 January 2010, 1:09 pm",Andrew,['Miscellaneous Statistics'],0,371,2
+177,MCMC model selection question,"2 January 2010, 12:31 pm",Andrew,"['Bayesian Statistics', 'Statistical computing']",0,390,2
+178,Simple ain&#8217;t easy,"1 January 2010, 12:32 pm",Andrew,['Literature'],0,615,1
+179,Normative vs. descriptive,"1 January 2010, 9:21 am",Andrew,['Decision Theory'],0,787,0
+180,End-of-the-Year Altruists,"31 December 2009, 1:17 pm",Andrew,['Economics'],0,125,3
+181,Coethnicity,"31 December 2009, 7:05 am",Andrew,['Political Science'],0,1490,4
+182,Complicated categories,"31 December 2009, 5:19 am",Andrew,['Political Science'],0,162,4
+183,"Reuters 1, New York Times 0","30 December 2009, 2:56 pm",Andrew,['Economics'],0,8,0
+184,Are most (if not all) deaths to some extent &#8220;suicides&#8221;? One more time,"30 December 2009, 1:00 pm",Andrew,"['Decision Theory', 'Economics']",0,1105,1
+185,Healthcare spending and life expectancy: a comparison of graphs,"30 December 2009, 9:14 am",Andrew,['Statistical graphics'],3,573,4
+186,How to make colored circles in R?,"30 December 2009, 6:45 am",Andrew,['Statistical computing'],0,71,1
+187,Not the best time for a parallel coordinate plot . . . but it&#8217;s not actually so bad here,"29 December 2009, 4:34 pm",Andrew,"['Public Health', 'Statistical graphics']",1,86,6
+188,Getting rid of academic journals or changing the review system?,"29 December 2009, 1:09 pm",Andrew,"['Decision Theory', 'Economics', 'Sociology']",1,645,4
+189,Who owns sparklines?,"29 December 2009, 8:51 am",Andrew,"['Economics', 'Statistical graphics']",0,10,0
+190,My Tiger Woods post,"29 December 2009, 8:45 am",Andrew,['Economics'],0,296,8
+191,Taxation curves and poverty traps,"28 December 2009, 4:30 pm",Andrew,['Economics'],1,259,1
+192,Advice to &#8220;never bill by the hour&#8221;,"27 December 2009, 5:01 pm",Andrew,['Economics'],0,160,1
+193,Economics and voter irrationality: my review of The Myth of the Rational Voter,"27 December 2009, 4:02 pm",Andrew,"['Economics', 'Political Science']",0,1906,1
+194,The Death of the Blog Post?,"26 December 2009, 10:02 am",Andrew,['Literature'],0,22,4
+195,Visualizations for Assessing Convergence and Mixing of MCMC,"24 December 2009, 9:30 am",Andrew,"['Statistical computing', 'Statistical graphics']",2,549,0
+196,Garbage Time,"23 December 2009, 4:07 pm",Andrew,['Sociology'],0,104,4
+197,How to win in Afghanistan: Statistical Graphics Edition,"23 December 2009, 3:57 am",Andrew,"['Decision Theory', 'Statistical graphics']",1,516,1
+198,Learn to program!,"22 December 2009, 2:11 pm",Aleks Jakulin,['Statistical computing'],0,140,1
+199,Linking the unlinkable,"22 December 2009, 12:47 pm",Andrew,['Sociology'],0,222,1
+200,Job posting: Content Ads Statistician in Bay Area,"22 December 2009, 10:09 am",Aleks Jakulin,['Miscellaneous Statistics'],0,49,0
+201,Update on estimates of war deaths,"22 December 2009, 4:01 am",Andrew,['Political Science'],0,950,4
+202,A bouquet of fallacies from Gary Becker and Stephen Dubner,"21 December 2009, 9:59 am",Andrew,['Economics'],0,1876,1
+203,"Something I just wrote in a referee report: Post your numbers now, not later","20 December 2009, 4:21 pm",Andrew,['Miscellaneous Science'],0,169,8
+204,Conflict over conflict-resolution research,"20 December 2009, 5:50 am",Andrew,['Political Science'],3,757,1
+205,Who&#8217;s on Facebook?,"19 December 2009, 11:29 am",Andrew,['Sociology'],0,347,6
+206,Funding research,"18 December 2009, 5:51 pm",Aleks Jakulin,['Miscellaneous Science'],2,56,1
+207,Predicting elections using the &#8220;most important issue&#8221; question,"18 December 2009, 11:58 am",Andrew,"['Decision Theory', 'Political Science']",0,561,0
+208,"Analyzing varying slopes: individual differences, clustering participants by coefficients","18 December 2009, 9:56 am",Andrew,['Multilevel Modeling'],0,377,2
+209,Privacy vs knowledge and the nature of insurance,"18 December 2009, 9:40 am",Aleks Jakulin,['Miscellaneous Statistics'],0,449,0
+210,Some scams,"18 December 2009, 9:21 am",Andrew,"['Decision Theory', 'Economics']",0,678,7
+211,Universities and $,"17 December 2009, 3:45 pm",Andrew,['Economics'],0,748,7
+212,p = 0.5,"17 December 2009, 10:21 am",Andrew,['Teaching'],0,381,8
+213,Lowering the minimum wage,"17 December 2009, 2:59 am",Andrew,"['Economics', 'Political Science']",0,250,2
+214,"Other voices, other blogs","16 December 2009, 2:08 pm",Andrew,"['Decision Theory', 'Economics']",0,340,9
+215,A former scientist who&#8217;s now a stand-up comedian,"16 December 2009, 2:05 pm",Andrew,['Teaching'],0,45,0
+216,Say a little prior for me: more on climate change,"15 December 2009, 4:10 pm",Phil,['Miscellaneous Statistics'],1,2350,3
+217,"The &#8220;All Else Equal&#8221; Fallacy, again","15 December 2009, 2:22 pm",Andrew,"['Decision Theory', 'Economics']",0,1244,2
+218,Unmasked,"15 December 2009, 3:33 am",Andrew,['Literature'],0,325,0
+219,How do I form my attitudes about scientific questions?,"14 December 2009, 10:10 am",Andrew,"['Decision Theory', 'Miscellaneous Science', 'Sociology']",0,1946,3
+220,Twitteo killed the bloggio star,"14 December 2009, 7:11 am",Andrew,['Literature'],0,170,4
+221,DIY data analysis: three fun examples,"13 December 2009, 1:25 pm",Andrew,"['Statistical computing', 'Statistical graphics']",0,139,5
+222,"&#8220;In major flip, House Dems now represent richest regions&#8221;","12 December 2009, 3:01 am",Andrew,['Political Science'],0,235,0
+223,Professor Risk,"11 December 2009, 5:15 pm",Andrew,"['Bayesian Statistics', 'Decision Theory']",0,11,5
+224,Visualizing UK budget,"11 December 2009, 4:34 pm",Aleks Jakulin,"['Political Science', 'Statistical graphics']",1,81,3
+225,Question about Regression,"11 December 2009, 2:45 pm",Andrew,['Miscellaneous Statistics'],0,182,2
+226,Some (statistical) stories about BUGS,"11 December 2009, 3:40 am",Andrew,"['Bayesian Statistics', 'Statistical computing']",0,1441,1
+227,"Climate skeptics, deniers, hawks, and True Believers","10 December 2009, 12:22 pm",Phil,['Miscellaneous Science'],0,1172,4
+228,Differential Evolution MCMC,"10 December 2009, 8:34 am",Andrew,"['Bayesian Statistics', 'Statistical computing']",0,57,0
+229,Writing it down enforces (some sort of) logic,"9 December 2009, 3:16 pm",Andrew,['Literature'],0,175,0
+230,Warming increases the risk of civil war in Africa?,"9 December 2009, 8:28 am",Andrew,['Political Science'],0,559,0
+231,ClimateGate: How do YOU choose what to believe?,"8 December 2009, 3:23 pm",Phil,"['Miscellaneous Science', 'Sociology']",0,935,6
+232,&#8220;Orange&#8221; ain&#8217;t so special,"8 December 2009, 2:36 pm",Andrew,['Miscellaneous Science'],0,49,0
+233,Yet more antblogging,"8 December 2009, 2:15 pm",Andrew,"['Miscellaneous Science', 'Multilevel Modeling']",1,427,0
+234,"Equation search, part 2","8 December 2009, 10:43 am",Andrew,"['Miscellaneous Science', 'Statistical computing']",3,1427,2
+235,More on &#8220;50% of American Kids Receive Food Stamps&#8221;,"7 December 2009, 10:55 am",Andrew,['Public Health'],0,244,3
+236,What do Starbucks and Larry Summers have in common?,"7 December 2009, 4:27 am",Andrew,['Political Science'],0,5,0
+237,"Russell&#8217;s paradox, major league version","7 December 2009, 3:56 am",Andrew,['Sports'],0,26,2
+238,Is free breast cancer screening a good idea?,"6 December 2009, 3:55 pm",Andrew,"['Decision Theory', 'Economics']",0,4,0
+239,"Equation search, part 1","6 December 2009, 2:28 pm",Andrew,"['Miscellaneous Statistics', 'Statistical computing']",1,784,1
+240,Update on the comparison of the unemployment rates in 1982 and today,"4 December 2009, 4:56 pm",Andrew,['Economics'],0,705,6
+241,Are Liberals Smarter Than Conservatives?,"4 December 2009, 1:24 pm",Andrew,['Political Science'],0,412,1
+242,Comment spam,"4 December 2009, 4:26 am",Andrew,"['Decision Theory', 'Economics']",0,87,4
+243,"Please, please don&#8217;t let this guy sit in on any of my classes!","4 December 2009, 2:42 am",Andrew,['Teaching'],0,1355,7
+244,Simpson&#8217;s Paradox not always such a paradox,"3 December 2009, 9:10 am",Andrew,"['Economics', 'Miscellaneous Statistics', 'Political Science']",0,519,7
+245,"Update on the pinch-hitter syndrome, and a question to the social scientists out there about how general this concept might be","3 December 2009, 8:50 am",Andrew,['Sports'],0,740,1
+246,Scientists behaving badly,"2 December 2009, 8:34 am",Andrew,"['Economics', 'Miscellaneous Science', 'Public Health', 'Sociology']",0,921,1
+247,"All Meehl, all the time","1 December 2009, 10:58 am",Andrew,"['Decision Theory', 'Miscellaneous Statistics']",0,15,0
+248,Using Bayesian meta-analysis to adjust for bias in experiments and observational studies,"1 December 2009, 9:06 am",Andrew,"['Bayesian Statistics', 'Causal Inference', 'Multilevel Modeling']",0,726,2
+249,"If you have Sharad&#8217;s blog in your RSS (as you should), you won&#8217;t need this entry","1 December 2009, 3:37 am",Andrew,"['Sociology', 'Statistical graphics']",0,186,0
+250,Laura &#8220;Baby Name Wizard&#8221; Wattenberg is my hero,"30 November 2009, 4:41 pm",Andrew,['Sociology'],0,119,2
+251,DIC question,"30 November 2009, 3:45 pm",Andrew,['Bayesian Statistics'],0,474,6
+252,Just one of these little things,"30 November 2009, 12:06 pm",Andrew,['Miscellaneous Statistics'],0,134,4
+253,Parameterization and Bayesian Modeling,"29 November 2009, 10:04 am",Andrew,['Bayesian Statistics'],0,167,0
+254,50% of kids are on food stamps at some point in their childhood?,"29 November 2009, 9:02 am",Andrew,['Miscellaneous Statistics'],0,14,0
+255,Pinch-hitter syndrome strikes again,"28 November 2009, 5:02 pm",Andrew,['Literature'],0,95,1
+256,"Scrabble flashback, and why Tyler Cowen is being too hard on Sarah Palin","28 November 2009, 1:49 pm",Andrew,['Sports'],0,677,4
+257,"Remind me to avoid the town of Asheville, North Carolina . . .","28 November 2009, 1:44 pm",Andrew,"['Political Science', 'Sociology']",0,30,0
+258,Age distributions and other pointless ideas in the quantitative analysis of literature and popular culture,"28 November 2009, 12:08 pm",Andrew,"['Economics', 'Sociology']",0,167,2
+259,Earth science / statistics postdoc in LA,"26 November 2009, 3:18 pm",Andrew,['Miscellaneous Statistics'],1,493,2
+260,I&#8217;ve updated my list of presentations,"26 November 2009, 9:16 am",Andrew,['Miscellaneous Statistics'],0,6,0
+261,What&#8217;s wrong with a kernel density?,"25 November 2009, 9:21 am",Andrew,"['Miscellaneous Statistics', 'Statistical graphics']",0,298,7
+262,Defining ethnicity down,"25 November 2009, 9:19 am",Andrew,"['Political Science', 'Sociology']",0,469,1
+263,What does it mean to define context-free clustering rules?,"24 November 2009, 9:20 am",Andrew,['Miscellaneous Statistics'],0,142,5
+264,I&#8217;m speaking at the AppliBugs meeting in Paris,"24 November 2009, 3:27 am",Andrew,['Bayesian Statistics'],0,163,3
+265,Blogging explosion!,"23 November 2009, 2:44 pm",Andrew,['Literature'],0,329,2
+266,Update on Gallup&#8217;s supposed oversampling of Democrats,"23 November 2009, 12:55 pm",Andrew,['Political Science'],1,382,0
+267,Connecting the dots,"23 November 2009, 9:47 am",Andrew,"['Miscellaneous Statistics', 'Political Science']",1,544,4
+268,Does the Senate Finance Committee version of the health-care bill threaten to cripple evidence-based medicine?,"22 November 2009, 12:31 pm",Andrew,"['Decision Theory', 'Political Science', 'Public Health']",0,41,4
+269,Some sort of update to ggplot2,"22 November 2009, 11:55 am",Andrew,['Statistical graphics'],0,78,5
+270,Everybody&#8217;s a critic,"22 November 2009, 11:54 am",Andrew,['Statistical graphics'],0,10,0
+271,Is Gallup &#8220;upping the sample to black Americans&#8221;?,"22 November 2009, 9:19 am",Andrew,"['Miscellaneous Statistics', 'Political Science']",0,381,5
+272,Type M errors are all over the place,"21 November 2009, 3:09 pm",Andrew,['Multilevel Modeling'],0,257,2
+273,"Postdoc openings here in fall, 2010 !!!","21 November 2009, 6:52 am",Andrew,['Miscellaneous Statistics'],0,270,5
+274,&#8220;Science revolves around the discovery of new cause-effect relationships but the entire statistics literature says almost nothing about how to do this.&#8221;,"19 November 2009, 11:13 am",Andrew,['Miscellaneous Statistics'],0,274,2
+275,Senators and health care; also a discussion of pretty statistical graphics,"19 November 2009, 8:16 am",Andrew,"['Political Science', 'Statistical graphics']",4,620,2
+276,Statfight!,"19 November 2009, 4:38 am",Andrew,['Sports'],0,2,2
+277,"They call me Dear Abby, or, This might at first seem like a pointless tautological exercise, but actually I think it can lead you forward","18 November 2009, 3:50 pm",Andrew,"['Multilevel Modeling', 'Sociology']",0,846,2
+278,Clearing up some misconceptions about Bayesian statistics,"18 November 2009, 7:03 am",Andrew,['Bayesian Statistics'],0,496,1
+279,&#8220;What&#8217;s a statistician? An accountant without the laughs.&#8221;,"17 November 2009, 4:11 pm",Andrew,['Miscellaneous Statistics'],0,295,2
+280,Adaptively scaling the Metropolis algorithm using expected scaled jumped distance,"17 November 2009, 12:01 pm",Andrew,"['Bayesian Statistics', 'Statistical computing']",1,236,0
+281,Alan Abramowitz on politicians and ideological conformity,"17 November 2009, 8:33 am",Andrew,['Political Science'],0,217,0
+282,More on risk aversion etc etc etc,"16 November 2009, 4:17 pm",Andrew,"['Decision Theory', 'Economics']",0,521,6
+283,Compact districts and Republican bias: further discussion from Michael McDonald,"16 November 2009, 4:16 pm",Andrew,['Political Science'],0,1,0
+284,&#8220;Finding signal from noise&#8221;: Dr. Bancel responds,"16 November 2009, 2:49 pm",Andrew,"['Miscellaneous Science', 'Miscellaneous Statistics', 'Sociology']",0,1220,2
+285,Notes from someone who&#8217;s seen exactly 3 movies in the past 6 years,"16 November 2009, 2:56 am",Andrew,['Art'],0,126,2
+286,Email update,"15 November 2009, 4:58 pm",Andrew,['Literature'],0,61,5
+287,&#8220;It would be as if any discussion of intercontinental navigation required a preliminary discussion of why the evidence shows that the earth is not flat&#8221;,"15 November 2009, 3:41 pm",Andrew,"['Decision Theory', 'Economics']",0,184,1
+288,"Tobler&#8217;s Law, Urbanization, and Electoral Bias: Why Compact, Contiguous Districts are Bad for the Democrats","15 November 2009, 5:35 am",Andrew,['Political Science'],0,1170,2
+289,&#8220;Subject: Our marketing plan&#8221;,"13 November 2009, 3:42 pm",Andrew,"['Economics', 'Literature']",0,287,1
+290,Politicians have a lot of leeway in how they vote,"13 November 2009, 9:27 am",Andrew,['Political Science'],2,574,4
+291,Statistics for firefighters!,"12 November 2009, 12:45 pm",Andrew,['Teaching'],0,313,1
+292,Finding signal from noise,"12 November 2009, 7:49 am",Andrew,['Miscellaneous Science'],0,511,1
+293,Ten statisticians every psychologist should know about,"11 November 2009, 2:27 pm",Andrew,['Miscellaneous Statistics'],0,16,4
+294,Freakonomics again: How does a government solution seem so appealing to fans of the free market?,"11 November 2009, 3:53 am",Andrew,"['Economics', 'Political Science']",0,915,1
+295,Involuntary exits and the incumbency advantage,"10 November 2009, 3:14 pm",Andrew,"['Causal Inference', 'Political Science']",0,200,6
+296,Do not control for post-treatment variables?,"10 November 2009, 2:42 pm",Andrew,['Causal Inference'],0,235,0
+297,Continuing puzzlement over &#8220;Why&#8221; questions,"10 November 2009, 9:54 am",Andrew,"['Causal Inference', 'Sports']",0,927,1
+298,Another long post on causal inference is coming!,"9 November 2009, 5:16 pm",Andrew,['Causal Inference'],0,16,2
+299,&#8220;I currently have no home internet service&#8221;,"9 November 2009, 5:09 pm",Andrew,['Sociology'],0,9,0
+300,1989,"9 November 2009, 9:42 am",Andrew,"['Literature', 'Sociology']",0,791,1
+301,On a Class of Bias-Amplifying Covariates that Endanger Effect Estimates,"8 November 2009, 3:16 pm",Andrew,['Causal Inference'],0,176,4
+302,6 cents a word,"8 November 2009, 3:11 am",Andrew,"['Economics', 'Literature']",0,104,5
+303,In the Applied Statistics Blog this week,"6 November 2009, 4:15 pm",Andrew,"['Literature', 'Miscellaneous Statistics', 'Sociology', 'Statistical graphics']",0,80,3
+304,The two blogs,"6 November 2009, 9:44 am",Andrew,['Sociology'],0,364,0
+305,Slipperiness of the term &#8220;risk aversion&#8221;,"5 November 2009, 2:57 pm",Andrew,"['Decision Theory', 'Economics']",0,657,1
+306,"Computing power, n, and multilevel models","5 November 2009, 9:37 am",Andrew,"['Multilevel Modeling', 'Statistical computing']",0,367,6
+307,Jewish Marriage Tied to Israel Trip,"5 November 2009, 5:06 am",Andrew,['Sociology'],0,382,5
+308,Null and Vetoed: &#8220;Chance Coincidence&#8221;?,"4 November 2009, 3:39 pm",Andrew,['Political Science'],0,317,6
+309,Med School Interview Questions,"4 November 2009, 12:35 pm",Andrew,"['Decision Theory', 'Economics']",0,63,2
+310,Constructing informative priors,"4 November 2009, 2:57 am",Andrew,['Bayesian Statistics'],0,434,2
+311,Can pseudo-R-squareds from logistic regressions be compared and used as a measure of fit?,"3 November 2009, 9:18 am",Andrew,['Miscellaneous Statistics'],0,659,6
+312,Your chance to help some people make money (maybe) and improve research (maybe),"2 November 2009, 9:00 am",Andrew,['Miscellaneous Science'],0,170,3
+313,Reminder: my talks in London today and tomorrow,"2 November 2009, 3:22 am",Andrew,"['Miscellaneous Statistics', 'Political Science']",0,20,0
+314,Just to disillusion you about the reproducibility of textbook analyses,"1 November 2009, 2:07 am",Andrew,"['Bayesian Statistics', 'Teaching']",0,285,3
+315,The new blog,"31 October 2009, 5:48 pm",Andrew,"['Literature', 'Teaching']",0,13,0
+316,An undergraduate econ student asks about how to learn Bayesian statistics,"31 October 2009, 3:08 pm",Andrew,['Bayesian Statistics'],0,457,1
+317,"Culture wars, voting and polarization: my talk at the London School of Economics on Tuesday","31 October 2009, 6:25 am",Andrew,['Political Science'],0,219,4
+318,Multiple comparisons: my talk at the London School of Economics on Monday,"31 October 2009, 6:25 am",Andrew,['Miscellaneous Statistics'],0,249,0
+319,The end of Wikipedia as we know it?,"30 October 2009, 4:34 pm",Andrew,['Sociology'],1,163,1
+320,"The sociology of tobacco, or The tobacco of sociology","30 October 2009, 4:18 pm",Andrew,"['Economics', 'Public Health', 'Sociology']",0,333,4
+321,Speaking of the self-cleaning oven . . .,"30 October 2009, 3:41 pm",Andrew,['Statistical computing'],0,16,0
+322,Names are like ethnic neighborhoods: the girls move in and the boys move out,"30 October 2009, 12:55 pm",Andrew,['Sociology'],0,4,0
+323,Progress,"30 October 2009, 9:32 am",Andrew,['Literature'],0,232,5
+324,Income inequality and partisan voting in the United States,"29 October 2009, 6:37 pm",Andrew,"['Economics', 'Political Science']",0,135,2
+325,Bayesian homework solutions,"29 October 2009, 11:24 am",Andrew,['Teaching'],0,218,8
+326,How to think about how to think about causality,"29 October 2009, 9:26 am",Andrew,['Causal Inference'],0,528,1
+327,This is a problem that pretty much takes care of itself,"29 October 2009, 7:27 am",Andrew,['Teaching'],0,106,0
+328,"Statistical computing job in Bristol, England","28 October 2009, 6:12 pm",Andrew,"['Bayesian Statistics', 'Miscellaneous Science']",0,642,0
+329,AT has a blog,"28 October 2009, 2:08 pm",Andrew,['Miscellaneous Statistics'],0,2,4
+330,Perils of analyzing data without context,"28 October 2009, 9:54 am",Andrew,['Bayesian Statistics'],0,129,5
+331,Cloud computing,"27 October 2009, 1:42 pm",Andrew,['Statistical computing'],0,82,8
+332,The Science Blog blog,"27 October 2009, 11:15 am",Andrew,['Literature'],0,278,1
+333,"&#8220;Statisticians reject global cooling&#8221;: it all depends on the meaning of &#8220;decrease,&#8221; &#8220;trend,&#8221; and &#8220;virtually assure&#8221;","27 October 2009, 11:13 am",Andrew,"['Miscellaneous Statistics', 'Sociology']",0,519,3
+334,Don&#8217;t comment code,"27 October 2009, 2:30 am",Andrew,['Statistical computing'],0,78,1
+335,Bing sucks,"26 October 2009, 5:16 pm",Andrew,"['Sociology', 'Statistical computing']",0,130,1
+336,"Adjusted plus-minus ratings, etc.","26 October 2009, 4:15 pm",Andrew,['Sports'],0,21,0
+337,Comparing freq. and Bayesian model selection,"26 October 2009, 2:54 pm",Andrew,"['Bayesian Statistics', 'Decision Theory']",0,468,8
+338,Come up with a title for our new blog!!,"24 October 2009, 3:08 am",Andrew,['Literature'],0,185,2
+339,Variations on the histogram,"23 October 2009, 3:54 pm",Andrew,['Statistical graphics'],0,304,1
+340,The immigrant paradox: foreign-born Latinos have lower rates of psychiatric disorders,"22 October 2009, 3:31 pm",Andrew,['Public Health'],1,784,7
+341,Winston Churchill on statistical modeling,"22 October 2009, 7:54 am",Andrew,['Miscellaneous Statistics'],0,248,5
+342,Scozzafava is a Conservative Republican (by New York State standards),"21 October 2009, 5:11 pm",Andrew,['Political Science'],1,410,6
+343,"Numeracy, frequency, and Bayesian reasoning","21 October 2009, 3:17 pm",Andrew,"['Bayesian Statistics', 'Miscellaneous Statistics']",0,174,5
+344,Some practical questions about prior distributions,"21 October 2009, 11:47 am",Andrew,['Bayesian Statistics'],0,651,3
+345,My talk in Lyon on Monday,"21 October 2009, 10:23 am",Andrew,['Miscellaneous Statistics'],0,167,4
+346,Le casse-tête des petits effets,"20 October 2009, 10:51 am",Andrew,['Miscellaneous Statistics'],1,105,4
+347,Possible models for Freakonomics 3,"19 October 2009, 5:27 pm",Andrew,"['Economics', 'Sociology']",0,1044,2
+348,Sign of the times,"19 October 2009, 8:00 am",Andrew,['Political Science'],0,85,0
+349,An Encyclopedia of Probability,"18 October 2009, 7:35 pm",Andrew,"['Miscellaneous Statistics', 'Teaching']",0,301,8
+350,Freakonomics update,"18 October 2009, 3:11 pm",Andrew,"['Economics', 'Sociology']",0,709,2
+351,My review of Freakonomics 2,"17 October 2009, 4:35 pm",Andrew,"['Economics', 'Political Science']",0,1022,1
+352,"Voting differences between the rich and poor, in different subgroups of the population","16 October 2009, 8:44 am",Andrew,['Political Science'],3,290,8
+353,Bayesian analysis of case-control studies,"15 October 2009, 3:35 pm",Andrew,['Bayesian Statistics'],0,676,8
+354,"No data, Part 3","15 October 2009, 8:15 am",Andrew,"['Economics', 'Sociology']",0,90,0
+355,Afghanistan election problems?,"15 October 2009, 2:40 am",Andrew,['Political Science'],0,40,0
+356,Survey of blog readers,"15 October 2009, 12:15 am",Andrew,['Sociology'],0,99,0
+357,More on the Hiring Activity Index,"14 October 2009, 3:43 pm",Andrew,['Economics'],1,13,0
+358,What are the effects of smoking bans?,"14 October 2009, 11:08 am",Andrew,['Public Health'],1,307,1
+359,Placebos Have Side Effects Too,"14 October 2009, 6:20 am",Andrew,"['Causal Inference', 'Public Health']",1,378,4
+360,What is the Bayesian counterpart to the so-called Fisher exact test?,"13 October 2009, 11:19 am",Andrew,['Bayesian Statistics'],0,535,1
+361,You can look things up in the General Social Survey,"13 October 2009, 10:46 am",Andrew,"['Economics', 'Miscellaneous Statistics', 'Sociology']",0,145,2
+362,Silly stat-based music video,"13 October 2009, 8:55 am",Andrew,"['Art', 'Statistical graphics']",0,73,0
+363,Statistical methods competition,"12 October 2009, 3:54 pm",Andrew,['Public Health'],0,258,2
+364,My bloggingheads conversation with Eliezer Yudkowsky,"12 October 2009, 3:04 pm",Andrew,['Bayesian Statistics'],0,56,0
+365,Who supports government health care?,"12 October 2009, 8:33 am",Andrew,"['Political Science', 'Public Health']",7,1019,1
+366,"No data, Part Two","10 October 2009, 10:42 am",Andrew,"['Economics', 'Sociology']",0,199,7
+367,Better than a boxplot,"9 October 2009, 4:04 pm",Andrew,['Statistical graphics'],0,56,1
+368,Prior distributions for Bayesian data analysis in political science,"9 October 2009, 11:47 am",Andrew,"['Bayesian Statistics', 'Political Science']",0,181,0
+369,"&#8220;I&#8217;m sorry, Mr. Roosevelt, you and Mr. Churchill will have to step outside to smoke.&#8221;","9 October 2009, 9:20 am",Andrew,"['Political Science', 'Public Health']",1,101,1
+370,"&#8220;In their new book, &#8220;Rich States, Poor States . . .&#8221;","8 October 2009, 10:07 am",Andrew,"['Economics', 'Political Science']",1,278,5
+371,Does Andy need one of these?,"8 October 2009, 9:13 am",jeff,[],0,14,5
+372,The law of conservation of foreign language,"8 October 2009, 8:18 am",Andrew,['Literature'],0,161,5
+373,Multiple Comparisons in Linear Regression,"8 October 2009, 4:10 am",Andrew,['Bayesian Statistics'],0,299,0
+374,"Golden fleece sought, not found","7 October 2009, 4:20 pm",Andrew,"['Economics', 'Political Science']",0,440,4
+375,The effects of U.S. military aid on political violence in Colombia: a back-and-forth regarding the strength of the causal evidence,"7 October 2009, 10:11 am",Andrew,"['Causal Inference', 'Economics', 'Political Science']",0,1618,2
+376,Time to apply for an Earth Institute postdoc!,"6 October 2009, 5:03 pm",Andrew,['Miscellaneous Statistics'],0,184,0
+377,Studying the dimensionality of political preferences,"6 October 2009, 12:45 pm",Andrew,['Political Science'],0,516,4
+378,Coding ordinal input variables in a regression,"6 October 2009, 12:32 pm",Andrew,['Miscellaneous Statistics'],0,312,7
+379,Shouting &#8220;theater&#8221; in a crowded firehouse,"6 October 2009, 7:52 am",Andrew,['Public Health'],1,112,4
+380,That cluttered blackboard,"5 October 2009, 1:44 pm",Andrew,['Teaching'],0,273,5
+381,My talk Monday aft at Sciences Po in Paris,"5 October 2009, 12:49 am",Andrew,['Political Science'],0,63,0
+382,Why are Jews liberals?,"3 October 2009, 3:11 pm",Andrew,['Political Science'],1,1130,1
+383,The two incompatible options of empirical microeconomics,"3 October 2009, 4:10 am",Andrew,"['Economics', 'Sociology']",0,599,1
+384,Why I don&#8217;t like the terms &#8220;DV&#8221; and &#8220;OLS&#8221;,"2 October 2009, 2:20 pm",Andrew,"['Economics', 'Miscellaneous Statistics']",0,147,8
+385,Taking Absurd Theories Seriously: Economics and the Case of Rational Addiction Theories,"1 October 2009, 9:25 am",Andrew,"['Economics', 'Public Health', 'Sociology']",0,237,1
+386,"Managers and manager-speak: what is a &#8220;manager,&#8221; anyway?","30 September 2009, 5:37 pm",Andrew,['Sociology'],0,241,5
+387,Airlines Add $10 Surcharge On Busy Holidays,"30 September 2009, 10:22 am",Andrew,['Economics'],0,170,4
+388,Does Special Education Actually Work?,"30 September 2009, 9:19 am",Andrew,['Causal Inference'],0,93,0
+389,Yuck!,"29 September 2009, 11:45 pm",Andrew,['Political Science'],0,25,0
+390,Hit-and-run speeding driver &#8220;broke no laws&#8221;,"29 September 2009, 11:23 pm",Andrew,['Political Science'],0,214,3
+391,One of those seemingly-plausible analyses that could just as easily be made in exactly the opposite direction,"29 September 2009, 9:14 am",Andrew,['Economics'],0,773,6
+392,Compactness in districting is not as much of a constraint on gerrymandering as you might think,"29 September 2009, 5:30 am",Andrew,['Political Science'],0,181,0
+393,"Evidence that, in India, girls get less mother&#8217;s milk than boys, leading to higher infant mortality among girls (leaving me confused about whether this is explaining 14% or most of the differences observed in data)","28 September 2009, 12:36 am",Andrew,"['Economics', 'Political Science', 'Public Health']",0,262,4
+394,Choices in how to write about regression results (example of an analysis of U.S. military aid in Colombia),"28 September 2009, 12:00 am",Andrew,"['Causal Inference', 'Public Health']",0,832,2
+395,Interactions and Bayesian Anova,"27 September 2009, 3:45 pm",Andrew,"['Bayesian Statistics', 'Multilevel Modeling']",0,443,0
+396,Fun with the age-guessing demonstration,"27 September 2009, 3:08 pm",Andrew,['Teaching'],0,113,0
+397,"Heart Scan, or Don&#8217;t Believe Everything You Read on the Internet","25 September 2009, 9:57 am",Andrew,['Public Health'],0,395,4
+398,More on predicting the 2010 election,"24 September 2009, 4:53 pm",Andrew,['Political Science'],0,110,0
+399,Summer internship and postdoc opportunities at the Educational Testing Service,"24 September 2009, 3:33 pm",Andrew,['Miscellaneous Statistics'],0,629,0
+400,Who has babies when?,"24 September 2009, 10:10 am",Andrew,"['Economics', 'Sociology']",1,215,2
+401,Generic House Polling Suggests the Republicans Could Regain the House in 2010,"23 September 2009, 2:41 pm",Andrew,['Political Science'],1,327,3
+402,&#8220;Everything&#8217;s coming up Tarslaw!&#8221;,"23 September 2009, 9:14 am",Andrew,['Literature'],0,1162,8
+403,&#8220;We received only one of ten raw data sets requested&#8221;,"22 September 2009, 4:17 pm",Andrew,['Sociology'],0,202,1
+404,Why are veep nominees so lame?,"22 September 2009, 4:01 pm",Andrew,['Political Science'],0,5,0
+405,An interesting mistake involving the probability of a decisive vote,"22 September 2009, 3:10 pm",Andrew,['Political Science'],0,196,0
+406,A theoretical argument in favor of the Cauchy prior distribution for logistic regression coefficients,"22 September 2009, 9:24 am",Andrew,['Bayesian Statistics'],0,102,0
+407,Is the very idea of &#8220;economic development&#8221; racist?,"21 September 2009, 2:08 pm",Andrew,"['Economics', 'Political Science']",0,290,0
+408,Rorschach&#8217;s on the loose,"21 September 2009, 9:33 am",Andrew,['Miscellaneous Science'],1,306,9
+409,Lazy ways of modeling proportions,"21 September 2009, 3:25 am",Andrew,"['Miscellaneous Statistics', 'Political Science']",0,316,0
+410,"Affinity, Antipathy and Political Participation: How Our Concern For Others Makes Us Vote","20 September 2009, 9:47 am",Andrew,['Political Science'],0,297,0
+411,How to make graphs that work,"20 September 2009, 5:40 am",Andrew,['Statistical graphics'],0,125,9
+412,Some data on racial attitudes of whites,"18 September 2009, 3:55 pm",Andrew,['Political Science'],1,287,6
+413,&#8220;And a Judeo-Christian perspective on the use of statistics&#8221;,"18 September 2009, 9:06 am",Andrew,"['Political Science', 'Sociology']",0,110,1
+414,"I&#8217;m in Paris through Aug, 2010","17 September 2009, 6:40 pm",Andrew,['Teaching'],0,7,2
+415,An applied math/statistics consultant,"17 September 2009, 3:41 pm",Andrew,['Miscellaneous Statistics'],0,33,0
+416,A very specialized sort of spam,"17 September 2009, 1:34 pm",Andrew,['Economics'],0,689,2
+417,Putting Recommendations on the Map &#8212; Visualizing Clusters and Relations,"17 September 2009, 11:26 am",Andrew,['Statistical graphics'],1,51,0
+418,NYC datasets,"17 September 2009, 10:10 am",Andrew,['Public Health'],0,96,0
+419,An Anova sort of question,"17 September 2009, 8:45 am",Andrew,['Multilevel Modeling'],0,417,0
+420,"When considering game balance, fairness is not the only concern","17 September 2009, 1:32 am",Andrew,['Decision Theory'],0,172,0
+421,In case you&#8217;re wondering why I haven&#8217;t responded to your email,"15 September 2009, 3:02 am",Andrew,['Economics'],0,20,0
+422,Response to two-slit discussion,"14 September 2009, 3:48 am",Andrew,['Miscellaneous Statistics'],0,257,7
+423,The laws of conditional probability are false,"12 September 2009, 9:17 am",Andrew,"['Miscellaneous Science', 'Miscellaneous Statistics']",0,615,4
+424,A compendium of conjugate distributions,"11 September 2009, 8:38 pm",Aleks Jakulin,['Bayesian Statistics'],2,93,6
+425,The variance formula for unequal-probability sampling,"11 September 2009, 4:40 pm",Andrew,['Miscellaneous Statistics'],0,229,0
+426,Create free wealth by narrowing the streets,"11 September 2009, 9:39 am",Andrew,['Economics'],1,152,1
+427,Is $98/hour a high rate of pay?,"10 September 2009, 12:21 pm",Andrew,"['Economics', 'Teaching']",0,290,9
+428,Different ways of summarizing medical risks,"10 September 2009, 11:20 am",Andrew,"['Decision Theory', 'Economics', 'Public Health']",0,136,2
+429,Listen to me on the radio,"10 September 2009, 10:22 am",Andrew,['Miscellaneous Statistics'],0,122,0
+430,"Graphing a transition matrix, part 2","9 September 2009, 9:26 am",Andrew,['Statistical graphics'],1,127,4
+431,Why am I skeptical of structural models?,"9 September 2009, 9:10 am",Andrew,"['Causal Inference', 'Multilevel Modeling']",0,239,6
+432,It&#8217;s all about the salamanders,"8 September 2009, 10:42 pm",Andrew,['Multilevel Modeling'],0,318,0
+433,The utility function is the epicycle of social science,"8 September 2009, 12:28 pm",Andrew,"['Decision Theory', 'Economics', 'Sports']",1,288,1
+434,Doug Rivers: Second Thoughts About Internet Surveys,"8 September 2009, 11:26 am",Andrew,"['Miscellaneous Statistics', 'Political Science']",0,139,2
+435,The 4pm rule,"8 September 2009, 11:23 am",Andrew,['Economics'],0,23,3
+436,Graphing a transition matrix,"7 September 2009, 5:33 pm",Andrew,['Statistical graphics'],0,394,3
+437,Automatic implementations of average predictive comparisons?,"7 September 2009, 9:42 am",Andrew,"['Miscellaneous Statistics', 'Statistical computing']",0,142,2
+438,A physical 3-d fractal data visualization tool,"6 September 2009, 3:04 pm",Andrew,['Statistical graphics'],0,8,0
+439,Mapping sin,"6 September 2009, 11:41 am",jeff,[],0,5,2
+440,Statistical methods for aggregating pre-election polls,"6 September 2009, 10:22 am",Andrew,['Political Science'],0,458,0
+441,Making decisions based on the endpoint of a 95% interval,"5 September 2009, 4:47 pm",Andrew,['Bayesian Statistics'],0,410,4
+442,"Urban economics: to have private highrise buildings, do you need a politically-connected &#8220;master planner&#8221;?","5 September 2009, 3:00 am",Andrew,"['Economics', 'Political Science']",0,582,5
+443,Fake-data simulation as a research tool,"4 September 2009, 9:42 am",Andrew,"['Miscellaneous Statistics', 'Statistical computing']",0,405,0
+444,More on fitting multilevel models,"3 September 2009, 5:22 pm",Andrew,['Multilevel Modeling'],0,328,4
+445,Survey weighting for the National Election Study,"3 September 2009, 4:15 pm",Andrew,"['Miscellaneous Statistics', 'Political Science']",0,813,0
+446,R Flashmob,"3 September 2009, 3:38 pm",Andrew,['Statistical computing'],0,234,2
+447,Reality meets the DeLilloverse,"2 September 2009, 6:28 pm",Andrew,['Literature'],0,55,0
+448,Question about p-values in multilevel models,"2 September 2009, 4:41 pm",Andrew,['Multilevel Modeling'],0,490,0
+449,What&#8217;s the difference between Bayesian and classical statistics,"2 September 2009, 10:18 am",Andrew,['Bayesian Statistics'],0,391,2
+450,SAT Coaching Found to Boost Scores &#8212; Barely,"1 September 2009, 9:43 pm",Andrew,['Causal Inference'],0,44,0
+451,"Why does the press cover the horse race, not policies?","31 August 2009, 8:01 pm",Andrew,['Political Science'],0,516,7
+452,"Who are the liberal Democrats and conservative Republicans, part 2","31 August 2009, 5:57 pm",Andrew,['Political Science'],1,274,4
+453,Alternative Statistical Approaches to the Use of Data as Evidence for Hypotheses in Human Behavioral Ecology,"30 August 2009, 8:27 pm",Andrew,"['Bayesian Statistics', 'Sociology']",0,147,2
+454,Sag Harbor (the book) was excellent,"30 August 2009, 4:24 am",Andrew,['Literature'],0,5,0
+455,Perhaps the last thing I&#8217;ll ever post on multilevel models vs. clustered standard errors,"29 August 2009, 8:15 pm",Andrew,['Multilevel Modeling'],0,183,0
+456,"More healthy, happy conservatives","29 August 2009, 6:20 am",Andrew,"['Political Science', 'Public Health']",0,116,0
+457,What statistics courses should a methods-interested poli sci Ph.D. student take,"28 August 2009, 5:57 pm",Andrew,"['Political Science', 'Teaching']",0,314,6
+458,Updated MICE package for multiple imputations,"28 August 2009, 10:10 am",Andrew,"['Miscellaneous Statistics', 'Statistical computing']",0,61,2
+459,"Race, region, and vote choice in the 2008 election: implications for the future of the Voting Rights Act","28 August 2009, 9:34 am",Andrew,['Political Science'],5,308,3
+460,More on the problem with email,"27 August 2009, 4:11 pm",Andrew,"['Decision Theory', 'Sociology']",0,341,1
+461,A Quinn Martin production,"27 August 2009, 2:49 pm",Andrew,['Political Science'],0,117,0
+462,"Heads I win, tails I don&#8217;t lose","27 August 2009, 2:48 pm",Andrew,"['Decision Theory', 'Economics']",0,262,6
+463,OmniGraphSketcher functionality for Windows?,"27 August 2009, 1:32 am",Andrew,"['Statistical computing', 'Statistical graphics']",0,45,1
+464,Hollywood-style lectures? Maybe not.,"26 August 2009, 4:33 pm",Andrew,['Teaching'],0,82,6
+465,Bayesian jobs at SAS,"26 August 2009, 3:39 pm",Andrew,['Bayesian Statistics'],0,116,0
+466,The divergence of the intellectual upper class,"26 August 2009, 4:33 am",Andrew,['Political Science'],1,953,2
+467,Inbox zero,"25 August 2009, 10:45 pm",Andrew,['Sociology'],0,76,7
+468,Big juicy datasets,"25 August 2009, 9:49 pm",Andrew,"['Multilevel Modeling', 'Sociology', 'Statistical computing']",0,56,0
+469,A horror story involving the correction of a published scientific article,"25 August 2009, 7:26 pm",Andrew,"['Literature', 'Miscellaneous Science', 'Sociology']",0,638,7
+470,A question about poker,"25 August 2009, 6:19 pm",Andrew,['Sports'],0,477,2
+471,Seniors Skeptical on Health Care Spending,"25 August 2009, 4:23 pm",Andrew,"['Political Science', 'Public Health']",5,244,8
+472,Linf: An L-infinity Classifier,"25 August 2009, 3:52 pm",Andrew,"['Miscellaneous Statistics', 'Statistical computing']",0,252,0
+473,Election 2008: What really happened,"25 August 2009, 4:25 am",Andrew,['Political Science'],0,274,3
+474,"Baseball stats: innovation, randomness, and other issues","24 August 2009, 2:03 pm",Andrew,['Sports'],0,2058,1
+475,A cool bit of experimental research on group threat and voter mobilization,"23 August 2009, 5:29 pm",Andrew,['Political Science'],1,280,6
+476,Why don&#8217;t I do more explicit modeling of spatial or temporal patterns?,"23 August 2009, 12:15 am",Andrew,['Multilevel Modeling'],0,278,0
+477,Computational Legal Studies,"22 August 2009, 11:05 pm",Andrew,['Political Science'],0,14,0
