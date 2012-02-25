@@ -15,9 +15,8 @@ from os.path import exists
 class myAPI(object):
 
     def __init__(self, target_name):
-        #First parameter is Consumer Key, second is Access Token 
-        self.auth = tweepy.OAuthHandler('dcR9xvSBhVuc3vJsqa8T4w', '')
-        self.auth.set_access_token('202203453-YQboa4abf85kYpUO4RxmBIQmB5dKsFjY2KSQYPjc', '')    
+        self.auth = tweepy.OAuthHandler('get your own stinking key', '')
+        self.auth.set_access_token('get your own stinking key', '')       
         self.api = tweepy.API(self.auth)
 
         # Set target
@@ -62,15 +61,19 @@ class myAPI(object):
         elif status == 'findfrnd':
             # create file of users that target follows
             Headers = ["Username", "Checked", "Activity Level"]
-            nameOutput = str(target_name)+"_most_active_s-1.csv"
+            nameOutput = str(self.target_name)+"_most_active_s-1.csv"
             self.outputFile = open(nameOutput,"wb")
             csvwriter = csv.writer(self.outputFile)
             csvwriter.writerow(Headers)
             self.find_friends(csvwriter)  
         
         elif status == 'most_fs1':
-            pass
-        #    no need to create file, just load it
+            Headers = ["Username", "Checked", "Followers Count"]
+            nameOutput = str(self.target_name)+"_most_followed_s1.csv"
+            self.outputFile = open(nameOutput,"r+b")
+            csvwriter = csv.writer(self.outputFile)
+            csvwriter.writerow(Headers)
+            self.most_followed_s1(csvwriter)
     
 # most_followed_s1.csv  
 # most_followed_s2.csv  
@@ -111,21 +114,38 @@ class myAPI(object):
         self.writeStatus('anewstatus')
         self.statusHandler()
 
+        
     def find_target_followers(self, csvwriter):
         '''Who follows our target?'''
-        self.target_followers = self.api.followers(id=self.target_user.screen_name)
-        for fl in self.target_followers:
-            name = str("{0}".format(fl.screen_name.encode('ascii', 'ignore')))
-            print name
-            csvwriter.writerow([name,0,0])
+        for page in tweepy.Cursor(self.api.followers, id=self.target_user.screen_name).pages():
+            for follower in page:
+                name = str("{0}".format(follower.screen_name.encode('ascii', 'ignore')))
+                csvwriter.writerow([name,0,0])
         print "%s has %d followers." % (self.target_name, self.target_num_followers)
-        # https://dev.twitter.com/discussions/605
-        # https://github.com/sixohsix/twitter
-        # https://dev.twitter.com/docs/things-every-developer-should-know
-        ### TODO: make this work for > 100 followers 
+        self.outputFile.close()
+        self.writeStatus('most_fs1')
+        self.statusHandler()
 
-    def most_followed_s1(outputFile):
-        pass
+
+    def most_followed_s1(self, csvwriter):
+    #self.target_user = self.api.get_user(target_name)
+    #self.target_num_followers = len(self.api.followers_ids(self.target_user.screen_name)) 
+        for row in self.outputFile:
+            row = row.split(',')
+            if row[1] == '0':
+                name_to_check = str(row[0])
+                print name_to_check
+                self.check_username = self.api.get_user(name_to_check)
+                print self.check_username
+                print self.check_username.screen_name
+                followers = self.api.followers_ids(self.check_username.screen_name)
+                follower_count = len(followers)
+                csvwriter.writerow([name_to_check, 1, username_follower_count])
+            else: print "I'm confused."
+        self.outputFile.close()
+        #self.writeStatus('doSomDif')
+        #self.statusHandler()
+                
     
     #def where_to_start(outputFile):
     #    for row in outputFile
