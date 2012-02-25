@@ -25,7 +25,7 @@ startPage = 1
 endPage = 3 # there's a bunch, but I only want first 100
 
 # What info do we want? 
-Headers = ["Post Number", "Title", "Date", "Author", "Graphics", "Length","Comments"]
+Headers = ["Post Number", "Title", "Date", "Author", "Categories", "Graphics", "Length","Comments"]
 
 
 # Open output file
@@ -49,7 +49,6 @@ for i in range(endPage - (startPage-1)):
     #Parse it
     soup = BeautifulSoup(webpage.read())
     soup.prettify()
-    print soup
         
     # Extract posts on a page
     headers = soup.findAll("h3")
@@ -81,33 +80,23 @@ for i in range(endPage - (startPage-1)):
         postDate = clean_html(str(text.find('p','postmeta'))) 
 
         # Get Categories
-        #postCategories = []
-        #categoryHeader = text.findAll("span","postcat")
-        #linkHeads = BeautifulSoup(str(categoryHeader)).findAll("a")
-        #for cat in linkHeads:
-        #    postCategories.append(clean_html(str(cat)))
+        postCategories = []
+        categoryHeader = text.findAll("div","postnav")
+        linkHeads = BeautifulSoup(str(categoryHeader)).findAll("a")
+        for cat in linkHeads:
+            postCategories.append(clean_html(str(cat)))
     
         # Get Author
         #postAuthor = clean_html(str(text.find("li","postmeta-author")))
         postAuthor = clean_html(str(text.find("span","author-name")))
 
         # Get Comments
-        #commentHeader = str(text.findAll('li', 'postmeta-comments'))
-        #NumComments = ''
-        #for item in commentHeader:
-        #    if (re.search("Comments ([0-9]+?)",str(commentHeader)) != None) & (re.search("Comments ([0-9]+?)",str(commentHeader)) != 'One Comment') :
-        #        NumComments = re.search("Comments ([0-9]+?)",str(commentHeader)).group(0)
-        #        postNumComments = int(re.search("[0-9]+?",NumComments).group(0))
-        #    else:
-        #        postNumComments = 0
-        #    if NumComments == 'One Comment':
-        #        postNumComments = 1
         postNumComments = re.sub("â",'"',re.sub("â",'"',re.sub("â","'",clean_html(str(text.find("h3"))))))
         
         # Get Images
         textDiv = text.find("div", "entry")
         textSearch = BeautifulSoup(str(textDiv))
-        postImgCount = len(textSearch.findAll("IMAGE4"))
+        postImgCount = len(textSearch.findAll("img"))
         
         # Get Word Count
         postText = clean_html(str(textDiv))
@@ -115,10 +104,10 @@ for i in range(endPage - (startPage-1)):
         postWordCount = len(words)
                 
         # Write To CSV
-        csvwriter.writerow([postCounter, postTitle, postDate, postAuthor, postImgCount, postWordCount, postNumComments])
+        csvwriter.writerow([postCounter, postTitle, postDate, postAuthor, postCategories, postImgCount, postWordCount, postNumComments])
 
         # Progress Bar
-        print "Currently on post %d, page %d. Total of %d posts, %d pages." % (postCounter, pageNum, 25*(endPage-startPage+1), (endPage-startPage+1))
+        print "Currently on post %d, page %d. Total of %d posts, %d pages." % (postCounter, pageNum, 10*(endPage-startPage+1), (endPage-startPage+1))
         postCounter += 1
     
 readFile.close()
