@@ -22,7 +22,7 @@ page_to_scrape = 'http://www.freakonomics.com/blog/'
 
 # How many pages do we want?
 startPage = 1
-endPage = 3 # there's a bunch, but I only want first 100
+endPage = 130 # enough to go back 1 year
 
 # What info do we want? 
 Headers = ["Post Number", "Title", "Date", "Author", "Categories", "Graphics", "Length","Comments"]
