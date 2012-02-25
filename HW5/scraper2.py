@@ -56,7 +56,6 @@ for i in range(endPage - (startPage-1)):
     posts = []
     for entry in headers[0:10]:
         url = re.search('href=".*?"',str(entry.find("a"))).group(0)
-        print url
         url = url.lstrip("href=")
         url = url.rstrip('"')
         url = url.lstrip('"')

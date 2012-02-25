@@ -1,91 +1,91 @@
-Post Number,Title,Date,Author,Graphics,Length,Comments
+Post Number,Title,Date,Author,Categories,Graphics,Length,Comments
 1,Hitchhiking Gets a Hearing in D.C.,"Freakonomics 
  	02/24/2012 | 12:03 pm","Freakonomics 
- 	02/24/2012 | 12:03 pm",16,242,The FREAK-est Links
+ 	02/24/2012 | 12:03 pm","['Alan Pisarksi', 'hitchhiking', 'transportation']",16,242,The FREAK-est Links
 2,Should You Be Guarding Your Old Fry Oil?,"Stephen J. Dubner 
  	02/24/2012 | 11:07 am","Stephen J. Dubner 
- 	02/24/2012 | 11:07 am",1,186,COMMENTS: 10
+ 	02/24/2012 | 11:07 am","['crime', 'fast food']",1,186,COMMENTS: 10
 3,Frank Rich on Media Bias,"Suzie Lechtenberg 
  	02/24/2012 | 9:37 am","Suzie Lechtenberg 
- 	02/24/2012 | 9:37 am",0,548,COMMENTS: 24
+ 	02/24/2012 | 9:37 am","['Frank Rich', 'news', 'War in Iraq']",0,548,COMMENTS: 24
 4,Bring Your Questions for White House Economist Alan Krueger,"Stephen J. Dubner 
  	02/23/2012 | 11:32 am","Stephen J. Dubner 
- 	02/23/2012 | 11:32 am",1,607,COMMENTS: 46
+ 	02/23/2012 | 11:32 am","['Alan Krueger', 'economy', 'Q&amp;A']",1,607,COMMENTS: 46
 5,"Work: 12% Monday, 5% Friday?","Daniel Hamermesh 
  	02/23/2012 | 10:28 am","Daniel Hamermesh 
- 	02/23/2012 | 10:28 am",1,86,COMMENTS: 9
+ 	02/23/2012 | 10:28 am","['employment', 'labor']",1,86,COMMENTS: 9
 6,The Dilbert Index? A New Marketplace Podcast,"Stephen J. Dubner 
  	02/23/2012 | 9:36 am","Stephen J. Dubner 
- 	02/23/2012 | 9:36 am",1,1480,COMMENTS: 7
+ 	02/23/2012 | 9:36 am","['employment', 'Happiness', 'jobs', 'Marketplace', 'podcast']",1,1480,COMMENTS: 7
 7,You Are What You Say: Democrats and Republicans in Blue and Red,"Freakonomics 
  	02/21/2012 | 12:31 pm","Freakonomics 
- 	02/21/2012 | 12:31 pm",2,85,COMMENTS: 25
+ 	02/21/2012 | 12:31 pm","['democrats', 'newspapers', 'Republicans']",2,85,COMMENTS: 25
 8,"Jeremy Lin, Honorary Freakonomist?","Freakonomics 
  	02/21/2012 | 11:28 am","Freakonomics 
- 	02/21/2012 | 11:28 am",1,20,COMMENTS: 4
+ 	02/21/2012 | 11:28 am",['Jeremy Lin'],1,20,COMMENTS: 4
 9,Some Links We Like,"Stephen J. Dubner 
  	02/21/2012 | 10:32 am","Stephen J. Dubner 
- 	02/21/2012 | 10:32 am",0,76,COMMENTS: 2
+ 	02/21/2012 | 10:32 am","['beer', 'cars', 'FREAK est links', 'Jeremy Lin', 'WikiLeaks']",0,76,COMMENTS: 2
 10,Football Freakonomics: What Can Linsanity Teach Us About the Upcoming NFL Draft?,"Stephen J. Dubner 
  	02/17/2012 | 1:03 pm","Stephen J. Dubner 
- 	02/17/2012 | 1:03 pm",1,747,COMMENTS: 23
+ 	02/17/2012 | 1:03 pm","['basketball', 'football', 'Football Freakonomics', 'Jeremy Lin', 'NBA']",1,747,COMMENTS: 23
 11,Football Freakonomics: What Can Linsanity Teach Us About the Upcoming NFL Draft?,"Stephen J. Dubner 
  	02/17/2012 | 1:03 pm","Stephen J. Dubner 
- 	02/17/2012 | 1:03 pm",1,747,COMMENTS: 23
+ 	02/17/2012 | 1:03 pm","['basketball', 'football', 'Football Freakonomics', 'Jeremy Lin', 'NBA']",1,747,COMMENTS: 23
 12,"Comparative Advantage, Opera Edition","Daniel Hamermesh 
  	02/17/2012 | 11:37 am","Daniel Hamermesh 
- 	02/17/2012 | 11:37 am",1,135,COMMENTS: 11
+ 	02/17/2012 | 11:37 am","['Baseball', 'music']",1,135,COMMENTS: 11
 13,More Commitment Devices From Our Readers,"Stephen J. Dubner 
  	02/17/2012 | 9:27 am","Stephen J. Dubner 
- 	02/17/2012 | 9:27 am",1,591,COMMENTS: 9
+ 	02/17/2012 | 9:27 am","['clothes', 'commitment device', 'commitment devices', 'exercise', 'Fashion', 'weight loss']",1,591,COMMENTS: 9
 14,Is Male Kindness Actually a &#8220;Peacock Tail?&#8221;,"Freakonomics 
  	02/16/2012 | 11:32 am","Freakonomics 
- 	02/16/2012 | 11:32 am",0,289,COMMENTS: 21
+ 	02/16/2012 | 11:32 am","['altruism', 'gender relations', 'psychology']",0,289,COMMENTS: 21
 15,How Biased Is Your Media?: A New Freakonomics Radio Podcast,"Stephen J. Dubner 
  	02/16/2012 | 9:37 am","Stephen J. Dubner 
- 	02/16/2012 | 9:37 am",6,6548,COMMENTS: 122
+ 	02/16/2012 | 9:37 am","['Andrew Rosenthal', 'Ann Coulter', 'Daniel Kahneman', 'democrats', 'Glenn Beck', 'Juan WIlliams', 'Media', 'media bias', 'New York Times', 'politicians', 'politics', 'Republicans', 'Steven D. Levitt', 'Tim Groseclose']",6,6548,COMMENTS: 122
 16,Two Ways to Make Them Pay,"Freakonomics 
  	02/15/2012 | 11:02 am","Freakonomics 
- 	02/15/2012 | 11:02 am",0,324,COMMENTS: 22
+ 	02/15/2012 | 11:02 am","['incentives', 'law']",0,324,COMMENTS: 22
 17,The Air Force as Commitment Device,"Stephen J. Dubner 
  	02/15/2012 | 9:32 am","Stephen J. Dubner 
- 	02/15/2012 | 9:32 am",1,415,COMMENTS: 16
+ 	02/15/2012 | 9:32 am",['commitment devices'],1,415,COMMENTS: 16
 18,The Prius Driver’s Conundrum,"James McWilliams 
  	02/14/2012 | 2:02 pm","James McWilliams 
- 	02/14/2012 | 2:02 pm",3,1093,COMMENTS: 37
+ 	02/14/2012 | 2:02 pm","['clean energy', 'energy', 'environment', 'locavores', 'Solar energy']",3,1093,COMMENTS: 37
 19,How Should Alumni Think About Giving Back?,"Stephen J. Dubner 
  	02/14/2012 | 11:28 am","Stephen J. Dubner 
- 	02/14/2012 | 11:28 am",1,424,COMMENTS: 46
+ 	02/14/2012 | 11:28 am",['college'],1,424,COMMENTS: 46
 20,Happy Valentine&#8217;s Day: Economist Edition,"Justin Wolfers 
  	02/14/2012 | 9:31 am","Justin Wolfers 
- 	02/14/2012 | 9:31 am",14,204,COMMENTS: 1
+ 	02/14/2012 | 9:31 am","['economists', 'humor']",14,204,COMMENTS: 1
 21,Ball Hogs and Long Meetings,"Dave Berri 
  	02/13/2012 | 2:03 pm","Dave Berri 
- 	02/13/2012 | 2:03 pm",1,1272,COMMENTS: 25
+ 	02/13/2012 | 2:03 pm","['basketball', 'efficiency']",1,1272,COMMENTS: 25
 22,The Unequal Couple,"Daniel Hamermesh 
  	02/13/2012 | 12:33 pm","Daniel Hamermesh 
- 	02/13/2012 | 12:33 pm",1,93,COMMENTS: 25
+ 	02/13/2012 | 12:33 pm","['art', 'marriage']",1,93,COMMENTS: 25
 23,"It’s the Economy, Honey","Justin Wolfers 
  	02/13/2012 | 11:28 am","Justin Wolfers 
- 	02/13/2012 | 11:28 am",1,378,COMMENTS: 5
+ 	02/13/2012 | 11:28 am","['economists', 'marriage']",1,378,COMMENTS: 5
 24,"Why Was Jeremy Lin Overlooked, and Should He Get Married?","Stephen J. Dubner 
  	02/13/2012 | 10:32 am","Stephen J. Dubner 
- 	02/13/2012 | 10:32 am",1,627,COMMENTS: 19
+ 	02/13/2012 | 10:32 am","['basketball', 'marriage', 'New York City', 'Talent']",1,627,COMMENTS: 19
 25,Some Links We Like: Economists in the News Edition,"Freakonomics 
  	02/13/2012 | 9:53 am","Freakonomics 
- 	02/13/2012 | 9:53 am",0,108,The FREAK-est Links
+ 	02/13/2012 | 9:53 am","['economists', 'FREAK est links']",0,108,The FREAK-est Links
 26,Nightclubs as Research Labs,"Freakonomics 
  	02/10/2012 | 3:02 pm","Freakonomics 
- 	02/10/2012 | 3:02 pm",0,49,COMMENTS: 13
+ 	02/10/2012 | 3:02 pm",['music'],0,49,COMMENTS: 13
 27,Football Freakonomics: The First Annual Dough Bowl Awards,"Stephen J. Dubner 
  	02/10/2012 | 2:31 pm","Stephen J. Dubner 
- 	02/10/2012 | 2:31 pm",1,779,COMMENTS: 8
+ 	02/10/2012 | 2:31 pm","['football', 'Football Freakonomics']",1,779,COMMENTS: 8
 28,What Does Your Fed Valentine Say?,"Justin Wolfers 
  	02/10/2012 | 1:32 pm","Justin Wolfers 
- 	02/10/2012 | 1:32 pm",1,704,COMMENTS: 6
+ 	02/10/2012 | 1:32 pm","['Federal Reserve', 'humor', 'twitter']",1,704,COMMENTS: 6
 29,Should New Financial Instruments Be Treated Like New Drugs?,"Steven D. Levitt 
  	02/10/2012 | 11:03 am","Steven D. Levitt 
- 	02/10/2012 | 11:03 am",0,369,COMMENTS: 26
+ 	02/10/2012 | 11:03 am","['drugs', 'finance', 'regulation']",0,369,COMMENTS: 26
 30,The Statistical Significance of Beer,"Freakonomics 
  	02/10/2012 | 9:32 am","Freakonomics 
- 	02/10/2012 | 9:32 am",1,337,COMMENTS: 12
+ 	02/10/2012 | 9:32 am","['beer', 'statistics']",1,337,COMMENTS: 12
