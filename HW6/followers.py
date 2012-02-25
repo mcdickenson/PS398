@@ -23,8 +23,8 @@ class myAPI(object):
         # Set target
         self.target_name = target_name
         self.target_user = self.api.get_user(target_name)
-        self.target_num_followers = 0 
-        self.target_num_friends = 0 
+        self.target_num_followers = len(self.api.followers_ids(self.target_user.screen_name)) 
+        self.target_num_friends = len(self.api.friends_ids(self.target_user.screen_name))  
         self.status_filename = str(self.target_name) + '_overall_status.txt'
 
         if exists(self.status_filename):              
@@ -114,15 +114,10 @@ class myAPI(object):
     def find_target_followers(self, csvwriter):
         '''Who follows our target?'''
         self.target_followers = self.api.followers(id=self.target_user.screen_name)
-        follower_list = {}
-        self.target_num_followers = 0 
         for fl in self.target_followers:
             name = str("{0}".format(fl.screen_name.encode('ascii', 'ignore')))
             print name
             csvwriter.writerow([name,0,0])
-            self.target_num_followers += 1
-            #follower_list.append() # add screen_name as key, number of followers as return
-        # use followers_count
         print "%s has %d followers." % (self.target_name, self.target_num_followers)
         # https://dev.twitter.com/discussions/605
         # https://github.com/sixohsix/twitter
