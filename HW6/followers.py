@@ -27,10 +27,10 @@ class myAPI(object):
         self.target_num_friends = 0 
         self.status_filename = str(self.target_name) + '_overall_status.txt'
 
-        if exists(check_filename):              
+        if exists(self.status_filename):              
             self.statusHandler()
         else:
-            self.writeStatus('firstrun')
+            self.writeStatus('findflwr')
             self.statusHandler()
 
     def __str__(self):
@@ -48,12 +48,12 @@ class myAPI(object):
         status = status[0:8] # defensive programming
         status_file.close()  
 
-        if status =='firstrun': 
+        if status =='findflwr': 
             # create file for most followed user that follows the target
             Headers = ["Username", "Checked", "Followers List", "Followers Count"]
             nameOutput = str(self.target_name)+"_most_followed_s1.csv"
-            outputFile = open(nameOutput,"wb")
-            csvwriter = csv.writer(outputFile)
+            self.outputFile = open(nameOutput,"wb")
+            csvwriter = csv.writer(self.outputFile)
             csvwriter.writerow(Headers)
             self.find_target_followers(csvwriter)
             #self.find_friends(csvwriter)
@@ -63,11 +63,10 @@ class myAPI(object):
             # create file of users that target follows
             Headers = ["Username", "Checked", "Activity Level"]
             nameOutput = str(target_name)+"_most_active_s-1.csv"
-            outputFile = open(nameOutput,"wb")
-            csvwriter = csv.writer(outputFile)
+            self.outputFile = open(nameOutput,"wb")
+            csvwriter = csv.writer(self.outputFile)
             csvwriter.writerow(Headers)
             self.find_friends(csvwriter)  
-            outputFile.close()
         
         elif status == 'most_fs1':
             pass
@@ -106,25 +105,29 @@ class myAPI(object):
             print name
             csvwriter.writerow([name,0,0])
             self.target_num_friends += 1
+        self.outputFile.close()
         print "%s follows %d users." % (self.target_name, self.target_num_friends)
+        ### TODO: create follow-up functions within statusHandler()
+        self.writeStatus('anewstatus')
+        self.statusHandler()
 
     def find_target_followers(self, csvwriter):
         '''Who follows our target?'''
-        target_followers = self.api.followers(id=self.target_user.screen_name)
+        self.target_followers = self.api.followers(id=self.target_user.screen_name)
         follower_list = {}
         self.target_num_followers = 0 
-        for fl in target_followers:
+        for fl in self.target_followers:
             name = str("{0}".format(fl.screen_name.encode('ascii', 'ignore')))
             print name
             csvwriter.writerow([name,0,0])
-            target_num_followers += 1
+            self.target_num_followers += 1
             #follower_list.append() # add screen_name as key, number of followers as return
         # use followers_count
         print "%s has %d followers." % (self.target_name, self.target_num_followers)
         # https://dev.twitter.com/discussions/605
         # https://github.com/sixohsix/twitter
         # https://dev.twitter.com/docs/things-every-developer-should-know
-
+        ### TODO: make this work for > 100 followers 
 
     def most_followed_s1(outputFile):
         pass
