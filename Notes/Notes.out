@@ -33,3 +33,10 @@
 \BOOKMARK [1][-]{section.5}{Input/Output}{}% 33
 \BOOKMARK [2][-]{subsection.5.1}{filestuff.py}{section.5}% 34
 \BOOKMARK [2][-]{subsection.5.2}{urlgrabbing.py}{section.5}% 35
+\BOOKMARK [1][-]{section.6}{More Applications: Twitter API}{}% 36
+\BOOKMARK [2][-]{subsection.6.1}{Things we didn't discuss last week \(on purpose\)}{section.6}% 37
+\BOOKMARK [2][-]{subsection.6.2}{Application Programming Interfaces \(API\)}{section.6}% 38
+\BOOKMARK [3][-]{subsubsection.6.2.1}{REST}{subsection.6.2}% 39
+\BOOKMARK [3][-]{subsubsection.6.2.2}{HTTP}{subsection.6.2}% 40
+\BOOKMARK [3][-]{subsubsection.6.2.3}{CRUD}{subsection.6.2}% 41
+\BOOKMARK [2][-]{subsection.6.3}{The Twitter API}{section.6}% 42

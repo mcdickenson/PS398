@@ -835,6 +835,141 @@ Your laptop on an automated search is much faster than the way people
 normally use the internet. Use a delay--a second or two will suffice. 
 
 
+\section{More Applications: Twitter API}
+% code review as usual
+% Discuss class searching in HTML/CSS
+% <a id= "foo" class = "bar bas">
+% a is the tag
+% id is unique
+% class is not unique
+% a = all links
+% #foo = id == foo
+% .bar = class == bar
+% a.bar = tags with class bar
+% a.bar.bas
+
+\subsection{Things we didn't discuss last week (on purpose)}
+
+HTML has a bunch of encoded versions of characters, such as
+\texttt{\&nbsp;}. Every program that interacts with the web will have a
+library for dealing with HTML entities. Anything that starts with
+``\&'' and ends with ``;'' is an HTML entity. 
+
+Another problem that you may run into is \emph{relative} URLs. You do
+not actually have to specify the root of a page to access it; HTML
+just assumes you want the same root that you are on currently. The
+Python library \texttt{urlparse} can deal with this through the
+command \texttt{urljoin}. 
+
+\subsection{Application Programming Interfaces (API)}
+
+You already know what these are, even if you do not realize it. An API
+can be thought of as a contract for how a message is passed. We
+thought about this on a smaller scale when we implemented
+functions. For example, in Python the code
+\begin{verbatim}
+def foo(bar):
+    print bar
+\end{verbatim}
+has a contract to accept \texttt{bar} and return the printed form. 
+
+There are different types of API's. One is SOAP and it is bad. If you
+have the choice, do not use it. The preferred option is REST, which
+stands for ``Representational State Transfer.''\footnotemark
+\footnotetext{As an interesting piece of history, the same individual
+  conceptualized REST and HTTP. Both are contracts for information
+  delivery.} 
+
+\subsubsection{REST}
+
+In a REST API, all things are objects. We do not mean this in quite
+the same sense as OOP, but it means that we are doing things to other
+things. If this makes perfect sense to you, do not worry about the
+alternative. All of the things that the API works with (users, pages,
+coordinates, etc.) have unique
+URI's, which saves a lot of confusion. All things also have a
+representation; you know about the HTML representation, but you could
+also get the XML or the JSON representation. The important point is
+that we can elicit different representations of the same object from
+the API. 
+
+Note that the Twitter API has a rate limit of 350 requests per hour. 
+
+\subsubsection{HTTP}
+
+HTTP is a way of representing object. Important types of objects
+include clients (e.g. browsers, urllib2, etc.) and servers (the thing
+you crashed if you failed to put a \texttt{time.sleep()} command in
+your last homework). Observe that \texttt{git://} has a different
+representation that \texttt{http://}, which is itself different from
+\texttt{https://}. 
+
+\subsubsection{CRUD}
+You will encounter this acronym when discussing what an object can
+do. It stands for ``Create, Read, Update, Delete.'' When you access
+this object through HTML, we are using its \emph{read} attribute. HTTP
+has four actions: \emph{G}et, \emph{P}ost, \emph{P}ut,
+\emph{D}elete. Most everything you have done on the web up to this
+point is post (which corresponds to create) and get (which corresponds
+to read).
+
+On Twitter, when you read a tweet, you are getting it. When you post
+it you are creating it. When you delete
+it, you are deleting it (makes sense, right?). All of these things
+happen to the same URI, and someone has packaged them into a nice neat
+library for you. 
+
+A URI is made up of 5 things: domain, protocol, path, query string,
+hash. You should already be familiar with the domain, protocol, and path. Query strings start with ``?'' and are concatenated with
+``\&''. Hashes start with--gasp--``\#''. 
+
+There's a lot going on on the server side too. The server will depend
+on you giving it requests that have a representation (e.g. MIME,
+XML). It will give you back the info you ask for, along with a code
+(see Table \ref{server_codes}).
+
+\begin{table}
+\begin{center}
+\caption{Server Codes}
+\label{server_codes}
+\begin{tabular}{lcc}
+Code & What it means & What probably happened \\
+\hline
+200 & OK & Something good \\
+500 & Server error & \\
+503 & Temporarily down & \\
+404 & Not found & Page deleted \\
+420 & Enhance your calm & exceeded ratelimit \\
+418 & I'm a little teapot & April Fool's \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\subsection{The Twitter API}
+
+First, you have to register an application with Twitter via
+\texttt{http://dev.twitter.com/}. You can register before your code is done. They will give you the
+keys you need, which will keep people from using your app, enables the
+permissioning system, and keeps track of your rate limiting. 
+
+You will need to install the library \texttt{tweepy}. 
+
+You will also have been given a Consumer Key and a Consumer
+Secret. Tweepy will need those. 
+
+Create an API object, which will keep you from having to do all of the
+things we talked about above as far as getting, posting, etc. 
+
+See \url{https://dev.twitter.com/docs/api} for all of the cool things
+you can do with your API.
+
+% sopa_tweets = api.search('#sopa')
+% sopa_tweets[0]
+
+This has been a brief introduction, because you will learn it best by
+doing it. 
+
 \pagebreak
 \onehalfspacing
 \bibliographystyle{/Users/mcdickenson/Documents/apsr}

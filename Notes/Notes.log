@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=pdflatex 2010.7.21)  15 FEB 2012 18:22
+This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=pdflatex 2010.7.21)  22 FEB 2012 17:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -462,27 +462,33 @@ Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on input line 423.
 
-[9] [10] [11] [12] [13] [14] [15] [16] [17] [18] (./Notes.bbl
+[9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20] (./Notes.bbl
 
 Package natbib Warning: Empty `thebibliography' environment on input line 3.
 
-) [19]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 850.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 850.
+) [21]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 985.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 985.
  (./Notes.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 850.
-Package rerunfilecheck Info: File `Notes.out' has not changed.
-(rerunfilecheck)             Checksum: 132A5C24438D0662F9D208CC03D640ED;2295.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 985.
 
+
+Package rerunfilecheck Warning: File `Notes.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `Notes.out':
+(rerunfilecheck)             Before: 746190F5645944DAD9DF45430FDDC3BA;2744
+(rerunfilecheck)             After:  A555C753348A99E4E3F611670D68D9C5;2809.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 6341 strings out of 493747
- 91436 string characters out of 3143546
- 169659 words of memory out of 3000000
- 9425 multiletter control sequences out of 15000+200000
+ 6358 strings out of 493747
+ 91685 string characters out of 3143546
+ 169694 words of memory out of 3000000
+ 9432 multiletter control sequences out of 15000+200000
  13732 words of font info for 54 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
  31i,16n,28p,229b,440s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -500,10 +506,10 @@ ive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texliv
 e/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive
 /2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/
 2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on Notes.pdf (19 pages, 202300 bytes).
+Output written on Notes.pdf (21 pages, 212312 bytes).
 PDF statistics:
- 314 PDF objects out of 1000 (max. 8388607)
- 276 compressed objects within 3 object streams
- 66 named destinations out of 1000 (max. 500000)
- 281 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 354 PDF objects out of 1000 (max. 8388607)
+ 313 compressed objects within 4 object streams
+ 76 named destinations out of 1000 (max. 500000)
+ 329 words of extra memory for PDF output out of 10000 (max. 10000000)
 
