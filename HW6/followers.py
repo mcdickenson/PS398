@@ -24,31 +24,29 @@ class myAPI(object):
         self.target_name = target_name
         self.target_user = self.api.get_user(target_name)
         self.target_num_followers = 0 
-        self.target_num_friends = 0
+        self.target_num_friends = 0 
+        self.status_filename = str(self.target_name) + '_overall_status.txt'
 
-# Also: created a supplementary file for preserving status between runs
-# overall_status.txt    will save which of the four parts of the assignment I'm on
-#                       initially contains "firstrun" 
-
-        check_filename = str(self.target_name) + '_overall_status.txt'
-        if exists(check_filename):  
-            status_file = open(check_filename)
-            status = status_file.read()
-            status = status[0:8] # defensive programming
-            status_file.close()
-            self.status_handler(status)
+        if exists(check_filename):              
+            self.statusHandler()
         else:
-            writefile = open(check_filename, "wb")
-            writefile.write('firstrun')
-            writefile.close()
-            status = 'firstrun' # 'firstrun'
-            self.status_handler(status)
+            self.writeStatus('firstrun')
+            self.statusHandler()
 
     def __str__(self):
         return "%s follows %d users and is followed by %d friends." % (self.target_name, self.target_num_friends, self.target_num_followers)
+        
+    def writeStatus(self, new_status):
+        writefile = open(self.status_filename, "wb")
+        writefile.write(str(new_status))
+        writefile.close()
     
-    def status_handler(self, status):
-        '''Load status of program at last run.'''        
+    def statusHandler(self):
+        '''Load status of program at last run.'''
+        status_file = open(self.status_filename)
+        status = status_file.read()
+        status = status[0:8] # defensive programming
+        status_file.close()  
 
         if status =='firstrun': 
             # create file for most followed user that follows the target
@@ -57,8 +55,8 @@ class myAPI(object):
             outputFile = open(nameOutput,"wb")
             csvwriter = csv.writer(outputFile)
             csvwriter.writerow(Headers)
-            #self.find_target_followers(csvwriter)
-            self.find_friends(csvwriter)
+            self.find_target_followers(csvwriter)
+            #self.find_friends(csvwriter)
             #most_followed_s1(outputFile)
 
         elif status == 'findfrnd':
