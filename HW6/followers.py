@@ -8,8 +8,7 @@ Matt Dickenson """
 #Register an app: https://dev.twitter.com/
 
 #easy_install tweepy
-import tweepy
-import csv
+import tweepy, csv, time
 from os.path import exists
 
 class myAPI(object):
@@ -29,7 +28,7 @@ class myAPI(object):
         if exists(self.status_filename):              
             self.statusHandler()
         else:
-            self.writeStatus('findflwr')
+            self.writeStatus('findfrnd')
             self.statusHandler()
 
     def __str__(self):
@@ -50,13 +49,11 @@ class myAPI(object):
         if status =='findflwr': 
             # create file for most followed user that follows the target
             Headers = ["Username", "Checked", "Followers List", "Followers Count"]
-            nameOutput = str(self.target_name)+"_most_followed_s1.csv"
+            nameOutput = str(self.target_name)+"_followers_s1.csv"
             self.outputFile = open(nameOutput,"wb")
             csvwriter = csv.writer(self.outputFile)
             csvwriter.writerow(Headers)
             self.find_target_followers(csvwriter)
-            #self.find_friends(csvwriter)
-            #most_followed_s1(outputFile)
 
         elif status == 'findfrnd':
             # create file of users that target follows
@@ -70,10 +67,13 @@ class myAPI(object):
         elif status == 'most_fs1':
             Headers = ["Username", "Checked", "Followers Count"]
             nameOutput = str(self.target_name)+"_most_followed_s1.csv"
-            self.outputFile = open(nameOutput,"r+b")
+            self.outputFile = open(nameOutput,"wb")
             csvwriter = csv.writer(self.outputFile)
             csvwriter.writerow(Headers)
-            self.most_followed_s1(csvwriter)
+            nameInput = str(self.target_name)+"_followers_s1.csv"
+            self.inputFile = open(nameInput,"r")
+            csvreader = csv.reader(self.inputFile)
+            self.most_followed_s1(csvwriter,csvreader)
     
 # most_followed_s1.csv  
 # most_followed_s2.csv  
@@ -110,8 +110,7 @@ class myAPI(object):
             self.target_num_friends += 1
         self.outputFile.close()
         print "%s follows %d users." % (self.target_name, self.target_num_friends)
-        ### TODO: create follow-up functions within statusHandler()
-        self.writeStatus('anewstatus')
+        self.writeStatus('findflwr')
         self.statusHandler()
 
         
@@ -127,23 +126,23 @@ class myAPI(object):
         self.statusHandler()
 
 
-    def most_followed_s1(self, csvwriter):
-    #self.target_user = self.api.get_user(target_name)
-    #self.target_num_followers = len(self.api.followers_ids(self.target_user.screen_name)) 
-        for row in self.outputFile:
-            row = row.split(',')
+    def most_followed_s1(self, csvwriter, csvreader):
+        follower_file = csvreader
+        for row in follower_file:
             if row[1] == '0':
                 name_to_check = str(row[0])
-                print name_to_check
-                self.check_username = self.api.get_user(name_to_check)
-                print self.check_username
-                print self.check_username.screen_name
-                followers = self.api.followers_ids(self.check_username.screen_name)
-                follower_count = len(followers)
-                csvwriter.writerow([name_to_check, 1, username_follower_count])
-            else: print "I'm confused."
+                try: 
+                    followers = self.api.followers_ids(name_to_check)
+                    follower_count = len(followers)
+                    csvwriter.writerow([name_to_check, 1, follower_count])
+                    print "I worked."
+                except tweepy.TweepError:
+                    csvwriter.writerow([name_to_check, 1, 'NA'])
+                    print "Caught exception."
+                    time.sleep(1)
+            else: print "Line skipped."
         self.outputFile.close()
-        #self.writeStatus('doSomDif')
+        self.writeStatus('doSomDif')
         #self.statusHandler()
                 
     
