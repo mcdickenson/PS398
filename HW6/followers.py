@@ -62,26 +62,31 @@ class myAPI(object):
             self.outputFile = open(nameOutput,"wb")
             csvwriter = csv.writer(self.outputFile)
             csvwriter.writerow(Headers)
-            self.find_friends(csvwriter)  
+            self.find_friends(csvwriter)
+
+        elif status == 'FrndDetl':
+            # create file for detils of target's friends 
+            Headers = ["Username", "Checked", "Status count", "Start date", "Favorites", "Location", "Website"]
+            nameOutput = str(self.target_name)+"_active_details_s-1.csv"
+            outputFile = open(nameOutput,"a")
+            csvwriter = csv.writer(outputFile)
+            csvwriter.writerow(Headers)
+            print "File created."
+            nameInput = str(self.target_name)+"_most_active_s-1.csv"
+            inputFile = open(nameInput, "rU")
+            csvreader = csv.reader(inputFile)
+            self.friend_details(csvwriter, csvreader)
         
         elif status == 'most_fs1':
             Headers = ["Username", "Checked", "Followers Count"]
             nameOutput = str(self.target_name)+"_most_followed_s1.csv"
-            self.outputFile = open(nameOutput,"wb")
+            self.outputFile = open(nameOutput,"ab")
             csvwriter = csv.writer(self.outputFile)
             csvwriter.writerow(Headers)
             nameInput = str(self.target_name)+"_followers_s1.csv"
-            self.inputFile = open(nameInput,"r")
+            self.inputFile = open(nameInput,"rU")
             csvreader = csv.reader(self.inputFile)
             self.most_followed_s1(csvwriter,csvreader)
-    
-# most_followed_s1.csv  
-# most_followed_s2.csv  
-# most_active_s2.csv
-# most_active_s-1.csv
-
-### STORING
-# Because of the rate limit (see above), we need to save search status as we go
 
     ### SEARCHING
     def get_rate_limit(self):
@@ -101,17 +106,44 @@ class myAPI(object):
 
     def find_friends(self, csvwriter):
         '''Who does the target follow?'''
-        target_friends = self.api.friends(id=self.target_user.screen_name)
-        self.target_num_friends = 0
-        for fr in target_friends:
-            name = str("{0}".format(fr.screen_name.encode('ascii', 'ignore')))
-            print name
-            csvwriter.writerow([name,0,0])
-            self.target_num_friends += 1
+        self.target_num_friends = 0 
+        for page in tweepy.Cursor(self.api.friends, id=self.target_user.screen_name).pages():
+            for friend in page:
+                name = str("{0}".format(friend.screen_name.encode('ascii', 'ignore')))
+                print name
+                csvwriter.writerow([name,0,0])
+                self.target_num_friends += 1
         self.outputFile.close()
         print "%s follows %d users." % (self.target_name, self.target_num_friends)
-        self.writeStatus('findflwr')
-        self.statusHandler()
+        #self.writeStatus('findflwr')
+        #self.statusHandler()
+
+    def friend_details(self, csvwriter, csvreader):
+        friend_file = csvreader
+        numExcept = 0 
+        for row in friend_file:
+            if row[1] == '0':
+                username = str(row[0])
+                print username
+                try:
+                    temp_user = self.api.get_user(username)
+                    user_state = temp_user.__getstate__()
+                    print user_state
+                    status_count = user_state['statuses_count']
+                    start_date = user_state['created_at']
+                    favorites = user_state['favourites_count']
+                    location =str( user_state['location'])
+                    website = user_state['url']
+                    csvwriter.writerow([username, 1, status_count, start_date, favorites, location, website])
+                    print "I worked."
+                except tweepy.TweepError, UnicodeEncodeError:
+                    csvwriter.writerow([username, 1, 'NA', 'NA', 'NA', 'NA', 'NA'])
+                    print "Caught exception."
+                    numExcept += 1
+                    if numExcept >=5:
+                        break
+                    time.sleep(1)
+            else: print "Line skipped."
 
         
     def find_target_followers(self, csvwriter):
@@ -128,6 +160,7 @@ class myAPI(object):
 
     def most_followed_s1(self, csvwriter, csvreader):
         follower_file = csvreader
+        numExcept = 0 
         for row in follower_file:
             if row[1] == '0':
                 name_to_check = str(row[0])
@@ -135,19 +168,26 @@ class myAPI(object):
                     followers = self.api.followers_ids(name_to_check)
                     follower_count = len(followers)
                     csvwriter.writerow([name_to_check, 1, follower_count])
+                    numExcept = 0 
                     print "I worked."
                 except tweepy.TweepError:
                     csvwriter.writerow([name_to_check, 1, 'NA'])
                     print "Caught exception."
+                    numExcept += 1
+                    if numExcept >=5:
+                        break
                     time.sleep(1)
             else: print "Line skipped."
         self.outputFile.close()
-        self.writeStatus('doSomDif')
-        #self.statusHandler()
-                
-    
-    #def where_to_start(outputFile):
-    #    for row in outputFile
+        self.writeStatus('FrndDetl')
+        self.statusHandler()
+
+    def most_followed_s2(self, csvwriter, csvreader):
+        pass
+
 
 # RUN
-monkeyAPI = myAPI('monkeycageblog')
+# monkeyAPI = myAPI('monkeycageblog')
+# Most active user (as measured by number of tweets): Matt Yglesias
+mattyAPI = myAPI('mattyglesias')
+# Dave Weigel (daveweigel) is Matt Yglesias's most active friend 
