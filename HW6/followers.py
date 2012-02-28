@@ -88,6 +88,17 @@ class myAPI(object):
             csvreader = csv.reader(self.inputFile)
             self.most_followed_s1(csvwriter,csvreader)
 
+        elif status == 'mstfs15k':
+            Headers = ["Username", "Checked", "Status count", "Start date", "Followers count", "Favorites", "Website"]
+            nameOutput = str(self.target_name)+"_5kfollows_s1.csv"
+            self.outputFile = open(nameOutput,"ab")
+            csvwriter = csv.writer(self.outputFile)
+            csvwriter.writerow(Headers)
+            nameInput = str(self.target_name)+"_most_followed_s1.csv"
+            self.inputFile = open(nameInput,"rU")
+            csvreader = csv.reader(self.inputFile)
+            self.most_followed_s1_for_5000(csvwriter,csvreader)
+
     ### SEARCHING
     def get_rate_limit(self):
         '''See my API rate limit.'''
@@ -182,12 +193,42 @@ class myAPI(object):
         self.writeStatus('FrndDetl')
         self.statusHandler()
 
+    def most_followed_s1_for_5000(self, csvwriter, csvreader):
+        follow_file = csvreader
+        numExcept = 0 
+        for row in follow_file:
+            print row[2]
+            if row[2] == '5000':
+                username = str(row[0])
+                print username
+                try:
+                    temp_user = self.api.get_user(username)
+                    user_state = temp_user.__getstate__()
+                    print user_state
+                    status_count = user_state['statuses_count']
+                    start_date = user_state['created_at']
+                    follower_count = user_state['followers_count']
+                    favorites = user_state['favourites_count']
+                    website = user_state['url']
+                    csvwriter.writerow([username, 1, status_count, start_date, follower_count, favorites, website])
+                    print "I worked."
+                except tweepy.TweepError, UnicodeEncodeError:
+                    csvwriter.writerow([username, 1, 'NA', 'NA', 'NA', 'NA', 'NA'])
+                    print "Caught exception."
+                    numExcept += 1
+                    if numExcept >=5:
+                        break
+                    time.sleep(1)
+            else: print "Line skipped."
+
     def most_followed_s2(self, csvwriter, csvreader):
         pass
 
 
 # RUN
-# monkeyAPI = myAPI('monkeycageblog')
+monkeyAPI = myAPI('monkeycageblog')
+# Monkey Cage's most-followed follwer is Nate Silver (fivethirtyeight)
+ 
 # Most active user (as measured by number of tweets): Matt Yglesias
-mattyAPI = myAPI('mattyglesias')
+# mattyAPI = myAPI('mattyglesias')
 # Dave Weigel (daveweigel) is Matt Yglesias's most active friend 
