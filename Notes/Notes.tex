@@ -970,6 +970,236 @@ you can do with your API.
 This has been a brief introduction, because you will learn it best by
 doing it. 
 
+\section{Databases}
+This is a huge topic, but fortunately you can get functional very
+quickly and learn as you go. Most of the actual work that goes on with
+databases is plain vanilla, but there are some strange extreme-use
+cases that take some know-how and experience. 
+
+There are a number of different kinds of databases:
+\begin{itemize}
+\item Relational database (what we'll do): Mysql, sqlite, SQL Server,
+  PostGRES (many of these are free) 
+\item Key-value Store (the other main one): MongoDB, TokyoCabinet,
+  Redis, Cassandra, CouchDB
+\item Variations on these two 
+\end{itemize}
+
+We use databases instead of, e.g., CSV files because CSV's are not
+optimized for fast searching or any other such thing that we
+actually care about. Smart people have spent a lot of time optimizing databases
+for the kind of searching we're doing since the 1970's. 
+
+When we talk about a database, two concepts are important:
+\emph{schemas} and \emph{rows} of data. The schemas in a database are
+strict. By this, we mean that the database will only return valid data
+(i.e. no strings when we want a number--if we set it up that way). The
+simplest way to think about databases, at least at first, is like a
+spreadsheet: a table with rows and columns. The schema defines what
+columns you have, how they are named, and what \emph{type} they
+have. In addition to type (e.g. \texttt{int}, \texttt{str}--actually
+SQL uses \texttt{varchar} instead of string), you can
+also define the allowable length, whether or not \texttt{Null} is
+allowed, and whether or not uniqueness is required. You may not want to allow nulls, for example, when building a
+Twitter database, so that you know every row you look at has a valid
+username. Uniqueness prevents (or allows) duplicate information. Often
+joint uniqueness is helpful when dealing with large data, for example
+name and social security number as opposed to name alone. Note that
+SQL databases \emph{require} you to have a unique (or joint unique)
+identifier for each row. 
+
+Why are they called `relational databases?' Good question. Mostly
+because people who work on databases are striving to ``normalize'' the
+data. Say we have a database with three columns, and a value in one of
+them changes. The concept of normalization means that the nominal
+identifier in our database (say, a name) is also assigned a unique
+identifier (usually a number), so that if a change is made to the
+nominal identifier, we can still keep track of what happened. It also
+allows us to make changes quickly, and is optimized for both time and
+memory.
+
+\subsection{Schemas}
+Relational databases assume you're going to normalize, so they make it
+very quick to organize tables. Consider the example in Tables
+\ref{aDatabase} and \ref{aNormalizer}.
+
+\begin{table}[htbp]\centering
+ \caption{An Example Database}
+\label{aDatabase}
+\begin{tabular}{l|c}\hline
+Book\_Title & author\_id \\
+\hline
+Bible & 1 \\
+Farenheit 451 & 2\\
+October Country & 2\\
+Cat's Cradle & 3 \\
+Catch 22 & NULL \\
+\end{tabular} \\
+\end{table}
+
+\begin{table}[htbp]\centering
+ \caption{A Normalizing Table}
+\label{aNormalizer}
+\begin{tabular}{l|c}\hline
+1 & God \\
+2 & Bradbury \\
+3 & Vonnegut \\
+4 & Tolkien \\
+\hline
+\end{tabular} \\
+\end{table}
+
+Now say we join them using an \emph{inner join}. That would return
+Table \ref{innerjoin}:
+\begin{table}[h!]\centering
+ \caption{An Inner Join}
+\label{innerjoin}
+\begin{tabular}{l|c}\hline
+Bible & God \\
+F451 & Bradbury \\
+OC & Bradbury \\
+CC & Vonnegut \\
+\hline
+\end{tabular} \\
+\end{table}
+There are also left and right \emph{outer joins} that work similarly,
+but will return NULL for objects that it cannot match.
+
+\subsection{ORM}
+
+ORM stands for \textbf{o}bject-\textbf{r}elational \textbf{m}odel. It is a mapping of objects to
+database tables. We will look at what the SQL commands do, and how we could right them
+on our own. If you have questions about SQL, the internet is a vast
+and wonderful place to find answers. 
+
+
+\section{Intro to Classifiers}
+
+We will discuss the most mathematically tractable, easiest to
+understand classifier: naive Bayes classifiers. They are also the
+easiest to implement, and happen to work shockingly well on lots of
+classifiers. The output of a classifier is the probability that a
+thing belongs in a set. A simple introductory example is the
+classification of email as spam/not spam. 
+
+To build a classifier, you first need to understand the following
+things about your problem domain: 
+\begin{itemize}
+\item what you want to classify (the \emph{document})
+\item \emph{features} of the document
+\item which \emph{features} you want to emphasize for classification
+  (i.e. which will be good predictors)
+\item the \emph{categories} you wish to sort to
+\end{itemize}
+
+\subsection{Bayes' Rule: Review and Example}
+Bayes' Rule is about taking some conditional probability and then
+using it to calculate other conditional probabilities.
+
+\begin{eqnarray*}
+P(\text{spam}|\text{features}) &=&
+{{P(\text{features}|\text{spam})P(\text{spam})} \over P(\text{features})}
+\end{eqnarray*}
+
+We will use what is called the ``bag of words'' approach. In the
+example above, our features are word counts. The ``bag of words''
+approach only deals with individual words rather than phrases. We
+don't want to evaluate all of the $n$-grams in a 1,000-word text
+document because the combinatorics are huge. To deal with this, we
+look at the text with the assumption that words appear
+independently. Note that this is a huge assumption that does not hold
+in reality, but it makes the math clean and works fine for most
+cases.\footnotemark \footnotetext{Recall our earlier discussion about
+  ``most cases.''} 
+
+\begin{eqnarray*}
+P(\text{spam}|\text{"male enhancement"}) &=&
+{{P(\text{"male enhancement"}|\text{spam})P(\text{spam})} \over
+  P(\text{"male enhancement"})} \\
+&=& {{P(\text{"male"}|\text{spam})P(\text{spam})P(\text{"enhancement"}|\text{spam})} \over
+  P(\text{"male"}) P(\text{"enhancement"})} 
+\end{eqnarray*}
+
+Here is an example from the Stanford AI course:
+\begin{table}[h!]
+\caption{Spam vs. Ham Phrases}
+\label{spam}
+\centering
+\begin{tabular}{c|c}
+Spam & Ham \\
+\hline
+Offer is secret & Play sports today \\
+Click secret link & Went play sports \\
+Secret sports link & Secret sports event \\
+& Sports is tody \\
+& Sports cost money 
+\end{tabular}
+\end{table}
+
+Let's use the data in Table \ref{spam} to estimate the conditional probabilities:
+\begin{eqnarray*}
+P(\text{"secret"|spam}) &=& \frac{3}{9} \\
+P(\text{"secret"|ham}) &=& \frac{1}{15} \\
+P(\text{spam|"sports}") &=& {
+  P(\text{"sports"|spam}) P(\text{spam}) \over
+  {P(\text{"sports"}|\text{spam})P(\text{spam})P(\text{"sports"}|\text{ham})
+    P(\text{ham})}} \\
+&=& {\frac{1}{9} \times \frac{3}{8}} \over {\frac{1}{9} \times
+  \frac{3}{8} + \frac{1}{3} \times
+  \frac{5}{8}}
+\end{eqnarray*}
+
+Notice that this is probability for an individual word. Also, realize
+that our preferences over Type I versus Type II errors might cause us
+not to make 50 percent our threshold for categorization. 
+
+
+% insert a more complicated example here if desired
+
+\subsection{LaPlace Smoothing}
+One problem with Bayes' Rule is that in the naivest of cases it does
+not know how to handle something it has not seen before. A LaPlace
+smoother adds a small constant and re-adjusts according to the rules
+of probability to ensure that there are not zero probabilities that a
+message is spam. (This is akin to adding .001 if you are trying to log
+event counts, etc.)
+
+Compare the naive and Laplace-smoothed estimators below:
+\begin{eqnarray*}
+ML p(x) &=& {count(x) \over N} \\
+LS p(x) &=& {count(x) + k \over N + k|x|}
+\end{eqnarray*}
+Notice that the LS estimate converges to the ML estimator when the
+number of categories $|x|$ is large. $k$ is arbitrary--choose what
+works. 1 is usually a good place to start.
+
+% redo complicated example above with LaPlacean Smoothing
+
+\subsection{Pseudo-Implementation}
+
+A minimum-working example of a classifier consists of three things: a
+hash of words, a training method, and a classifier method.
+
+Some other terms to keep in mind when implementing are:
+\begin{itemize}
+\item word breaking: a method to recognize that Doctor, Dr., and Dotcor all
+represent essentially the same thing to the human mind
+\item word stemming: a method to recognize that ``angry'' and
+  ``anger'' each consist of ``angr-'' and are thus functionally
+  equivalent for purposes of classification (often this results in a
+  substantial improvement in probability calculation)
+\item stop words: words like ``in, at'' and ``the'' can lead to
+  spurious results and take up space in your data storage, so most
+  folks ignore them
+\end{itemize}
+
+There are libraries for all of these made by people with a lot of
+experience--use those. (Note that all of our examples today are
+English-specific; word stemming may not work in many languages, and
+word breaking can be extremely hard.) 
+
+
+
 \pagebreak
 \onehalfspacing
 \bibliographystyle{/Users/mcdickenson/Documents/apsr}
