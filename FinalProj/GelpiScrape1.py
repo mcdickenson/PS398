@@ -29,126 +29,133 @@ writeFile = open(nameFile,"wb")
 csvwriter = csv.writer(writeFile)
 csvwriter.writerow(Headers)
 
-# Get HTML of main page
-mainpage = urllib2.urlopen(page_to_scrape)
-mainsoup = BeautifulSoup(mainpage)
-mainsoup.prettify()
-#print mainsoup
 
-# Citations are identified by <p> tags with the following style:
+def get_citations_from_web(page_to_get):
+    # Get HTML of main page
+    mainpage = urllib2.urlopen(page_to_get)
+    mainsoup = BeautifulSoup(mainpage)
+    mainsoup.prettify()
+    #print mainsoup
 
-# Search for citations
-paragraphs = mainsoup.findAll("p",'MsoNormal')
+    # Citations are identified by <p> tags with the following style:
 
-citations = []
-# Loop thru, get only paragraphs with links (a heuristic for cites)
-for par in paragraphs:
-    #print par
-    
-    links = par.findAll("a")
-    numLinks = len(links)
-    if numLinks == 1:
-        citations.append(par)
+    # Search for citations
+    paragraphs = mainsoup.findAll("p",'MsoNormal')
 
-#Info for progress bar
-numErrors = 0
-numSuccessful = 0
-numTotal = len(citations)
+    citations = []
+    # Loop thru, get only paragraphs with links (a heuristic for cites)
+    for par in paragraphs:
+        #print par
+        links = par.findAll("a")
+        numLinks = len(links)
+        if numLinks == 1:
+            citations.append(par)
 
-# Create list of search strings
-searchStrings = []
+    #Info for progress bar
+    numErrors = 0
+    numSuccessful = 0
+    numTotal = len(citations)
 
-# Loop thru actual citations, get info
-for cite in citations:
-    # Clean cite of HTML tags and '&quot'
-    cite2 = clean_html(str(cite))
-    cite2 = cite2.replace('&quot;', '') # TODO: use this as information
-    cite3 = cite2.split('.')
-    # Create string to be searched in Google Scholar
-    shortCite = cite2
-    #print len(cite3)
-    try:
-        # Get names of author(s)
-        authorName = cite3[0]
+    # Create list of search strings
+    searchStrings = []
 
-        # Get year of publication
-        pubYear = cite3[1]
-        pubYear = pubYear.lstrip(' ')
+    # Loop thru actual citations, get info
+    for cite in citations:
+        # Clean cite of HTML tags and '&quot'
+        cite2 = clean_html(str(cite))
+        cite2 = cite2.replace('&quot;', '') # TODO: use this as information
+        cite3 = cite2.split('.')
+        # Create string to be searched in Google Scholar
+        shortCite = cite2
+        #print len(cite3)
+        try:
+            # Get names of author(s)
+            authorName = cite3[0]
 
-        # Get title of the work
-        workTitle = cite3[2]
-        workTitle = workTitle.lstrip(' ')
+            # Get year of publication
+            pubYear = cite3[1]
+            pubYear = pubYear.lstrip(' ')
 
-        # Get title of journal or publisher
-        journPub = cite3[3]
+            # Get title of the work
+            workTitle = cite3[2]
+            workTitle = workTitle.lstrip(' ')
 
-        # Update progress
-        numSuccessful += 1
+            # Get title of journal or publisher
+            journPub = cite3[3]
 
-        # Refresh shortCite
-        shortCite = authorName + ' ' + pubYear + ' ' + workTitle
-        searchStrings.append(shortCite)
+            # Update progress
+            numSuccessful += 1
 
-        # Write to CSV
-        csvwriter.writerow([authorName, pubYear, workTitle, journPub, shortCite])
+            # Refresh shortCite
+            shortCite = authorName + ' ' + pubYear + ' ' + workTitle
+            searchStrings.append(shortCite)
 
-    except:
-        numErrors += 1
-        searchStrings.append(shortCite)
+            # Write to CSV
+            csvwriter.writerow([authorName, pubYear, workTitle, journPub, shortCite])
+
+        except:
+            numErrors += 1
+            searchStrings.append(shortCite)
         
-# Report success/failure rate
-numChecked = numErrors + numSuccessful
-print "Checked %s of %s pages. %s successful, %s failures." % (numChecked, numTotal, numSuccessful, numErrors)
+    # Report success/failure rate
+    numChecked = numErrors + numSuccessful
+    print "Checked %s of %s pages. %s successful, %s failures." % (numChecked, numTotal, numSuccessful, numErrors)
+    return searchStrings
+
+searchStrings = get_citations_from_web(page_to_scrape)
 
 
-# TODO: START SEARCH LOOP HERE
-#Search for citations in Google Scholar
-# set up domain to search
-domainStart = "http://scholar.google.com/scholar?q="
-domainMiddle = searchStrings[0].replace('\r', '')
-domainMiddle = domainMiddle.lstrip()
-domainMiddle = domainMiddle.replace(' ', '+')
-domainEnd = '&hl=en&btnG=Search&as_sdt=1%2C34&as_sdtp=on'
-domainCat = (str(domainStart), str(domainMiddle), str(domainEnd))
-domainFull = ''.join(domainCat)
-baseurl = '/scholar?q=' + domainMiddle + domainEnd
+def id_finder(search_string): #Search for citation id's in Google Scholar 
+    # set up domain to search
+    domainStart = "http://scholar.google.com/scholar?q="
+    domainMiddle = search_string.replace('\r', '') # TEST CASE
+    domainMiddle = domainMiddle.lstrip()
+    domainMiddle = domainMiddle.replace(' ', '+')
+    domainEnd = '&hl=en&btnG=Search&as_sdt=1%2C34&as_sdtp=on'
+    domainCat = (str(domainStart), str(domainMiddle), str(domainEnd))
+    domainFull = ''.join(domainCat)
+    baseurl = '/scholar?q=' + domainMiddle + domainEnd
 
-cj = cookielib.MozillaCookieJar()
-cj.load('cookies.txt')
+    cj = cookielib.MozillaCookieJar()
+    cj.load('cookies.txt')
 
-# http://code.activestate.com/recipes/523047-search-google-scholar/
-# TODO: https://ubuntuincident.wordpress.com/2011/09/11/download-cookie-protected-pages-with-python-using-cookielib-part-2/
-headers = {'User-Agent': 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)'} # fake
-cookie_handler= urllib2.HTTPCookieProcessor(cj)
-redirect_handler= urllib2.HTTPRedirectHandler()
-opener = urllib2.build_opener(redirect_handler,cookie_handler)
-urllib2.install_opener(opener)
-request = urllib2.Request(domainFull, None, headers) # may change None to "GET"
-#response = opener.open(request)
-handle=urllib2.urlopen(request)
-pageSource = handle.read()
-if 'related:' in pageSource:
-    print 'true'
-else:
-    print 'false'
+    # http://code.activestate.com/recipes/523047-search-google-scholar/
+    # https://ubuntuincident.wordpress.com/2011/09/11/download-cookie-protected-pages-with-python-using-cookielib-part-2/
+    headers = {'User-Agent': 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)'} # fake
+    cookie_handler= urllib2.HTTPCookieProcessor(cj)
+    redirect_handler= urllib2.HTTPRedirectHandler()
+    opener = urllib2.build_opener(redirect_handler,cookie_handler)
+    urllib2.install_opener(opener)
+    request = urllib2.Request(domainFull, None, headers) # may change None to "GET"
+                                                         #response = opener.open(request)
+    handle=urllib2.urlopen(request)
+    pageSource = handle.read()
+    pageSource = pageSource.decode('ascii','ignore')
 
-pageSource = pageSource.decode('ascii','ignore')
+    # break into separate citations
+    citesoup = BeautifulSoup(pageSource)
+    citesoup.prettify()
+    records = citesoup.findAll('div', {'class': 'gs_fl'})
 
-# break into separate citations
-citesoup = BeautifulSoup(pageSource)
-citesoup.prettify()
-records = citesoup.findAll('div', {'class': 'gs_fl'})
+    # TODO: make this less naive; only takes first record
+    # take first citation
+    rec = str(records[0])
+    #print rec
+    # identify the part we need
+    desiredID = re.split('q=related:', rec, 1)
+    desiredID = str(desiredID[1])
+    desiredID = desiredID[0:11] # 12 character Google Scholar unique ID
+    return desiredID
+    
+idWant = id_finder(searchStrings[0])
+print idWant
 
-
-#print records[0] # TODO: make this less naive; only takes first record
-# take first citation
-rec = str(records[0])
-print rec
-# identify the part we need
-desiredID = re.split('q=related:', rec, 1)
-desiredID = str(desiredID[1])
-desiredID = desiredID[0:11] # 12 character Google Scholar unique ID
-print desiredID
+def bib_getter(uniqID):
+    domainStart = "http://scholar.google.com/scholar.bib?q=info:"
+    domainMiddle = str(uniqID)
+    domainEnd = ":scholar.google.com/&output=citation&hl=en&as_sdt=0,34&ct=citation&cd=0"
+    domainCat = (str(domainStart), str(domainMiddle), str(domainEnd))
+    domainFull = ''.join(domainCat)
 
 
 
