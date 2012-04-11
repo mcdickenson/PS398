@@ -5,12 +5,11 @@ Matt Dickenson """
 # /Users/mcdickenson/github/PS398/FinalProj
 
 # Which libraries do we need? 
-import urllib2, urllib, datetime, re, string, time, csv, httplib
+import urllib2, urllib, datetime, re, string, time, csv, httplib, sqlite3, cookielib
 from xml.sax.saxutils import unescape
 import nltk
 from nltk import util
 from nltk.util import clean_html
-import cookielib
 from twill import get_browser
 from BeautifulSoup import BeautifulSoup
 
@@ -106,7 +105,7 @@ numChecked = numErrors + numSuccessful
 print "Checked %s of %s pages. %s successful, %s failures." % (numChecked, numTotal, numSuccessful, numErrors)
 
 
-# TODO: make this a loop
+# TODO: START SEARCH LOOP HERE
 #Search for citations in Google Scholar
 # set up domain to search
 domainStart = "http://scholar.google.com/scholar?q="
@@ -118,24 +117,38 @@ domainCat = (str(domainStart), str(domainMiddle), str(domainEnd))
 domainFull = ''.join(domainCat)
 baseurl = '/scholar?q=' + domainMiddle + domainEnd
 
-#citepage = urllib2.urlopen(domainFull)
-conn = httplib.HTTPConnection("scholar.google.com")
+cj = cookielib.MozillaCookieJar()
+#cj.load("/Users/mcdickenson/Library/Application Support/Firefox/Profiles/vhtjzive.default/cookies.sqlite")
+cj.load('cookies.txt')
+#cj.load(os.path.join(os.path.expanduser("~"), ".netscape", "cookies.txt"))
+#opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
+
+
+# http://code.activestate.com/recipes/523047-search-google-scholar/
+# TODO: https://ubuntuincident.wordpress.com/2011/09/11/download-cookie-protected-pages-with-python-using-cookielib-part-2/
+#cookieFile = "/Users/mcdickenson/Library/Application Support/Firefox/Profiles/vhtjzive.default/cookies.sqlite"
 headers = {"User-Agent": "Mozilla/Mozilla/4.0 (compatible; MSIE 5.5; Mac OS X)"}
-conn.putrequest("GET", baseurl)
-conn.putheader('Connection','Keep-Alive')
-conn.putheader('User-Agent','Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:11.0) Gecko/20100101 Firefox/11.0')
-conn.endheaders()
+request = urllib2.Request(domainFull, None, headers)
+#cookies = cookielib.MozillaCookieJar(cookieFile, None, None)
+#cookies = get_cookies('scholar')
+#cookies.load()
+cookie_handler= urllib2.HTTPCookieProcessor(cj)
+redirect_handler= urllib2.HTTPRedirectHandler()
+opener = urllib2.build_opener(redirect_handler,cookie_handler)
+response = opener.open(request)
 
-# Optional: trick Google into thinking I'm using Safari
-#browserName = "Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en) AppleWebKit/312.1 (KHTML, like Gecko) Safari/312"
-# True info:
-#  Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:11.0) Gecko/20100101 Firefox/11.0
-# Another false version:
-# 'Mozilla/5.0(Macintosh; u; Mac OS X 10.6.1;en-US'
+#citepage = urllib2.urlopen(domainFull)
+## conn = httplib.HTTPConnection("scholar.google.com")
+## headers = {"User-Agent": "Mozilla/Mozilla/4.0 (compatible; MSIE 5.5; Mac OS X)"}
+## conn.putrequest("GET", baseurl)
+## conn.putheader('Connection','Keep-Alive')
+## conn.putheader('User-Agent','Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:11.0) Gecko/20100101 Firefox/11.0')
+## conn.endheaders()
+## response = conn.getresponse()
 
-response = conn.getresponse()
 
-print "RESPONSE CODE: ", response.status
+#print "RESPONSE CODE: ", response.status
+print response.__doc__
 
 if response.status == 200:
     pageSource = response.read()
@@ -161,3 +174,10 @@ else:
 # http://www.cs.ox.ac.uk/people/stephen.kell/goodies/research/bibtex/
 # http://asociologist.com/2012/01/02/google-scholar-scraper/
 # On changing cookies: http://code.activestate.com/recipes/523047-search-google-scholar/
+
+    # Optional: trick Google into thinking I'm using Safari
+#browserName = "Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en) AppleWebKit/312.1 (KHTML, like Gecko) Safari/312"
+# True info:
+#  Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:11.0) Gecko/20100101 Firefox/11.0
+# Another false version:
+# 'Mozilla/5.0(Macintosh; u; Mac OS X 10.6.1;en-US'
