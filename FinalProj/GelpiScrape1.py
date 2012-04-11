@@ -84,8 +84,6 @@ for cite in citations:
 
         # Update progress
         numSuccessful += 1
-        #numChecked = numErrors + numSuccessful
-        #print "Completed %s of %s. %s successful, %s failures." % (numChecked, numTotal, numSuccessful, numErrors)
 
         # Refresh shortCite
         shortCite = authorName + ' ' + pubYear + ' ' + workTitle
@@ -96,9 +94,7 @@ for cite in citations:
 
     except:
         numErrors += 1
-        #numChecked = numErrors + numSuccessful
         searchStrings.append(shortCite)
-        #print "Failed on %s of %s. %s successful, %s failures." % (numChecked, numTotal, numSuccessful, numErrors)
         
 # Report success/failure rate
 numChecked = numErrors + numSuccessful
@@ -118,36 +114,16 @@ domainFull = ''.join(domainCat)
 baseurl = '/scholar?q=' + domainMiddle + domainEnd
 
 cj = cookielib.MozillaCookieJar()
-#cj.load("/Users/mcdickenson/Library/Application Support/Firefox/Profiles/vhtjzive.default/cookies.sqlite")
 cj.load('cookies.txt')
-#cj.load(os.path.join(os.path.expanduser("~"), ".netscape", "cookies.txt"))
-#opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
-
 
 # http://code.activestate.com/recipes/523047-search-google-scholar/
 # TODO: https://ubuntuincident.wordpress.com/2011/09/11/download-cookie-protected-pages-with-python-using-cookielib-part-2/
-#cookieFile = "/Users/mcdickenson/Library/Application Support/Firefox/Profiles/vhtjzive.default/cookies.sqlite"
 headers = {"User-Agent": "Mozilla/Mozilla/4.0 (compatible; MSIE 5.5; Mac OS X)"}
 request = urllib2.Request(domainFull, None, headers)
-#cookies = cookielib.MozillaCookieJar(cookieFile, None, None)
-#cookies = get_cookies('scholar')
-#cookies.load()
 cookie_handler= urllib2.HTTPCookieProcessor(cj)
 redirect_handler= urllib2.HTTPRedirectHandler()
 opener = urllib2.build_opener(redirect_handler,cookie_handler)
 response = opener.open(request)
-
-#citepage = urllib2.urlopen(domainFull)
-## conn = httplib.HTTPConnection("scholar.google.com")
-## headers = {"User-Agent": "Mozilla/Mozilla/4.0 (compatible; MSIE 5.5; Mac OS X)"}
-## conn.putrequest("GET", baseurl)
-## conn.putheader('Connection','Keep-Alive')
-## conn.putheader('User-Agent','Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:11.0) Gecko/20100101 Firefox/11.0')
-## conn.endheaders()
-## response = conn.getresponse()
-
-
-#print "RESPONSE CODE: ", response.status
 pageSource = response.read()
 print pageSource
 
