@@ -1199,6 +1199,108 @@ English-specific; word stemming may not work in many languages, and
 word breaking can be extremely hard.) 
 
 
+\section{Linear Programming}
+
+Linear programming is an advanced topic from a CS perspective, because
+the way that it works is technically difficult. However, there are
+other places to look if you are interested in learning that aspect. We
+will discuss the interesting part from a data modelling perspective. 
+
+Think of linear programming as an optimization problem. That is, we
+seek a solution to \emph{minimize}, \emph{maximize}, or
+\emph{equality}, subject to some constraints. If you have solved a set
+of equations for a variable, you have done this. If you have ever
+worked on game theory or economics, you have dealt with maximization
+(and possibly minimization). In calculus you can also sometimes format
+problems as linear problems. For computers, these problems are easily
+solvable. We will work with \texttt{CPLEX}, or Gnu Linear Programming
+Kit. 
+
+\subsection{Example: Paintings}
+Consider two types of paitings in Table \ref{paintings}. Our
+constraint is that we have 16 blues, 8 greens, and 5 reds. One way to
+solve this would be to draw two-dimensional indifference curves. 
+
+\begin{table}[h!]\centering
+ \caption{Two Types of Paintings}
+\label{paintings}
+\begin{tabular}{cc}\hline
+Price & Supplies Required \\
+\hline
+\$30 & 4 blue, 1 green, 1 red \\
+\$20 & 2 blue, 2 green, 1 red \\
+\hline
+\end{tabular} \\
+\end{table}
+
+We can also set up our constraints as a series of equations:
+\begin{eqnarray*}
+\text{maximize:  } 3x + 2y \\
+\text{blue:  } 4x + 2y  &\leq& 16 \\
+\text{red:  } x + y  &\leq& 5 \\
+\text{green:  } x + 2y  &\leq& 8 
+\end{eqnarray*}
+
+As you can see by setting this up in \texttt{CPLEX}, once you can set
+up a problem as a set of linear equations, it is trivially easy to
+solve. The cleverness is all in setting up the problem.\footnotemark
+\footnotetext{The same could be said of practically all normal-form,
+  finite game theory problems.}
+
+% Pulp is a Python wrapper for mathprog
+
+\subsection{Airlines}
+Now consider another example, a fictional airline industry. We are
+trying to determine the minimum number of airlines to deploy from the
+set in Table \ref{airlines} to get full global coverage. \footnotemark
+\footnotetext{Read this carefully to see what kind of problem we are
+  trying to solve and the constraint(s) we are under.}
+
+\begin{table}[h!]\centering
+ \caption{Airline Coverage}
+\label{airlines}
+\begin{tabular}{c|c}\hline
+Airline & Continents Covered \\
+\hline
+A & NA, SA, Af \\
+B & E, Af, As \\
+C & NA, Au, E \\
+D & SA, As, E \\
+E & Af, As, Au \\
+F & NA, E \\
+\hline
+\end{tabular} \\
+\end{table}
+
+\begin{eqnarray} % TODO: check this to see if it's actually right
+\label{airlineeqn}
+\text{minimize:  } A+B+C+D+E+F \\
+\text{NA:  } A + C + F  &\geq& 1 \\
+\text{SA:  } A + D  &\geq& 1 \\
+\text{Af:  } A + B + E  &\geq& 1 \\ 
+\text{E:  } B + C + D + F &\geq& 1 \\ 
+\text{As:  } B + D + E  &\geq& 1 \\
+\text{Au:  } C + E  &\geq& 1 
+\end{eqnarray}
+
+Notice that this set of equations fully specifies the
+problem we are trying to solve. We can write this as a linear
+program and see that ABC and DEF are both solutions (there may be
+others).
+
+\subsection{Bipartite Matching}
+This example is intended to illustrate that networking can also be
+analyzed as problem for linear programming. (See illustration in
+Josh's notes.) % TODO: add illustration
+
+\subsection{Feasibility}
+
+In all of the examples above, we sought integer solutions. Sometimes
+finding the integer solution can take a great deal of time (or even be
+infeasible), but you can still find the frontiers of the feasibility
+space if you search for a non-integer solution. Just something to keep
+in mind. 
+ 
 
 \pagebreak
 \onehalfspacing
