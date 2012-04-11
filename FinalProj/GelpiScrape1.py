@@ -25,7 +25,7 @@ course_name = 'SPCcore'
 Headers = ["Author","Year","Title","Journal/Publisher", "SearchString"]
 
 # Open output file
-nameFile = "CampaignTrail-"+str(course_name)+".csv"
+nameFile = "WebScrape-"+str(course_name)+".csv"
 writeFile = open(nameFile,"wb")
 csvwriter = csv.writer(writeFile)
 csvwriter.writerow(Headers)
@@ -57,14 +57,12 @@ numErrors = 0
 numSuccessful = 0
 numTotal = len(citations)
 
-
-
 # Loop thru actual citations, get info
 for cite in citations:
     # Clean cite of HTML tags and '&quot'
     cite2 = clean_html(str(cite))
-    cite3 = cite2.replace('&quot;', '') # TODO: use this as information
-    cite3 = cite3.split('.')
+    cite2 = cite2.replace('&quot;', '') # TODO: use this as information
+    cite3 = cite2.split('.')
     #print cite3
     #print len(cite3)
     try:
@@ -85,7 +83,8 @@ for cite in citations:
         journPub = cite3[3]
 
         # Create string to be searched in Google Scholar
-        toSearch = authorName + ' ' + pubYear + ' ' + workTitle
+        #toSearch = authorName + ' ' + pubYear + ' ' + workTitle
+        toSearch = cite2
 
         # Write to CSV
         csvwriter.writerow([authorName, pubYear, workTitle, journPub, toSearch])
