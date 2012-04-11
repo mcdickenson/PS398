@@ -118,35 +118,43 @@ cj.load('cookies.txt')
 
 # http://code.activestate.com/recipes/523047-search-google-scholar/
 # TODO: https://ubuntuincident.wordpress.com/2011/09/11/download-cookie-protected-pages-with-python-using-cookielib-part-2/
-headers = {"User-Agent": "Mozilla/Mozilla/4.0 (compatible; MSIE 5.5; Mac OS X)"}
-request = urllib2.Request(domainFull, None, headers)
+headers = {'User-Agent': 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)'} # fake
 cookie_handler= urllib2.HTTPCookieProcessor(cj)
 redirect_handler= urllib2.HTTPRedirectHandler()
 opener = urllib2.build_opener(redirect_handler,cookie_handler)
-response = opener.open(request)
-pageSource = response.read()
-print pageSource
+urllib2.install_opener(opener)
+request = urllib2.Request(domainFull, None, headers) # may change None to "GET"
+#response = opener.open(request)
+handle=urllib2.urlopen(request)
+pageSource = handle.read()
+if 'related:' in pageSource:
+    print 'true'
+else:
+    print 'false'
 
-## if response.status == 200:
-##     pageSource = response.read()
-##     pageSource = pageSource.decode('ascii','ignore')
+pageSource = pageSource.decode('ascii','ignore')
 
-##     citesoup = BeautifulSoup(pageSource)
-##     #print citesoup
-##     #citesoup.prettify()
-##     records = citesoup.findAll('div', {'class': 'gs_fl'})
-##     print len(records)
-                               
-##     for record in records:
-##         print record
-##         break
-
-## else:
-##     print "ERROR: ", resp.status, respon.reason
+# break into separate citations
+citesoup = BeautifulSoup(pageSource)
+citesoup.prettify()
+records = citesoup.findAll('div', {'class': 'gs_fl'})
 
 
-# TODO: read http://www.r-bloggers.com/web-scraping-google-scholar-part-2-complete-success/
-# TODO: and https://bitbucket.org/fccoelho/scholarscrap/src/b5020c74d233/recipe-523047-1.py
+#print records[0] # TODO: make this less naive; only takes first record
+# take first citation
+rec = str(records[0])
+print rec
+# identify the part we need
+desiredID = re.split('q=related:', rec, 1)
+desiredID = str(desiredID[1])
+desiredID = desiredID[0:11] # 12 character Google Scholar unique ID
+print desiredID
+
+
+
+## SCRATCH:     
+# http://www.r-bloggers.com/web-scraping-google-scholar-part-2-complete-success/
+# https://bitbucket.org/fccoelho/scholarscrap/src/b5020c74d233/recipe-523047-1.py
 # http://bmb-common.blogspot.com/2011/11/google-scholar-still-sucks.html
 # http://www.cs.ox.ac.uk/people/stephen.kell/goodies/research/bibtex/
 # http://asociologist.com/2012/01/02/google-scholar-scraper/
@@ -156,5 +164,4 @@ print pageSource
 #browserName = "Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en) AppleWebKit/312.1 (KHTML, like Gecko) Safari/312"
 # True info:
 #  Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:11.0) Gecko/20100101 Firefox/11.0
-# Another false version:
-# 'Mozilla/5.0(Macintosh; u; Mac OS X 10.6.1;en-US'
+
