@@ -148,24 +148,25 @@ response = opener.open(request)
 
 
 #print "RESPONSE CODE: ", response.status
-print response.__doc__
+pageSource = response.read()
+print pageSource
 
-if response.status == 200:
-    pageSource = response.read()
-    pageSource = pageSource.decode('ascii','ignore')
+## if response.status == 200:
+##     pageSource = response.read()
+##     pageSource = pageSource.decode('ascii','ignore')
 
-    citesoup = BeautifulSoup(pageSource)
-    #print citesoup
-    #citesoup.prettify()
-    records = citesoup.findAll('div', {'class': 'gs_fl'})
-    print len(records)
+##     citesoup = BeautifulSoup(pageSource)
+##     #print citesoup
+##     #citesoup.prettify()
+##     records = citesoup.findAll('div', {'class': 'gs_fl'})
+##     print len(records)
                                
-    for record in records:
-        print record
-        break
+##     for record in records:
+##         print record
+##         break
 
-else:
-    print "ERROR: ", resp.status, respon.reason
+## else:
+##     print "ERROR: ", resp.status, respon.reason
 
 
 # TODO: read http://www.r-bloggers.com/web-scraping-google-scholar-part-2-complete-success/
