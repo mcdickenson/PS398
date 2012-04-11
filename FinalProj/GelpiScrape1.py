@@ -105,17 +105,7 @@ def get_citations_from_web(page_to_get):
 searchStrings = get_citations_from_web(page_to_scrape)
 
 
-def id_finder(search_string): #Search for citation id's in Google Scholar 
-    # set up domain to search
-    domainStart = "http://scholar.google.com/scholar?q="
-    domainMiddle = search_string.replace('\r', '') # TEST CASE
-    domainMiddle = domainMiddle.lstrip()
-    domainMiddle = domainMiddle.replace(' ', '+')
-    domainEnd = '&hl=en&btnG=Search&as_sdt=1%2C34&as_sdtp=on'
-    domainCat = (str(domainStart), str(domainMiddle), str(domainEnd))
-    domainFull = ''.join(domainCat)
-    baseurl = '/scholar?q=' + domainMiddle + domainEnd
-
+def get_page_source(url_to_get):
     cj = cookielib.MozillaCookieJar()
     cj.load('cookies.txt')
 
@@ -126,11 +116,25 @@ def id_finder(search_string): #Search for citation id's in Google Scholar
     redirect_handler= urllib2.HTTPRedirectHandler()
     opener = urllib2.build_opener(redirect_handler,cookie_handler)
     urllib2.install_opener(opener)
-    request = urllib2.Request(domainFull, None, headers) # may change None to "GET"
-                                                         #response = opener.open(request)
+    request = urllib2.Request(url_to_get, None, headers) 
     handle=urllib2.urlopen(request)
     pageSource = handle.read()
     pageSource = pageSource.decode('ascii','ignore')
+    time.sleep(1)
+    return pageSource
+    
+
+def id_finder(search_string): #Search for citation id's in Google Scholar 
+    # set up domain to search
+    domainStart = "http://scholar.google.com/scholar?q="
+    domainMiddle = search_string.replace('\r', '') # TEST CASE
+    domainMiddle = domainMiddle.lstrip()
+    domainMiddle = domainMiddle.replace(' ', '+')
+    domainEnd = '&hl=en&btnG=Search&as_sdt=1%2C34&as_sdtp=on'
+    domainCat = (str(domainStart), str(domainMiddle), str(domainEnd))
+    domainFull = ''.join(domainCat)
+
+    pageSource = get_page_source(domainFull)
 
     # break into separate citations
     citesoup = BeautifulSoup(pageSource)
@@ -156,6 +160,13 @@ def bib_getter(uniqID):
     domainEnd = ":scholar.google.com/&output=citation&hl=en&as_sdt=0,34&ct=citation&cd=0"
     domainCat = (str(domainStart), str(domainMiddle), str(domainEnd))
     domainFull = ''.join(domainCat)
+    print domainFull
+
+    pageSource = get_page_source(domainFull)
+    print pageSource
+
+idWant2 = 'UaAV4gWcL9c'
+bib_getter(idWant2)
 
 
 
