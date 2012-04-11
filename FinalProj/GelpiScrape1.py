@@ -5,7 +5,7 @@ Matt Dickenson """
 # /Users/mcdickenson/github/PS398/FinalProj
 
 # Which libraries do we need? 
-import urllib2, urllib, datetime, re, string, time, csv
+import urllib2, urllib, datetime, re, string, time, csv, httplib
 from xml.sax.saxutils import unescape
 import nltk
 from nltk import util
@@ -40,7 +40,6 @@ mainsoup.prettify()
 
 # Search for citations
 paragraphs = mainsoup.findAll("p",'MsoNormal')
-print len(paragraphs)
 
 citations = []
 # Loop thru, get only paragraphs with links (a heuristic for cites)
@@ -57,17 +56,19 @@ numErrors = 0
 numSuccessful = 0
 numTotal = len(citations)
 
+# Create list of search strings
+searchStrings = []
+
 # Loop thru actual citations, get info
 for cite in citations:
     # Clean cite of HTML tags and '&quot'
     cite2 = clean_html(str(cite))
     cite2 = cite2.replace('&quot;', '') # TODO: use this as information
     cite3 = cite2.split('.')
-    #print cite3
+    # Create string to be searched in Google Scholar
+    shortCite = cite2
     #print len(cite3)
     try:
-        
-        
         # Get names of author(s)
         authorName = cite3[0]
 
@@ -82,19 +83,81 @@ for cite in citations:
         # Get title of journal or publisher
         journPub = cite3[3]
 
-        # Create string to be searched in Google Scholar
-        #toSearch = authorName + ' ' + pubYear + ' ' + workTitle
-        toSearch = cite2
-
-        # Write to CSV
-        csvwriter.writerow([authorName, pubYear, workTitle, journPub, toSearch])
-
         # Update progress
         numSuccessful += 1
-        numChecked = numErrors + numSuccessful
-        print "Completed %s of %s. %s successful, %s failures." % (numChecked, numTotal, numSuccessful, numErrors)
+        #numChecked = numErrors + numSuccessful
+        #print "Completed %s of %s. %s successful, %s failures." % (numChecked, numTotal, numSuccessful, numErrors)
+
+        # Refresh shortCite
+        shortCite = authorName + ' ' + pubYear + ' ' + workTitle
+        searchStrings.append(shortCite)
+
+        # Write to CSV
+        csvwriter.writerow([authorName, pubYear, workTitle, journPub, shortCite])
 
     except:
         numErrors += 1
-        numChecked = numErrors + numSuccessful
-        print "Completed %s of %s. %s successful, %s failures." % (numChecked, numTotal, numSuccessful, numErrors)
+        #numChecked = numErrors + numSuccessful
+        searchStrings.append(shortCite)
+        #print "Failed on %s of %s. %s successful, %s failures." % (numChecked, numTotal, numSuccessful, numErrors)
+        
+# Report success/failure rate
+numChecked = numErrors + numSuccessful
+print "Checked %s of %s pages. %s successful, %s failures." % (numChecked, numTotal, numSuccessful, numErrors)
+
+
+# TODO: make this a loop
+#Search for citations in Google Scholar
+# set up domain to search
+domainStart = "http://scholar.google.com/scholar?q="
+domainMiddle = searchStrings[0].replace('\r', '')
+domainMiddle = domainMiddle.lstrip()
+domainMiddle = domainMiddle.replace(' ', '+')
+domainEnd = '&hl=en&btnG=Search&as_sdt=1%2C34&as_sdtp=on'
+domainCat = (str(domainStart), str(domainMiddle), str(domainEnd))
+domainFull = ''.join(domainCat)
+baseurl = '/scholar?q=' + domainMiddle + domainEnd
+
+#citepage = urllib2.urlopen(domainFull)
+conn = httplib.HTTPConnection("scholar.google.com")
+headers = {"User-Agent": "Mozilla/Mozilla/4.0 (compatible; MSIE 5.5; Mac OS X)"}
+conn.putrequest("GET", baseurl)
+conn.putheader('Connection','Keep-Alive')
+conn.putheader('User-Agent','Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:11.0) Gecko/20100101 Firefox/11.0')
+conn.endheaders()
+
+# Optional: trick Google into thinking I'm using Safari
+#browserName = "Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en) AppleWebKit/312.1 (KHTML, like Gecko) Safari/312"
+# True info:
+#  Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:11.0) Gecko/20100101 Firefox/11.0
+# Another false version:
+# 'Mozilla/5.0(Macintosh; u; Mac OS X 10.6.1;en-US'
+
+response = conn.getresponse()
+
+print "RESPONSE CODE: ", response.status
+
+if response.status == 200:
+    pageSource = response.read()
+    pageSource = pageSource.decode('ascii','ignore')
+
+    citesoup = BeautifulSoup(pageSource)
+    #print citesoup
+    #citesoup.prettify()
+    records = citesoup.findAll('div', {'class': 'gs_fl'})
+    print len(records)
+                               
+    for record in records:
+        print record
+        break
+
+else:
+    print "ERROR: ", resp.status, respon.reason
+
+
+# TODO: read http://www.r-bloggers.com/web-scraping-google-scholar-part-2-complete-success/
+# TODO: and https://bitbucket.org/fccoelho/scholarscrap/src/b5020c74d233/recipe-523047-1.py
+# http://bmb-common.blogspot.com/2011/11/google-scholar-still-sucks.html
+# http://www.cs.ox.ac.uk/people/stephen.kell/goodies/research/bibtex/
+# http://asociologist.com/2012/01/02/google-scholar-scraper/
+# On changing cookies: http://code.activestate.com/recipes/523047-search-google-scholar/
