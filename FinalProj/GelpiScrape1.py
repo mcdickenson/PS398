@@ -2,10 +2,11 @@
 Final Project Draft
 Spring 2012, Duke University
 Matt Dickenson """
-# /Users/mcdickenson/github/PS398/FinalProj
+# /Users/mcdickenson/github/PS398/FinalProj/
 
 # Which libraries do we need? 
-import urllib2, urllib, datetime, re, string, time, csv, httplib, sqlite3, cookielib
+import urllib2, urllib, datetime, re, string, time, csv, httplib, sqlite3, cookielib, random
+from urllib import FancyURLopener
 from xml.sax.saxutils import unescape
 import nltk
 from nltk import util
@@ -111,16 +112,39 @@ def get_page_source(url_to_get):
 
     # http://code.activestate.com/recipes/523047-search-google-scholar/
     # https://ubuntuincident.wordpress.com/2011/09/11/download-cookie-protected-pages-with-python-using-cookielib-part-2/
-    headers = {'User-Agent': 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)'} # fake
-    cookie_handler= urllib2.HTTPCookieProcessor(cj)
-    redirect_handler= urllib2.HTTPRedirectHandler()
-    opener = urllib2.build_opener(redirect_handler,cookie_handler)
-    urllib2.install_opener(opener)
-    request = urllib2.Request(url_to_get, None, headers) 
-    handle=urllib2.urlopen(request)
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows; U; Windows NT 5.1; it; rv:1.8.1.11) Gecko/20071127 Firefox/2.0.0.11'} # fake
+    # Optional: trick Google into thinking I'm using Safari
+    # browserName = "Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en) AppleWebKit/312.1 (KHTML, like Gecko) Safari/312"
+    # Or Windows NT
+    # 'User-Agent': 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)'
+    # True info:
+    #  Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:11.0) Gecko/20100101 Firefox/11.0
+    ## cookie_handler= urllib2.HTTPCookieProcessor(cj)
+    ## redirect_handler= urllib2.HTTPRedirectHandler()
+    ## opener = urllib2.build_opener(redirect_handler,cookie_handler)
+    ## urllib2.install_opener(opener)
+    #request = urllib2.Request(url_to_get, None, headers) # or GET
+    #handle=urllib2.urlopen(request)
+
+    user_agents = [
+    'Mozilla/5.0 (Windows; U; Windows NT 5.1; it; rv:1.8.1.11) Gecko/20071127 Firefox/2.0.0.11',
+    'Opera/9.25 (Windows NT 5.1; U; en)',
+    'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727)',
+    'Mozilla/5.0 (compatible; Konqueror/3.5; Linux) KHTML/3.5.5 (like Gecko) (Kubuntu)',
+    'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.0.12) Gecko/20070731 Ubuntu/dapper-security Firefox/1.5.0.12',
+    'Lynx/2.8.5rel.1 libwww-FM/2.14 SSL-MM/1.4.1 GNUTLS/1.2.9',
+    'Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en) AppleWebKit/312.1 (KHTML, like Gecko) Safari/312',
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:11.0) Gecko/20100101 Firefox/11.0'
+    ]
+
+    class MyOpener(FancyURLopener):
+        version = random.choice(user_agents)
+        
+    myopener = MyOpener()
+    handle=myopener.open(url_to_get)
     pageSource = handle.read()
     pageSource = pageSource.decode('ascii','ignore')
-    time.sleep(1)
+    time.sleep(random.uniform(1,3)) # wait between 1 and 3 seconds
     return pageSource
     
 
@@ -130,7 +154,9 @@ def id_finder(search_string): #Search for citation id's in Google Scholar
     domainMiddle = search_string.replace('\r', '') # TEST CASE
     domainMiddle = domainMiddle.lstrip()
     domainMiddle = domainMiddle.replace(' ', '+')
-    domainEnd = '&hl=en&btnG=Search&as_sdt=1%2C34&as_sdtp=on'
+    #domainEnd = '&hl=en&btnG=Search&as_sdt=1%2C34&as_sdtp=on'
+    # try also: 
+    domainEnd = "scholar.google.com/&output=citation&hl=en&as_sdt=0,34&ct=citation&cd=0"
     domainCat = (str(domainStart), str(domainMiddle), str(domainEnd))
     domainFull = ''.join(domainCat)
 
@@ -151,13 +177,14 @@ def id_finder(search_string): #Search for citation id's in Google Scholar
     desiredID = desiredID[0:11] # 12 character Google Scholar unique ID
     return desiredID
     
-idWant = id_finder(searchStrings[0])
-print idWant
+#idWant = id_finder(searchStrings[0])
+#print idWant
 
+# TODO fix this function
 def bib_getter(uniqID):
     domainStart = "http://scholar.google.com/scholar.bib?q=info:"
     domainMiddle = str(uniqID)
-    domainEnd = ":scholar.google.com/&output=citation&hl=en&as_sdt=0,34&ct=citation&cd=0"
+    domainEnd = ":scholar.google.com/scholar.bib?q=info:kirQZFDu-MYJ:scholar.google.com/&output=citation&hl=en&as_sdt=0,34&ct=citation&cd=0"
     domainCat = (str(domainStart), str(domainMiddle), str(domainEnd))
     domainFull = ''.join(domainCat)
     print domainFull
@@ -177,9 +204,4 @@ bib_getter(idWant2)
 # http://www.cs.ox.ac.uk/people/stephen.kell/goodies/research/bibtex/
 # http://asociologist.com/2012/01/02/google-scholar-scraper/
 # On changing cookies: http://code.activestate.com/recipes/523047-search-google-scholar/
-
-    # Optional: trick Google into thinking I'm using Safari
-#browserName = "Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en) AppleWebKit/312.1 (KHTML, like Gecko) Safari/312"
-# True info:
-#  Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:11.0) Gecko/20100101 Firefox/11.0
 
