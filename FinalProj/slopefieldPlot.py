@@ -1,4 +1,4 @@
-# settings#!usr/local/bin/python
+#!usr/local/bin/python
 # /Users/mcdickenson/github/PS398/FinalProj/
 
 # load packages
@@ -36,11 +36,9 @@ def slopefieldPlotter(xMin, xMax, xInterval, yMin, yMax, yInterval, dXy, dYx, xL
     # save file
     pngSave(filename)
 
-
 def pngSave(name):
     pngName = str(name) + '.png'
     pyplot.savefig(pngName)
-
 
 # draw curve (line) taking initial value
 def drawVector(dXx, dXy, dYx, dYy, X0, Y0, numsteps, stepsize=0.01, colorVar='b'): # currently implemented for implicit diffEq's
@@ -61,7 +59,6 @@ def drawVector(dXx, dXy, dYx, dYy, X0, Y0, numsteps, stepsize=0.01, colorVar='b'
         yCoords.append(y_tk)
 
     pyplot.plot(xCoords, yCoords, color=colorVar)
-
 
 #TODO: add options for whether to print every arrow, every third arrow, etc
 #TODO: add color options
@@ -85,3 +82,4 @@ pngSave('reinfTester3')
 drawVector(0, -0.05, -0.01, 0, 5.1, 0.9, 200, stepsize=0.1, colorVar='b')
 pngSave('reinfTester4')
 
+# TODO: for reinforcements, have an option to return last xcoord, ycoord
