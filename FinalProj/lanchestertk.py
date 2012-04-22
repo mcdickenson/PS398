@@ -8,6 +8,7 @@ import locale
 locale.setlocale(locale.LC_ALL, "")
 
 periodLabels = ['10', '20', '30', '40', '50', 'Subtotal', 'Total']
+# TODO: add csv writing functionality to record player actions
 
 
 class LanchesterSquares:
@@ -25,7 +26,7 @@ class LanchesterSquares:
         self.investment = [0, 0, 0]
         self.totalTroops = [0, 0, 0]
         self.allowEnter = False
-        self.allowSubmit = False
+        self.allowSimulate = False
 
     def makeLayout(self): # makes basic layout, with optional title: 
         self.mainLabel = Label(self.myContainer1, font=('Helvetica',24), text = 'Lanchester Squares', fg='blue')
