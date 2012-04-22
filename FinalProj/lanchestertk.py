@@ -5,7 +5,7 @@
 # load packages
 from Tkinter import *
 
-periodLabels = ['1', '2', '3', '4', '5', 'Total']
+periodLabels = ['10', '20', '30', '40', '50', 'Total']
 
 class LanchesterSquares:
     def __init__(self, myParent):   # this is where I initialize the game
@@ -16,6 +16,7 @@ class LanchesterSquares:
 
     def start(self):
         self.currentTextOut = "Welcome to the Lanchester Squares Game"
+        self.currentPlayer = 1
 
     def makeLayout(self): # makes basic layout, with optional title: 
         self.mainLabel = Label(self.myContainer1, font=('Helvetica',24), text = 'Lanchester Squares', fg='blue')
@@ -31,9 +32,6 @@ class LanchesterSquares:
 
         self.investLabel = Label(self.myContainer1, font=('Helvetica',14), text = 'Investment $', fg='black')
         self.investLabel.grid(row=3, column=7, sticky=N)
-
-        self.turnLabel = Label(self.myContainer1, font=('Helvetica',18), text = "It is __'s turn", fg='black')
-        self.turnLabel.grid(row=20, column=6, columnspan=3, sticky=W)
 
         self.blankLabel = Label(self.myContainer1, text='      ') 
         #self.blankLabel.grid(row=1, column=4) # a blank column
@@ -67,7 +65,14 @@ class LanchesterSquares:
         self.photoLabel = Label(self.myContainer1, image=startPhoto)
         self.photoLabel.image = startPhoto
         self.photoLabel.grid(row=2, column=1, rowspan=20,columnspan=3, sticky=W)
-        
+
+        # set starting text
+        self.makeText()
+
+    def makeText(self):
+        whoseTurn = "It is player " + str(self.currentPlayer) +"'s turn."
+        self.turnLabel = Label(self.myContainer1, font=('Helvetica',18), text = whoseTurn, fg='black')
+        self.turnLabel.grid(row=20, column=6, columnspan=3, sticky=W)
 
     def pressSimulate(self):
         simPhoto = PhotoImage(file='lanchTester2.gif')

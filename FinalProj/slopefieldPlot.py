@@ -10,7 +10,6 @@ from numpy import arange, sin, pi
 
 def slopefieldPlotter(xMin, xMax, xInterval, yMin, yMax, yInterval, dXy, dYx, xLab='', yLab='', mainLab='', drawAxes=True, filename='default'):
     # set params
-    global X, Y
     X,Y = meshgrid( arange(xMin,xMax,xInterval),arange(yMin,yMax,yInterval) )
     dX = dXy*Y
     dY = dYx*X
