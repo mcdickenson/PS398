@@ -1,0 +1,68 @@
+\documentclass{beamer}
+% \usetheme{Madrid} % My favorite!
+% \usetheme{Boadilla} % Pretty neat, soft color.
+%\usetheme{default}
+ \usetheme{Warsaw}
+%\usetheme{Bergen} % This template has nagivation on the left
+%\usetheme{Frankfurt} % Similar to the default 
+%with an extra region at the top.
+% \usecolortheme{seahorse} % Simple and clean template
+% \usetheme{Darmstadt} % not so good
+% Uncomment the following line if you want %
+% page numbers and using Warsaw theme%
+ \setbeamertemplate{footline}[page number]
+%\setbeamercovered{transparent}
+%\usecolortheme{albatross}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{seagull}
+%\usecolortheme{wolverine}
+\usecolortheme{beaver}
+\setbeamercovered{invisible}
+% To remove the navigation symbols from 
+% the bottom of slides%
+\setbeamertemplate{navigation symbols}{} 
+%
+\usepackage{graphicx}
+\usepackage{coordsys} % for number lines
+%\usepackage{bm}         % For typesetting bold math (not \mathbold)
+%\logo{\includegraphics[height=0.6cm]{yourlogo.eps}}
+%
+\title[Python Presentation]{Lanchester's
+  Square Law}
+\author{Matt Dickenson}
+\institute[Duke University]
+{
+Duke University \\
+\medskip
+{\emph{mcd31@duke.edu}}
+}
+\date{April 30, 2012}
+% \today will show current date. 
+% Alternatively, you can specify a date.
+%
+\begin{document}
+%
+\begin{frame}
+\titlepage
+\end{frame}
+%
+\begin{frame}
+\frametitle{Project Details}
+
+Theory: Lanchester (1914) Square Laws for Modern Combat \\
+\pause
+Math: $ {dy \over dt} = -\beta x$, ${dx \over dt} = -\alpha x$ \\
+\pause
+Back-end: Plot differential equations (slope fields) \\
+\pause
+Front-end: Two-player game using GUI \\
+
+\end{frame}
+%
+
+
+% End of slides
+\end{document} 
