@@ -3,7 +3,11 @@
 # The Lanchester Squares Game
 
 # load packages
+from PIL import Image as pilImage
+from PIL import ImageTk as pilImageTk
+#from PIL import Image, ImageTk # as pilImage, ImageTk as pilImageTk
 from Tkinter import *
+
 import locale
 locale.setlocale(locale.LC_ALL, "")
 
@@ -72,7 +76,7 @@ class LanchesterSquares:
         self.enterButton.grid(row=23, column=6)
 
         # make starting photo
-        startPhoto = PhotoImage(file='lanchester1.gif')
+        startPhoto = PhotoImage(file='reinfTester.gif')
         self.photoLabel = Label(self.myContainer1, image=startPhoto)
         self.photoLabel.image = startPhoto
         self.photoLabel.grid(row=2, column=1, rowspan=20,columnspan=3, sticky=W)

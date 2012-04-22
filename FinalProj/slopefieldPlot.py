@@ -82,3 +82,7 @@ drawVector(0, -0.05, -0.01, 0, 5.1, 0.9, 200, stepsize=0.1, colorVar='b')
 pngSave('reinfTester4')
 
 # TODO: for reinforcements, have an option to return last xcoord, ycoord
+
+# convert png output to gif (for use in Tkinter)
+import pngToGif
+pngToGif.pngToGif('reinfTester4')
