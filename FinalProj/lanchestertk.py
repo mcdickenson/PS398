@@ -4,8 +4,10 @@
 
 # load packages
 from Tkinter import *
+import locale
+locale.setlocale(locale.LC_ALL, "")
 
-periodLabels = ['10', '20', '30', '40', '50', 'Total']
+periodLabels = ['10', '20', '30', '40', '50', 'Subtotal', 'Total']
 
 
 class LanchesterSquares:
@@ -19,6 +21,11 @@ class LanchesterSquares:
         self.currentTextOut = "Welcome to the Lanchester Squares Game"
         self.currentPlayer = 1
         self.playerNames = ['', '', '']
+        self.troopDeployments = ['', [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]
+        self.investment = [0, 0, 0]
+        self.totalTroops = [0, 0, 0]
+        self.allowEnter = False
+        self.allowSubmit = False
 
     def makeLayout(self): # makes basic layout, with optional title: 
         self.mainLabel = Label(self.myContainer1, font=('Helvetica',24), text = 'Lanchester Squares', fg='blue')
@@ -42,7 +49,7 @@ class LanchesterSquares:
 
         # make time period labels
         self.labelDict = {}
-        for rowNum in range(0,6):
+        for rowNum in range(0,7):
             self.labelDict[rowNum] = Label(self.myContainer1, text=periodLabels[rowNum])
             self.labelDict[rowNum].grid(row=rowNum+14, column=5, sticky=N)
 
@@ -60,7 +67,7 @@ class LanchesterSquares:
         self.simulateButton = Button(self.myContainer1, text='Simulate', width=9, height=1, command=lambda: self.pressSimulate())
         self.simulateButton.grid(row=23, column=2)
 
-        self.enterButton = Button(self.myContainer1, text='Enter', width=6, height=1, command=lambda: self.pressEnter())
+        self.enterButton = Button(self.myContainer1, text='Enter', width=6, height=1, command=lambda: self.enterStrategy())
         self.enterButton.grid(row=23, column=6)
 
         # make starting photo
@@ -84,6 +91,7 @@ class LanchesterSquares:
         elif whatToDo == 'getStrategy':
             self.turnLabel.grid_forget()
             textOut = self.playerNames[self.currentPlayer] + ", enter your strategy."
+            self.allowEnter = True
             
         else: 
             textOut = "It is player " + str(self.currentPlayer) +"'s turn."
@@ -92,17 +100,47 @@ class LanchesterSquares:
         self.turnLabel.grid(row=3, column=5, columnspan=3, sticky=N)
 
     def pressSimulate(self):
-        simPhoto = PhotoImage(file='lanchTester2.gif')
-        self.photoLabel = Label(self.myContainer1, image=simPhoto)
-        self.photoLabel.image = simPhoto
-        self.photoLabel.grid(row=2, column=1, rowspan=20,columnspan=3, sticky=W)
+        if self.allowSimulate:
+            simPhoto = PhotoImage(file='lanchTester2.gif')
+            self.photoLabel = Label(self.myContainer1, image=simPhoto)
+            self.photoLabel.image = simPhoto
+            self.photoLabel.grid(row=2, column=1, rowspan=20,columnspan=3, sticky=W)
+        else:
+            pass
 
         #TODO: find a standard resolution for files to include
         #TODO: create a blank image of that size - axes limits should be maximum forces allowed
         #TODO: work on importing png files http://effbot.org/tkinterbook/photoimage.htm, http://www.pythonware.com/library/pil/handbook/image.htm
 
-    def pressEnter(self):
-        pass
+    def enterStrategy(self): # TODO: make this only accept numbers greater than 0 and with total less than constraints
+                             # TODO: and make sure strings aren't passed
+        if self.allowEnter:
+            for period in range(0,5): # get troop counts from input boxes
+                temp = self.troopInputDict[period].get()
+                self.troopDeployments[self.currentPlayer][period] = float(temp)
+            self.totalTroops[self.currentPlayer] = sum(self.troopDeployments[self.currentPlayer])
+
+            # get player's $ invested
+            self.investment[self.currentPlayer] = float(self.investInputDict[0].get())
+            tempInvestment = self.investment[self.currentPlayer]*1000000
+            tempInvestment = "$" + locale.format('%0.2f', tempInvestment, True)
+
+            # calculate grand total spending
+            grandTotal = self.totalTroops[self.currentPlayer] * 20000 + self.investment[self.currentPlayer] * 1000000
+            grandTotal = "$" + locale.format('%0.2f', grandTotal, True)
+            
+            # display player's total number of troops and investment
+            self.troopLabel = Label(self.myContainer1, font=('Helvetica',14), text = str(self.totalTroops[self.currentPlayer]), fg='black')
+            self.troopLabel.grid(row=19, column=6, sticky=N)
+            
+            self.investLabel = Label(self.myContainer1, font=('Helvetica',14), text = tempInvestment, fg='black')
+            self.investLabel.grid(row=19, column=7, sticky=N)
+
+            self.grandTotalLabel = Label(self.myContainer1, font=('Helvetica',14), text = grandTotal, fg='black')
+            self.grandTotalLabel.grid(row=20, column=7, sticky=N)
+            
+        else:
+            pass
 
     def enterName(self):
         self.playerNames[self.currentPlayer] = self.nameBox.get()[0:12] # maximum name length = 12
