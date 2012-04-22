@@ -3,9 +3,6 @@
 # The Lanchester Squares Game
 
 # load packages
-from PIL import Image as pilImage
-from PIL import ImageTk as pilImageTk
-#from PIL import Image, ImageTk # as pilImage, ImageTk as pilImageTk
 from Tkinter import *
 
 import locale
@@ -21,6 +18,7 @@ class LanchesterSquares:
         self.myContainer1.grid()
         self.start()                # sets all starting variables
         self.makeLayout()           # makes the frame layout
+        self.makeText('getPlayerName') # set starting text
 
     def start(self):
         self.currentTextOut = "Welcome to the Lanchester Squares Game"
@@ -30,10 +28,10 @@ class LanchesterSquares:
         self.investment = [0, 0, 0]
         self.totalTroops = [0, 0, 0]
         self.allowEnter = False
-        self.allowSimulate = True
+        self.allowSimulate = False
         self.maxResource = 1000000000 # maximum resources, in dollars
 
-    def makeLayout(self): # makes basic layout, with optional title: 
+    def makeLayout(self): # makes basic layout, with optional title
         self.mainLabel = Label(self.myContainer1, font=('Helvetica',24), text = 'Lanchester Squares', fg='blue')
         self.mainLabel.grid(row=0, column=0, columnspan=9, sticky=N+E+S+W)
         # make sure that columnspan is the width of the whole frame
@@ -49,9 +47,7 @@ class LanchesterSquares:
         self.investLabel.grid(row=13, column=7, sticky=N+E+S+W)
 
         self.blankLabel = Label(self.myContainer1, text='      ') 
-        #self.blankLabel.grid(row=1, column=4) # a blank column
         self.blankLabel.grid(row=1, column=8)
-        #self.blankLabel.grid(row=1, columnspan=8, sticky=N+E+S+W) # a blank row
 
         # make time period labels
         self.labelDict = {}
@@ -81,9 +77,6 @@ class LanchesterSquares:
         self.photoLabel = Label(self.myContainer1, image=startPhoto)
         self.photoLabel.image = startPhoto
         self.photoLabel.grid(row=2, column=1, rowspan=20,columnspan=3, sticky=W+E)
-
-        # set starting text
-        self.makeText('getPlayerName')
 
     def makeText(self, whatToDo):
         if whatToDo == 'getPlayerName':
@@ -116,9 +109,8 @@ class LanchesterSquares:
 
         #TODO: find a standard resolution for files to include
         #TODO: create a blank image of that size - axes limits should be maximum forces allowed
-        #TODO: work on importing png files http://effbot.org/tkinterbook/photoimage.htm, http://www.pythonware.com/library/pil/handbook/image.htm
 
-    def enterStrategy(self): # TODO: make this only accept numbers greater than 0 and with total less than constraints
+    def enterStrategy(self): # TODO: make this only accept numbers greater than 0
                              # TODO: and make sure strings aren't passed (raises a ValueError)
         if self.allowEnter:
             for period in range(0,5): # get troop counts from input boxes
@@ -139,8 +131,8 @@ class LanchesterSquares:
             self.troopLabel = Label(self.myContainer1, font=('Helvetica',14), text = str(self.totalTroops[self.currentPlayer]), fg='black')
             self.troopLabel.grid(row=19, column=6, sticky=N+E+S+W)
             
-            self.investLabel = Label(self.myContainer1, font=('Helvetica',14), text = tempInvestment, fg='black')
-            self.investLabel.grid(row=19, column=7, sticky=N+E+S+W)
+            self.investmentLabel = Label(self.myContainer1, font=('Helvetica',14), text = tempInvestment, fg='black')
+            self.investmentLabel.grid(row=19, column=7, sticky=N+E+S+W)
 
             self.grandTotalLabel = Label(self.myContainer1, font=('Helvetica',14), text = grandTotalStr, fg='black')
             self.grandTotalLabel.grid(row=20, column=7, sticky=N+E+S+W)
@@ -151,6 +143,18 @@ class LanchesterSquares:
 
             elif grandTotal < self.maxResource*0.9:
                 self.popupError("You are using less than 90 percent of\n your total resources. Please re-enter.")
+
+            elif self.currentPlayer == 1:
+                self.makeLayout() # clear unneeded text
+                self.troopLabel.grid_forget()
+                self.investmentLabel.grid_forget()
+                self.grandTotalLabel.grid_forget()
+                self.currentPlayer = 2
+                self.makeText('getStrategy') # get player 2's strategy
+
+            elif self.currentPlayer == 2:
+                self.allowSimulate = True
+                # TODO: call slopefieldPlotter from here
             
         else:
             pass
@@ -168,7 +172,7 @@ class LanchesterSquares:
 
     def clearError(self):
         self.troopLabel.grid_forget()
-        self.investLabel.grid_forget()
+        self.investmentLabel.grid_forget()
         self.grandTotalLabel.grid_forget()
         self.top.destroy()
         
@@ -191,8 +195,12 @@ class LanchesterSquares:
 
 # initialize the game
 root = Tk()
-root.geometry('1100x700+150+20')    # size and position of the game window; width, height, w.offset, h.offset
+root.geometry('1100x700+150+40')    # size and position of the game window; width, height, w.offset, h.offset
 mygame = LanchesterSquares(root)    # place elements in window
 root.title('Lanchester Squares')    # window title
 root.mainloop()                     # start the game
 
+#TODO: call slopefieldPlot with player inputs, current time as filename
+#TODO: add a different default plot, possibly including instructions
+#TODO: write player input to CSV
+#TODO: make it easy to begin another round
