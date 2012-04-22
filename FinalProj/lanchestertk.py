@@ -30,43 +30,44 @@ class LanchesterSquares:
         self.investment = [0, 0, 0]
         self.totalTroops = [0, 0, 0]
         self.allowEnter = False
-        self.allowSimulate = False
+        self.allowSimulate = True
+        self.maxResource = 1000000000 # maximum resources, in dollars
 
     def makeLayout(self): # makes basic layout, with optional title: 
         self.mainLabel = Label(self.myContainer1, font=('Helvetica',24), text = 'Lanchester Squares', fg='blue')
-        self.mainLabel.grid(row=0, column=0, columnspan=9, sticky=N)
+        self.mainLabel.grid(row=0, column=0, columnspan=9, sticky=N+E+S+W)
         # make sure that columnspan is the width of the whole frame
 
         # make text labels
         self.periodLabel = Label(self.myContainer1, font=('Helvetica',14), text = 'Time Period', fg='black')
-        self.periodLabel.grid(row=13, column=5, sticky=N)
+        self.periodLabel.grid(row=13, column=5, sticky=N+E+S+W)
 
         self.troopsLabel = Label(self.myContainer1, font=('Helvetica',14), text = 'Troops (k)', fg='black')
-        self.troopsLabel.grid(row=13, column=6, sticky=N)
+        self.troopsLabel.grid(row=13, column=6, sticky=N+E+S+W)
 
         self.investLabel = Label(self.myContainer1, font=('Helvetica',14), text = 'Investment ($m)', fg='black')
-        self.investLabel.grid(row=13, column=7, sticky=N)
+        self.investLabel.grid(row=13, column=7, sticky=N+E+S+W)
 
         self.blankLabel = Label(self.myContainer1, text='      ') 
         #self.blankLabel.grid(row=1, column=4) # a blank column
         self.blankLabel.grid(row=1, column=8)
-        #self.blankLabel.grid(row=1, columnspan=8, sticky=N) # a blank row
+        #self.blankLabel.grid(row=1, columnspan=8, sticky=N+E+S+W) # a blank row
 
         # make time period labels
         self.labelDict = {}
         for rowNum in range(0,7):
             self.labelDict[rowNum] = Label(self.myContainer1, text=periodLabels[rowNum])
-            self.labelDict[rowNum].grid(row=rowNum+14, column=5, sticky=N)
+            self.labelDict[rowNum].grid(row=rowNum+14, column=5, sticky=N+E+S+W)
 
         # make entry boxes
         self.troopInputDict = {}
         self.investInputDict = {}
         for rowNum in range(0,5):
             self.troopInputDict[rowNum] = Entry(self.myContainer1, width=4, bg='white', fg='black', font=('Helvetica', 14))
-            self.troopInputDict[rowNum].grid(row=rowNum+14, column=6, sticky=N)
+            self.troopInputDict[rowNum].grid(row=rowNum+14, column=6, sticky=E+W)
         for rowNum in range(0,1):
             self.investInputDict[rowNum] = Entry(self.myContainer1, width=4, bg='white', fg='black', font=('Helvetica', 14))
-            self.investInputDict[rowNum].grid(row=rowNum+14, column=7, sticky=N)
+            self.investInputDict[rowNum].grid(row=rowNum+14, column=7, sticky=E)
             
         # make buttons
         self.simulateButton = Button(self.myContainer1, text='Simulate', width=9, height=1, command=lambda: self.pressSimulate())
@@ -79,7 +80,7 @@ class LanchesterSquares:
         startPhoto = PhotoImage(file='reinfTester.gif')
         self.photoLabel = Label(self.myContainer1, image=startPhoto)
         self.photoLabel.image = startPhoto
-        self.photoLabel.grid(row=2, column=1, rowspan=20,columnspan=3, sticky=W)
+        self.photoLabel.grid(row=2, column=1, rowspan=20,columnspan=3, sticky=W+E)
 
         # set starting text
         self.makeText('getPlayerName')
@@ -89,7 +90,7 @@ class LanchesterSquares:
             textOut = "Player " + str(self.currentPlayer) + ", what is your name?"
             
             self.nameBox = Entry(self.myContainer1, width = 12, bg='white', fg='black', font=('Helvetica', 14))
-            self.nameBox.grid(row=4, column=5, columnspan=2, sticky=N)
+            self.nameBox.grid(row=4, column=5, columnspan=2, sticky=N+E+W)
             self.nameButton = Button(self.myContainer1, text='Set', width=4, height=1, command=lambda: self.enterName())
             self.nameButton.grid(row=4, column=7, sticky=N)
 
@@ -102,7 +103,7 @@ class LanchesterSquares:
             textOut = "It is player " + str(self.currentPlayer) +"'s turn."
             
         self.turnLabel = Label(self.myContainer1, font=('Helvetica',18), text = textOut, fg='black')
-        self.turnLabel.grid(row=3, column=5, columnspan=3, sticky=N)
+        self.turnLabel.grid(row=3, column=5, columnspan=4, sticky=N+S+W)
 
     def pressSimulate(self):
         if self.allowSimulate:
@@ -118,7 +119,7 @@ class LanchesterSquares:
         #TODO: work on importing png files http://effbot.org/tkinterbook/photoimage.htm, http://www.pythonware.com/library/pil/handbook/image.htm
 
     def enterStrategy(self): # TODO: make this only accept numbers greater than 0 and with total less than constraints
-                             # TODO: and make sure strings aren't passed
+                             # TODO: and make sure strings aren't passed (raises a ValueError)
         if self.allowEnter:
             for period in range(0,5): # get troop counts from input boxes
                 temp = self.troopInputDict[period].get()
@@ -131,22 +132,46 @@ class LanchesterSquares:
             tempInvestment = "$" + locale.format('%0.2f', tempInvestment, True)
 
             # calculate grand total spending
-            grandTotal = self.totalTroops[self.currentPlayer] * 20000 + self.investment[self.currentPlayer] * 1000000
-            grandTotal = "$" + locale.format('%0.2f', grandTotal, True)
+            grandTotal = self.totalTroops[self.currentPlayer] * 20000000 + self.investment[self.currentPlayer] * 1000000
+            grandTotalStr = "$" + locale.format('%0.2f', grandTotal, True)
             
             # display player's total number of troops and investment
             self.troopLabel = Label(self.myContainer1, font=('Helvetica',14), text = str(self.totalTroops[self.currentPlayer]), fg='black')
-            self.troopLabel.grid(row=19, column=6, sticky=N)
+            self.troopLabel.grid(row=19, column=6, sticky=N+E+S+W)
             
             self.investLabel = Label(self.myContainer1, font=('Helvetica',14), text = tempInvestment, fg='black')
-            self.investLabel.grid(row=19, column=7, sticky=N)
+            self.investLabel.grid(row=19, column=7, sticky=N+E+S+W)
 
-            self.grandTotalLabel = Label(self.myContainer1, font=('Helvetica',14), text = grandTotal, fg='black')
-            self.grandTotalLabel.grid(row=20, column=7, sticky=N)
+            self.grandTotalLabel = Label(self.myContainer1, font=('Helvetica',14), text = grandTotalStr, fg='black')
+            self.grandTotalLabel.grid(row=20, column=7, sticky=N+E+S+W)
+
+            # check for forbidden input
+            if grandTotal > self.maxResource:
+                self.popupError("You have exceeded your total resources.\nPlease re-enter.")
+
+            elif grandTotal < self.maxResource*0.9:
+                self.popupError("You are using less than 90 percent of\n your total resources. Please re-enter.")
             
         else:
             pass
 
+    def popupError(self, messageText):
+        self.top = Toplevel()
+        self.top.title("Error")
+        self.top.geometry('300x170+830+400')
+
+        msg = Label(self.top, text=messageText)
+        msg.grid(row=1, column=0, columnspan=3, rowspan=3)
+
+        errButton = Button(self.top, text="OK", command=lambda: self.clearError())
+        errButton.grid(row=4, column=1)
+
+    def clearError(self):
+        self.troopLabel.grid_forget()
+        self.investLabel.grid_forget()
+        self.grandTotalLabel.grid_forget()
+        self.top.destroy()
+        
     def enterName(self):
         self.playerNames[self.currentPlayer] = self.nameBox.get()[0:12] # maximum name length = 12
 
