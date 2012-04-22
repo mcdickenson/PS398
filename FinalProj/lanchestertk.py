@@ -7,6 +7,7 @@ from Tkinter import *
 
 periodLabels = ['10', '20', '30', '40', '50', 'Total']
 
+
 class LanchesterSquares:
     def __init__(self, myParent):   # this is where I initialize the game
         self.myContainer1 = Frame(myParent)
@@ -17,6 +18,7 @@ class LanchesterSquares:
     def start(self):
         self.currentTextOut = "Welcome to the Lanchester Squares Game"
         self.currentPlayer = 1
+        self.playerNames = ['', '', '']
 
     def makeLayout(self): # makes basic layout, with optional title: 
         self.mainLabel = Label(self.myContainer1, font=('Helvetica',24), text = 'Lanchester Squares', fg='blue')
@@ -25,13 +27,13 @@ class LanchesterSquares:
 
         # make text labels
         self.periodLabel = Label(self.myContainer1, font=('Helvetica',14), text = 'Time Period', fg='black')
-        self.periodLabel.grid(row=3, column=5, sticky=N)
+        self.periodLabel.grid(row=13, column=5, sticky=N)
 
-        self.troopsLabel = Label(self.myContainer1, font=('Helvetica',14), text = 'Troops', fg='black')
-        self.troopsLabel.grid(row=3, column=6, sticky=N)
+        self.troopsLabel = Label(self.myContainer1, font=('Helvetica',14), text = 'Troops (k)', fg='black')
+        self.troopsLabel.grid(row=13, column=6, sticky=N)
 
-        self.investLabel = Label(self.myContainer1, font=('Helvetica',14), text = 'Investment $', fg='black')
-        self.investLabel.grid(row=3, column=7, sticky=N)
+        self.investLabel = Label(self.myContainer1, font=('Helvetica',14), text = 'Investment ($m)', fg='black')
+        self.investLabel.grid(row=13, column=7, sticky=N)
 
         self.blankLabel = Label(self.myContainer1, text='      ') 
         #self.blankLabel.grid(row=1, column=4) # a blank column
@@ -42,23 +44,24 @@ class LanchesterSquares:
         self.labelDict = {}
         for rowNum in range(0,6):
             self.labelDict[rowNum] = Label(self.myContainer1, text=periodLabels[rowNum])
-            self.labelDict[rowNum].grid(row=rowNum+4, column=5, sticky=N)
+            self.labelDict[rowNum].grid(row=rowNum+14, column=5, sticky=N)
 
         # make entry boxes
         self.troopInputDict = {}
         self.investInputDict = {}
         for rowNum in range(0,5):
             self.troopInputDict[rowNum] = Entry(self.myContainer1, width=4, bg='white', fg='black', font=('Helvetica', 14))
-            self.troopInputDict[rowNum].grid(row=rowNum+4, column=6, sticky=N)
+            self.troopInputDict[rowNum].grid(row=rowNum+14, column=6, sticky=N)
+        for rowNum in range(0,1):
             self.investInputDict[rowNum] = Entry(self.myContainer1, width=4, bg='white', fg='black', font=('Helvetica', 14))
-            self.investInputDict[rowNum].grid(row=rowNum+4, column=7, sticky=N)
+            self.investInputDict[rowNum].grid(row=rowNum+14, column=7, sticky=N)
             
         # make buttons
         self.simulateButton = Button(self.myContainer1, text='Simulate', width=9, height=1, command=lambda: self.pressSimulate())
         self.simulateButton.grid(row=23, column=2)
 
         self.enterButton = Button(self.myContainer1, text='Enter', width=6, height=1, command=lambda: self.pressEnter())
-        self.enterButton.grid(row=10, column=6)
+        self.enterButton.grid(row=23, column=6)
 
         # make starting photo
         startPhoto = PhotoImage(file='lanchester1.gif')
@@ -67,12 +70,26 @@ class LanchesterSquares:
         self.photoLabel.grid(row=2, column=1, rowspan=20,columnspan=3, sticky=W)
 
         # set starting text
-        self.makeText()
+        self.makeText('getPlayerName')
 
-    def makeText(self):
-        whoseTurn = "It is player " + str(self.currentPlayer) +"'s turn."
-        self.turnLabel = Label(self.myContainer1, font=('Helvetica',18), text = whoseTurn, fg='black')
-        self.turnLabel.grid(row=20, column=6, columnspan=3, sticky=W)
+    def makeText(self, whatToDo):
+        if whatToDo == 'getPlayerName':
+            textOut = "Player " + str(self.currentPlayer) + ", what is your name?"
+            
+            self.nameBox = Entry(self.myContainer1, width = 12, bg='white', fg='black', font=('Helvetica', 14))
+            self.nameBox.grid(row=4, column=5, columnspan=2, sticky=N)
+            self.nameButton = Button(self.myContainer1, text='Set', width=4, height=1, command=lambda: self.enterName())
+            self.nameButton.grid(row=4, column=7, sticky=N)
+
+        elif whatToDo == 'getStrategy':
+            self.turnLabel.grid_forget()
+            textOut = self.playerNames[self.currentPlayer] + ", enter your strategy."
+            
+        else: 
+            textOut = "It is player " + str(self.currentPlayer) +"'s turn."
+            
+        self.turnLabel = Label(self.myContainer1, font=('Helvetica',18), text = textOut, fg='black')
+        self.turnLabel.grid(row=3, column=5, columnspan=3, sticky=N)
 
     def pressSimulate(self):
         simPhoto = PhotoImage(file='lanchTester2.gif')
@@ -87,7 +104,21 @@ class LanchesterSquares:
     def pressEnter(self):
         pass
 
-    
+    def enterName(self):
+        self.playerNames[self.currentPlayer] = self.nameBox.get()[0:12] # maximum name length = 12
+
+        if self.currentPlayer == 1:
+            self.currentPlayer = 2
+            self.nameBox.grid_forget()
+            self.nameButton.grid_forget()
+            self.turnLabel.grid_forget()
+            self.makeText('getPlayerName')
+            
+        elif self.currentPlayer == 2:
+            self.currentPlayer = 1
+            self.nameBox.grid_forget()
+            self.nameButton.grid_forget()
+            self.makeText('getStrategy')
          
 
 # initialize the game
