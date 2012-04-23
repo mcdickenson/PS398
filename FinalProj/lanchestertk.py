@@ -218,8 +218,9 @@ class LanchesterSquares:
                         sp.drawArrow(x_temp, x_temp+self.troopDeployments[1][p+1], y_temp, y_temp, headlength=0.05, direction='R', lineColor='r')
                         sp.drawArrow(x_temp+self.troopDeployments[1][p+1], x_temp+self.troopDeployments[1][p+1],
                                      y_temp, y_temp+self.troopDeployments[2][p+1], headlength=0.05, direction='U', lineColor='r')
+                        
+            # battle proceeds until someone is annihilated
             sp.drawFinalVector(0, self.dx, self.dy, 0, x_temp, y_temp, stepsize=.1, colorVar ='g')
-                # TODO: add filename parameter
  
             #save file and convert to gif
             sp.pngSave(outputName)
@@ -232,9 +233,6 @@ class LanchesterSquares:
             self.photoLabel.grid(row=2, column=1, rowspan=20,columnspan=3, sticky=W)
         else:
             pass
-
-        #TODO: find a standard resolution for files to include
-        #TODO: create a blank image of that size - axes limits should be maximum forces allowed
          
 
 # initialize the game
@@ -244,9 +242,12 @@ mygame = LanchesterSquares(root)    # place elements in window
 root.title('Lanchester Squares')    # window title
 root.mainloop()                     # start the game
 
-#TODO: call slopefieldPlot with player inputs, current time as filename
+#Defensive programming/behind-the-scenes functionality
+#TODO: call slopefieldPlot with current time as filename
+#TODO: write player input to CSV, with an id to match the plot
 #TODO: add a different default plot, possibly including instructions
-#TODO: write player input to CSV
 #TODO: disable players changing their input (ie clicking enter) after p2's turn is over
+
+#User-friendliness
 #TODO: popup announcing who won, at what time, and with how many troops
 #TODO: make it easy to begin another round
