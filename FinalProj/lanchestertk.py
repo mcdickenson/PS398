@@ -187,14 +187,14 @@ class LanchesterSquares:
     def pressSimulate(self):
         if self.allowSimulate:
             # create slopefield plot
-            sp.slopefieldPlotter(0, self.troopDeployments[1][1], .2,
-                                             0, self.troopDeployments[2][1], .2, self.dx, self.dy,
+            sp.slopefieldPlotter(0, self.totalTroops[1], .2,
+                                             0, self.totalTroops[2], .2, self.dx, self.dy,
                                              xLab=self.playerNames[1], yLab=self.playerNames[2],
                 mainLab='', drawAxes=True, filename='simTester1')
 
             # draw vectors and arrows
             x_temp, y_temp = 0, 0
-            for p in range(1,6):
+            for p in range(0,5):
                 # vectors
                 sp.drawVector(0, self.dx, self.dy, 0,
                                       x_temp+self.troopDeployments[1][p], y_temp+self.troopDeployments[2][p],
@@ -203,11 +203,13 @@ class LanchesterSquares:
 
                 # arrows
                 x_temp, y_temp = sp.getEndVector(0, self.dx, self.dy, 0,
-                                      self.troopDeployments[1][1], self.troopDeployments[2][1],
+                                      self.troopDeployments[1][p], self.troopDeployments[2][p],
                                       100, 0.1)
-                if p < 5:
-                    sp.drawArrow(x_temp, x_temp+self.troopDeployments[1][p+1], y_temp, y_temp, headlength=0.05, direction='R', lineColor='r')
-                    sp.drawArrow(x_temp, x_temp, y_temp, y_temp+self.troopDeployments[2][p+1], headlength=0.05, direction='U', lineColor='r')
+                if p < 4:
+                    if self.troopDeployments[1][p+1] > 0: # or p
+                        sp.drawArrow(x_temp, x_temp+self.troopDeployments[1][p], y_temp, y_temp, headlength=0.05, direction='R', lineColor='r')
+                    if self.troopDeployments[2][p+1] > 0:
+                        sp.drawArrow(x_temp, x_temp, y_temp, y_temp+self.troopDeployments[2][p], headlength=0.05, direction='U', lineColor='r')
 
             # draw vector for periods 11-20
             #sp.drawVector(0, self.dx, self.dy, 0,
@@ -215,7 +217,7 @@ class LanchesterSquares:
             #                          100, 0.1)
             sp.pngSave('simTester1')
             
-                # TODO: add vectors, filename parameter
+                # TODO: add filename parameter
                 # TODO: make arrows conditional
                 # TODO: maybe make this a for loop
                 # TODO: ***figure out maximum troops on battle at any given point
