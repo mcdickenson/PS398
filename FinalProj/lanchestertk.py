@@ -142,7 +142,7 @@ class LanchesterSquares:
                 self.makeText('getStrategy') # get player 2's strategy
 
             elif self.currentPlayer == 2:
-                self.derivDenominator = 100 * (self.investment[1] + self.investment[2] + 1)
+                self.derivDenominator = 10 * (self.investment[1] + self.investment[2] + 1)
                 self.dy = -self.investment[1] / self.derivDenominator
                 self.dx = -self.investment[2] / self.derivDenominator
                 self.allowSimulate = True
@@ -202,15 +202,18 @@ class LanchesterSquares:
                                       x_temp+self.troopDeployments[1][p], y_temp+self.troopDeployments[2][p],
                                       100, 0.1) # num steps and stepsize
 
-                # arrows
+                # find ending point of vector (as starting point for arrows)
                 x_temp, y_temp = sp.getEndVector(0, self.dx, self.dy, 0,
                                       self.troopDeployments[1][p], self.troopDeployments[2][p],
                                       100, 0.1)
+                # arrows
                 if p < 4:
                     if (self.troopDeployments[1][p+1] > 0) & (self.troopDeployments[2][p+1] <= 0): # or p
                         sp.drawArrow(x_temp, x_temp+self.troopDeployments[1][p+1], y_temp, y_temp, headlength=0.05, direction='R', lineColor='r')
+                        
                     if (self.troopDeployments[2][p+1] > 0) & (self.troopDeployments[1][p+1] <= 0):
                         sp.drawArrow(x_temp, x_temp, y_temp, y_temp+self.troopDeployments[2][p+1], headlength=0.05, direction='U', lineColor='r')
+                        
                     if (self.troopDeployments[1][p+1] > 0) & (self.troopDeployments[2][p+1] > 0):
                         sp.drawArrow(x_temp, x_temp+self.troopDeployments[1][p+1], y_temp, y_temp, headlength=0.05, direction='R', lineColor='r')
                         sp.drawArrow(x_temp+self.troopDeployments[1][p+1], x_temp+self.troopDeployments[1][p+1],
@@ -246,4 +249,5 @@ root.mainloop()                     # start the game
 #TODO: call slopefieldPlot with player inputs, current time as filename
 #TODO: add a different default plot, possibly including instructions
 #TODO: write player input to CSV
+#TODO: popup announcing who won, at what time, and with how many troops
 #TODO: make it easy to begin another round
