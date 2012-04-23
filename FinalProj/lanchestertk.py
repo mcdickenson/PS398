@@ -204,30 +204,28 @@ class LanchesterSquares:
 
                 # find ending point of vector (as starting point for arrows)
                 x_temp, y_temp = sp.getEndVector(0, self.dx, self.dy, 0,
-                                      self.troopDeployments[1][p], self.troopDeployments[2][p],
+                                      x_temp+self.troopDeployments[1][p], y_temp+self.troopDeployments[2][p],
                                       100, 0.1)
                 # arrows
                 if p < 4:
-                    if (self.troopDeployments[1][p+1] > 0) & (self.troopDeployments[2][p+1] <= 0): # or p
+                    if (self.troopDeployments[1][p+1] > .2) & (self.troopDeployments[2][p+1] <= .2): # or p
                         sp.drawArrow(x_temp, x_temp+self.troopDeployments[1][p+1], y_temp, y_temp, headlength=0.05, direction='R', lineColor='r')
                         
-                    if (self.troopDeployments[2][p+1] > 0) & (self.troopDeployments[1][p+1] <= 0):
+                    if (self.troopDeployments[2][p+1] > .2) & (self.troopDeployments[1][p+1] <= .2):
                         sp.drawArrow(x_temp, x_temp, y_temp, y_temp+self.troopDeployments[2][p+1], headlength=0.05, direction='U', lineColor='r')
                         
-                    if (self.troopDeployments[1][p+1] > 0) & (self.troopDeployments[2][p+1] > 0):
+                    if (self.troopDeployments[1][p+1] > .2) & (self.troopDeployments[2][p+1] > .2):
                         sp.drawArrow(x_temp, x_temp+self.troopDeployments[1][p+1], y_temp, y_temp, headlength=0.05, direction='R', lineColor='r')
                         sp.drawArrow(x_temp+self.troopDeployments[1][p+1], x_temp+self.troopDeployments[1][p+1],
                                      y_temp, y_temp+self.troopDeployments[2][p+1], headlength=0.05, direction='U', lineColor='r')
-
-            sp.drawFinalVector(0, self.dx, self.dy, 0, x_temp, y_temp)
+            sp.drawFinalVector(0, self.dx, self.dy, 0, x_temp, y_temp, stepsize=.1, colorVar ='g')
                 # TODO: add filename parameter
-                # TODO: rescale arrows
-                # TODO: rescale investment input
  
             #save file and convert to gif
             sp.pngSave(outputName)
             ptg.pngToGif(outputName)
-            
+
+            # display photo to users
             simPhoto = PhotoImage(file=outputName+'.gif')
             self.photoLabel = Label(self.myContainer1, image=simPhoto)
             self.photoLabel.image = simPhoto
@@ -249,5 +247,6 @@ root.mainloop()                     # start the game
 #TODO: call slopefieldPlot with player inputs, current time as filename
 #TODO: add a different default plot, possibly including instructions
 #TODO: write player input to CSV
+#TODO: disable players changing their input (ie clicking enter) after p2's turn is over
 #TODO: popup announcing who won, at what time, and with how many troops
 #TODO: make it easy to begin another round

@@ -29,8 +29,8 @@ sp.slopefieldPlotter(0, 6, .2, 0, 4, .2, -0.05, -0.01, xLab='US', yLab='Japan', 
 sp.drawVector(0, -0.05, -0.01, 0, 4, 3, 100, stepsize=0.1, colorVar='b')
 xtmp, ytmp = sp.getEndVector(0, -0.05, -0.01, 0, 4, 3, 100, stepsize=0.1)
 sp.drawArrow(xtmp, xtmp+1, ytmp, ytmp, headlength=0.05, direction='R', lineColor='r')
-sp.drawArrow(xtmp+1, xtmp+1, ytmp, ytmp+1, headlength=0.05, direction='R', lineColor='r')
-sp.drawFinalVector(0, -0.05, -0.01, 0, xtmp, ytmp, stepsize=.1, colorVar='g')
+sp.drawArrow(xtmp+1, xtmp+1, ytmp, ytmp+1, headlength=0.05, direction='U', lineColor='r')
+sp.drawFinalVector(0, -0.05, -0.01, 0, xtmp+1, ytmp+1, stepsize=.1, colorVar='g')
 sp.pngSave('vecTester')
 
 # convert png output to gif (for use in Tkinter)
