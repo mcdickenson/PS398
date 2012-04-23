@@ -4,7 +4,7 @@
 
 # load packages
 from Tkinter import *
-import slopefieldPlot # my script for plotting slope fields
+import slopefieldPlot as sp # my script for plotting slope fields
 import pngToGif # my script for converting png to gif
 import locale
 locale.setlocale(locale.LC_ALL, "")
@@ -99,18 +99,6 @@ class LanchesterSquares:
         self.turnLabel = Label(self.myContainer1, font=('Helvetica',18), text = textOut, fg='black')
         self.turnLabel.grid(row=3, column=5, columnspan=4, sticky=N+S+W)
 
-    def pressSimulate(self):
-        if self.allowSimulate:
-            simPhoto = PhotoImage(file='lanchTester2.gif')
-            self.photoLabel = Label(self.myContainer1, image=simPhoto)
-            self.photoLabel.image = simPhoto
-            self.photoLabel.grid(row=2, column=1, rowspan=20,columnspan=3, sticky=W)
-        else:
-            pass
-
-        #TODO: find a standard resolution for files to include
-        #TODO: create a blank image of that size - axes limits should be maximum forces allowed
-
     def enterStrategy(self): # TODO: make this only accept numbers greater than 0
                              # TODO: and make sure strings aren't passed (raises a ValueError)
         if self.allowEnter:
@@ -154,8 +142,11 @@ class LanchesterSquares:
                 self.makeText('getStrategy') # get player 2's strategy
 
             elif self.currentPlayer == 2:
+                self.derivDenominator = 100 * (self.investment[1] + self.investment[2] + 1)
+                self.dy = -self.investment[1] / self.derivDenominator
+                self.dx = -self.investment[2] / self.derivDenominator
                 self.allowSimulate = True
-                # TODO: call slopefieldPlotter from here
+                # TODO: make sure players know they now need to click "Simulate"
             
         else:
             pass
@@ -192,6 +183,55 @@ class LanchesterSquares:
             self.nameBox.grid_forget()
             self.nameButton.grid_forget()
             self.makeText('getStrategy')
+
+    def pressSimulate(self):
+        if self.allowSimulate:
+            # create slopefield plot
+            sp.slopefieldPlotter(0, self.troopDeployments[1][1], .2,
+                                             0, self.troopDeployments[2][1], .2, self.dx, self.dy,
+                                             xLab=self.playerNames[1], yLab=self.playerNames[2],
+                mainLab='', drawAxes=True, filename='simTester1')
+
+            # draw vectors and arrows
+            x_temp, y_temp = 0, 0
+            for p in range(1,6):
+                # vectors
+                sp.drawVector(0, self.dx, self.dy, 0,
+                                      x_temp+self.troopDeployments[1][p], y_temp+self.troopDeployments[2][p],
+                                      100, 0.1) # num steps and stepsize
+                                                #sp.pngSave('simTester1')
+
+                # arrows
+                x_temp, y_temp = sp.getEndVector(0, self.dx, self.dy, 0,
+                                      self.troopDeployments[1][1], self.troopDeployments[2][1],
+                                      100, 0.1)
+                if p < 5:
+                    sp.drawArrow(x_temp, x_temp+self.troopDeployments[1][p+1], y_temp, y_temp, headlength=0.05, direction='R', lineColor='r')
+                    sp.drawArrow(x_temp, x_temp, y_temp, y_temp+self.troopDeployments[2][p+1], headlength=0.05, direction='U', lineColor='r')
+
+            # draw vector for periods 11-20
+            #sp.drawVector(0, self.dx, self.dy, 0,
+            #                          x10+self.troopDeployments[1][2], y10+self.troopDeployments[2][2],
+            #                          100, 0.1)
+            sp.pngSave('simTester1')
+            
+                # TODO: add vectors, filename parameter
+                # TODO: make arrows conditional
+                # TODO: maybe make this a for loop
+                # TODO: ***figure out maximum troops on battle at any given point
+ 
+            #convert to gif
+            pngToGif.pngToGif('simTester1')
+            
+            simPhoto = PhotoImage(file='simTester1.gif')
+            self.photoLabel = Label(self.myContainer1, image=simPhoto)
+            self.photoLabel.image = simPhoto
+            self.photoLabel.grid(row=2, column=1, rowspan=20,columnspan=3, sticky=W)
+        else:
+            pass
+
+        #TODO: find a standard resolution for files to include
+        #TODO: create a blank image of that size - axes limits should be maximum forces allowed
          
 
 # initialize the game
