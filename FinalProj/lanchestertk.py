@@ -5,7 +5,7 @@
 # load packages
 from Tkinter import *
 import slopefieldPlot as sp # my script for plotting slope fields
-import pngToGif # my script for converting png to gif
+import pngToGif as ptg # my script for converting png to gif
 import locale
 locale.setlocale(locale.LC_ALL, "")
 
@@ -41,7 +41,7 @@ class LanchesterSquares:
         self.periodLabel = Label(self.myContainer1, font=('Helvetica',14), text = 'Time Period', fg='black')
         self.periodLabel.grid(row=13, column=5, sticky=N+E+S+W)
 
-        self.troopsLabel = Label(self.myContainer1, font=('Helvetica',14), text = 'Troops (k)', fg='black')
+        self.troopsLabel = Label(self.myContainer1, font=('Helvetica',14), text = 'Troops (10k)', fg='black')
         self.troopsLabel.grid(row=13, column=6, sticky=N+E+S+W)
 
         self.investLabel = Label(self.myContainer1, font=('Helvetica',14), text = 'Investment ($m)', fg='black')
@@ -113,7 +113,7 @@ class LanchesterSquares:
             tempInvestment = "$" + locale.format('%0.2f', tempInvestment, True)
 
             # calculate grand total spending
-            grandTotal = self.totalTroops[self.currentPlayer] * 20000000 + self.investment[self.currentPlayer] * 1000000
+            grandTotal = self.totalTroops[self.currentPlayer] * 200000000 + self.investment[self.currentPlayer] * 1000000
             grandTotalStr = "$" + locale.format('%0.2f', grandTotal, True)
             
             # display player's total number of troops and investment
@@ -185,12 +185,14 @@ class LanchesterSquares:
             self.makeText('getStrategy')
 
     def pressSimulate(self):
+        outputName = 'simTester1'
+        #outputName = str(datetime.now())[0:10]
         if self.allowSimulate:
             # create slopefield plot
             sp.slopefieldPlotter(0, self.totalTroops[1], .2,
                                              0, self.totalTroops[2], .2, self.dx, self.dy,
                                              xLab=self.playerNames[1], yLab=self.playerNames[2],
-                mainLab='', drawAxes=True, filename='simTester1')
+                mainLab='', drawAxes=True, filename=outputName)
 
             # draw vectors and arrows
             x_temp, y_temp = 0, 0
@@ -199,33 +201,31 @@ class LanchesterSquares:
                 sp.drawVector(0, self.dx, self.dy, 0,
                                       x_temp+self.troopDeployments[1][p], y_temp+self.troopDeployments[2][p],
                                       100, 0.1) # num steps and stepsize
-                                                #sp.pngSave('simTester1')
 
                 # arrows
                 x_temp, y_temp = sp.getEndVector(0, self.dx, self.dy, 0,
                                       self.troopDeployments[1][p], self.troopDeployments[2][p],
                                       100, 0.1)
                 if p < 4:
-                    if self.troopDeployments[1][p+1] > 0: # or p
-                        sp.drawArrow(x_temp, x_temp+self.troopDeployments[1][p], y_temp, y_temp, headlength=0.05, direction='R', lineColor='r')
-                    if self.troopDeployments[2][p+1] > 0:
-                        sp.drawArrow(x_temp, x_temp, y_temp, y_temp+self.troopDeployments[2][p], headlength=0.05, direction='U', lineColor='r')
+                    if (self.troopDeployments[1][p+1] > 0) & (self.troopDeployments[2][p+1] <= 0): # or p
+                        sp.drawArrow(x_temp, x_temp+self.troopDeployments[1][p+1], y_temp, y_temp, headlength=0.05, direction='R', lineColor='r')
+                    if (self.troopDeployments[2][p+1] > 0) & (self.troopDeployments[1][p+1] <= 0):
+                        sp.drawArrow(x_temp, x_temp, y_temp, y_temp+self.troopDeployments[2][p+1], headlength=0.05, direction='U', lineColor='r')
+                    if (self.troopDeployments[1][p+1] > 0) & (self.troopDeployments[2][p+1] > 0):
+                        sp.drawArrow(x_temp, x_temp+self.troopDeployments[1][p+1], y_temp, y_temp, headlength=0.05, direction='R', lineColor='r')
+                        sp.drawArrow(x_temp+self.troopDeployments[1][p+1], x_temp+self.troopDeployments[1][p+1],
+                                     y_temp, y_temp+self.troopDeployments[2][p+1], headlength=0.05, direction='U', lineColor='r')
 
-            # draw vector for periods 11-20
-            #sp.drawVector(0, self.dx, self.dy, 0,
-            #                          x10+self.troopDeployments[1][2], y10+self.troopDeployments[2][2],
-            #                          100, 0.1)
-            sp.pngSave('simTester1')
-            
+            sp.drawFinalVector(0, self.dx, self.dy, 0, x_temp, y_temp)
                 # TODO: add filename parameter
-                # TODO: make arrows conditional
-                # TODO: maybe make this a for loop
-                # TODO: ***figure out maximum troops on battle at any given point
+                # TODO: rescale arrows
+                # TODO: rescale investment input
  
-            #convert to gif
-            pngToGif.pngToGif('simTester1')
+            #save file and convert to gif
+            sp.pngSave(outputName)
+            ptg.pngToGif(outputName)
             
-            simPhoto = PhotoImage(file='simTester1.gif')
+            simPhoto = PhotoImage(file=outputName+'.gif')
             self.photoLabel = Label(self.myContainer1, image=simPhoto)
             self.photoLabel.image = simPhoto
             self.photoLabel.grid(row=2, column=1, rowspan=20,columnspan=3, sticky=W)
