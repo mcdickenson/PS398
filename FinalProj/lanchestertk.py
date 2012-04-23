@@ -4,7 +4,8 @@
 
 # load packages
 from Tkinter import *
-
+import slopefieldPlot # my script for plotting slope fields
+import pngToGif # my script for converting png to gif
 import locale
 locale.setlocale(locale.LC_ALL, "")
 
