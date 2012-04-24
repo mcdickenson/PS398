@@ -107,33 +107,37 @@ class LanchesterSquares:
     def enterStrategy(self): # TODO: make this only accept numbers greater than 0
                              # TODO: and make sure strings aren't passed (raises a ValueError)
         if self.allowEnter:
-            for period in range(0,5): # get troop counts from input boxes
-                try:
+            try:
+                for period in range(0,5): # get troop counts from input boxes
                     temp = self.troopInputDict[period].get()
                     self.troopDeployments[self.currentPlayer][period] = float(temp)
-                except ValueError:
-                    self.popupError("Only non-negative numbers are allowed.")
+                    if self.troopDeployments[self.currentPlayer][period] < 0:
+                        raise ValueError('Negative input')
+                
                     
-            self.totalTroops[self.currentPlayer] = sum(self.troopDeployments[self.currentPlayer])
+                self.totalTroops[self.currentPlayer] = sum(self.troopDeployments[self.currentPlayer])
 
-            # get player's $ invested
-            self.investment[self.currentPlayer] = float(self.investInputDict[0].get())
-            tempInvestment = self.investment[self.currentPlayer]*1000000
-            tempInvestment = "$" + locale.format('%0.2f', tempInvestment, True)
+                # get player's $ invested
+                self.investment[self.currentPlayer] = float(self.investInputDict[0].get())
+                tempInvestment = self.investment[self.currentPlayer]*1000000
+                tempInvestment = "$" + locale.format('%0.2f', tempInvestment, True)
 
-            # calculate grand total spending
-            grandTotal = self.totalTroops[self.currentPlayer] * 200000000 + self.investment[self.currentPlayer] * 1000000
-            grandTotalStr = "$" + locale.format('%0.2f', grandTotal, True)
+                # calculate grand total spending
+                grandTotal = self.totalTroops[self.currentPlayer] * 200000000 + self.investment[self.currentPlayer] * 1000000
+                grandTotalStr = "$" + locale.format('%0.2f', grandTotal, True)
             
-            # display player's total number of troops and investment
-            self.troopLabel = Label(self.myContainer1, font=('Helvetica',14), text = str(self.totalTroops[self.currentPlayer]), fg='black')
-            self.troopLabel.grid(row=19, column=6, sticky=N+E+S+W)
+                # display player's total number of troops and investment
+                self.troopLabel = Label(self.myContainer1, font=('Helvetica',14), text = str(self.totalTroops[self.currentPlayer]), fg='black')
+                self.troopLabel.grid(row=19, column=6, sticky=N+E+S+W)
             
-            self.investmentLabel = Label(self.myContainer1, font=('Helvetica',14), text = tempInvestment, fg='black')
-            self.investmentLabel.grid(row=19, column=7, sticky=N+E+S+W)
+                self.investmentLabel = Label(self.myContainer1, font=('Helvetica',14), text = tempInvestment, fg='black')
+                self.investmentLabel.grid(row=19, column=7, sticky=N+E+S+W)
 
-            self.grandTotalLabel = Label(self.myContainer1, font=('Helvetica',14), text = grandTotalStr, fg='black')
-            self.grandTotalLabel.grid(row=20, column=7, sticky=N+E+S+W)
+                self.grandTotalLabel = Label(self.myContainer1, font=('Helvetica',14), text = grandTotalStr, fg='black')
+                self.grandTotalLabel.grid(row=20, column=7, sticky=N+E+S+W)
+
+            except ValueError:
+                self.popupError2("Only non-negative numbers are allowed.\nAll cells must contain a value.")
 
             # check for forbidden input
             if grandTotal > self.maxResource:
@@ -159,7 +163,6 @@ class LanchesterSquares:
                 self.investmentLabel.grid_forget()
                 self.grandTotalLabel.grid_forget()
                 self.makeText('getSimulation')
-                # TODO: make sure players know they now need to click "Simulate"
             
         else:
             pass
@@ -173,6 +176,17 @@ class LanchesterSquares:
         msg.grid(row=1, column=0, columnspan=3, rowspan=3)
 
         errButton = Button(self.top, text="OK", command=lambda: self.clearError())
+        errButton.grid(row=4, column=1)
+
+    def popupError2(self, messageText):
+        self.top = Toplevel()
+        self.top.title("Error")
+        self.top.geometry('300x170+830+400')
+
+        msg = Label(self.top, text=messageText)
+        msg.grid(row=1, column=0, columnspan=3, rowspan=3)
+
+        errButton = Button(self.top, text="OK", command=lambda: self.top.destroy())
         errButton.grid(row=4, column=1)
 
     def clearError(self):
