@@ -32,7 +32,7 @@ class LanchesterSquares:
         self.allowSimulate = False
         self.maxResource = 1000000000 # maximum resources, in dollars
         # create csv output file
-        Headers = ["p1name", "p2name", "p1deploy1", "p1deploy2", "p1deploy3", "p1deploy4", "p1deploy5", "p1invest","p2deploy1", "p2deploy2", "p2deploy3", "p2deploy4", "p2deploy5", "p2invest", "gametime"]
+        Headers = ["p1name", "p2name", "p1deploy1", "p1deploy2", "p1deploy3", "p1deploy4", "p1deploy5", "p1invest", "p2deploy1", "p2deploy2", "p2deploy3", "p2deploy4", "p2deploy5", "p2invest", "gametime"]
         nameOutput = "LanchesterSim.csv"
         self.outputFile = open(nameOutput,"wb")
         self.csvwriter = csv.writer(self.outputFile)
