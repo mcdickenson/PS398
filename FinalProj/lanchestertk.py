@@ -92,6 +92,11 @@ class LanchesterSquares:
             self.turnLabel.grid_forget()
             textOut = self.playerNames[self.currentPlayer] + ", enter your strategy."
             self.allowEnter = True
+
+        elif whatToDo == 'getSimulation':
+            self.turnLabel.grid_forget()
+            textOut = "Now press the Simulate button."
+            self.allowSimulate = True
             
         else: 
             textOut = "It is player " + str(self.currentPlayer) +"'s turn."
@@ -103,8 +108,12 @@ class LanchesterSquares:
                              # TODO: and make sure strings aren't passed (raises a ValueError)
         if self.allowEnter:
             for period in range(0,5): # get troop counts from input boxes
-                temp = self.troopInputDict[period].get()
-                self.troopDeployments[self.currentPlayer][period] = float(temp)
+                try:
+                    temp = self.troopInputDict[period].get()
+                    self.troopDeployments[self.currentPlayer][period] = float(temp)
+                except ValueError:
+                    self.popupError("Only non-negative numbers are allowed.")
+                    
             self.totalTroops[self.currentPlayer] = sum(self.troopDeployments[self.currentPlayer])
 
             # get player's $ invested
@@ -145,7 +154,11 @@ class LanchesterSquares:
                 self.derivDenominator = 10 * (self.investment[1] + self.investment[2] + 1)
                 self.dy = -self.investment[1] / self.derivDenominator
                 self.dx = -self.investment[2] / self.derivDenominator
-                self.allowSimulate = True
+                self.makeLayout() # clear unneeded text
+                self.troopLabel.grid_forget()
+                self.investmentLabel.grid_forget()
+                self.grandTotalLabel.grid_forget()
+                self.makeText('getSimulation')
                 # TODO: make sure players know they now need to click "Simulate"
             
         else:
