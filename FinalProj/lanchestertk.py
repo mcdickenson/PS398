@@ -95,6 +95,7 @@ class LanchesterSquares:
         elif whatToDo == 'getSimulation':
             self.turnLabel.grid_forget()
             textOut = "Now press the Simulate button."
+            self.allowEnter = False
             self.allowSimulate = True
             
         else: 
@@ -177,7 +178,7 @@ class LanchesterSquares:
         errButton = Button(self.top, text="OK", command=lambda: self.clearError())
         errButton.grid(row=4, column=1)
 
-    def popupError2(self, messageText):
+    def popupError2(self, messageText): # to be used when troopLabel etc have not been created yet
         self.top = Toplevel()
         self.top.title("Error")
         self.top.geometry('300x170+830+400')
@@ -273,7 +274,6 @@ root.mainloop()                     # start the game
 #TODO: call slopefieldPlot with current time as filename
 #TODO: write player input to CSV, with an id to match the plot
 #TODO: add a different default plot, possibly including instructions
-#TODO: disable players changing their input (ie clicking enter) after p2's turn is over
 
 #User-friendliness
 #TODO: popup announcing who won, at what time, and with how many troops
