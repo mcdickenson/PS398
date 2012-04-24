@@ -6,7 +6,7 @@
 from Tkinter import *
 import slopefieldPlot as sp # my script for plotting slope fields
 import pngToGif as ptg # my script for converting png to gif
-import locale
+import locale, csv, datetime
 locale.setlocale(locale.LC_ALL, "")
 
 periodLabels = ['10', '20', '30', '40', '50', 'Subtotal', 'Total']
@@ -31,6 +31,12 @@ class LanchesterSquares:
         self.allowEnter = False
         self.allowSimulate = False
         self.maxResource = 1000000000 # maximum resources, in dollars
+        # create csv output file
+        Headers = ["p1name", "p2name", "p1deploy1", "p1deploy2", "p1deploy3", "p1deploy4", "p1deploy5", "p1invest","p2deploy1", "p2deploy2", "p2deploy3", "p2deploy4", "p2deploy5", "p2invest", "gametime"]
+        nameOutput = "LanchesterSim.csv"
+        self.outputFile = open(nameOutput,"wb")
+        self.csvwriter = csv.writer(self.outputFile)
+        self.csvwriter.writerow(Headers)
 
     def makeLayout(self): # makes basic layout, with optional title
         self.mainLabel = Label(self.myContainer1, font=('Helvetica',24), text = 'Lanchester Squares', fg='blue')
@@ -162,6 +168,12 @@ class LanchesterSquares:
                 self.troopLabel.grid_forget()
                 self.investmentLabel.grid_forget()
                 self.grandTotalLabel.grid_forget()
+                self.gameTime = str(datetime.datetime.now())
+                self.csvwriter.writerow([self.playerNames[1], self.playerNames[2], self.troopDeployments[1][0], self.troopDeployments[1][1],
+                                self.troopDeployments[1][2], self.troopDeployments[1][3], self.troopDeployments[1][4],
+                                self.investment[1], self.troopDeployments[2][0], self.troopDeployments[1][1],
+                                self.troopDeployments[2][2], self.troopDeployments[2][3], self.troopDeployments[2][4],
+                    self.investment[2], self.gameTime])
                 self.makeText('getSimulation')
             
         else:
@@ -210,10 +222,11 @@ class LanchesterSquares:
             self.nameBox.grid_forget()
             self.nameButton.grid_forget()
             self.makeText('getStrategy')
+            
 
     def pressSimulate(self):
         outputName = 'simTester1'
-        #outputName = str(datetime.now())[0:10]
+        #outputName = self.gameTime)[0:10]
         if self.allowSimulate:
             # create slopefield plot
             sp.slopefieldPlotter(0, self.totalTroops[1], .2,
