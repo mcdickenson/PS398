@@ -34,8 +34,7 @@ class LanchesterSquares:
 
     def makeLayout(self): # makes basic layout, with optional title
         self.mainLabel = Label(self.myContainer1, font=('Helvetica',24), text = 'Lanchester Squares', fg='blue')
-        self.mainLabel.grid(row=0, column=0, columnspan=9, sticky=N+E+S+W)
-        # make sure that columnspan is the width of the whole frame
+        self.mainLabel.grid(row=0, column=0, columnspan=9, sticky=N+E+S+W) # make sure that columnspan is the width of the whole frame
 
         # make text labels
         self.periodLabel = Label(self.myContainer1, font=('Helvetica',14), text = 'Time Period', fg='black')
@@ -104,8 +103,7 @@ class LanchesterSquares:
         self.turnLabel = Label(self.myContainer1, font=('Helvetica',18), text = textOut, fg='black')
         self.turnLabel.grid(row=3, column=5, columnspan=4, sticky=N+S+W)
 
-    def enterStrategy(self): # TODO: make this only accept numbers greater than 0
-                             # TODO: and make sure strings aren't passed (raises a ValueError)
+    def enterStrategy(self): 
         if self.allowEnter:
             try:
                 for period in range(0,5): # get troop counts from input boxes
@@ -114,7 +112,6 @@ class LanchesterSquares:
                     if self.troopDeployments[self.currentPlayer][period] < 0:
                         raise ValueError('Negative input')
                 
-                    
                 self.totalTroops[self.currentPlayer] = sum(self.troopDeployments[self.currentPlayer])
 
                 # get player's $ invested
@@ -237,13 +234,14 @@ class LanchesterSquares:
                                       100, 0.1)
                 # arrows
                 if p < 4:
-                    if (self.troopDeployments[1][p+1] > .2) & (self.troopDeployments[2][p+1] <= .2): # or p
+                    thresh = .2 # set threshold for when to draw arrows
+                    if (self.troopDeployments[1][p+1] > thresh) & (self.troopDeployments[2][p+1] <= thresh): # or p
                         sp.drawArrow(x_temp, x_temp+self.troopDeployments[1][p+1], y_temp, y_temp, headlength=0.05, direction='R', lineColor='r')
                         
-                    if (self.troopDeployments[2][p+1] > .2) & (self.troopDeployments[1][p+1] <= .2):
+                    if (self.troopDeployments[2][p+1] > thresh) & (self.troopDeployments[1][p+1] <= thresh):
                         sp.drawArrow(x_temp, x_temp, y_temp, y_temp+self.troopDeployments[2][p+1], headlength=0.05, direction='U', lineColor='r')
                         
-                    if (self.troopDeployments[1][p+1] > .2) & (self.troopDeployments[2][p+1] > .2):
+                    if (self.troopDeployments[1][p+1] > thresh) & (self.troopDeployments[2][p+1] > thresh):
                         sp.drawArrow(x_temp, x_temp+self.troopDeployments[1][p+1], y_temp, y_temp, headlength=0.05, direction='R', lineColor='r')
                         sp.drawArrow(x_temp+self.troopDeployments[1][p+1], x_temp+self.troopDeployments[1][p+1],
                                      y_temp, y_temp+self.troopDeployments[2][p+1], headlength=0.05, direction='U', lineColor='r')
