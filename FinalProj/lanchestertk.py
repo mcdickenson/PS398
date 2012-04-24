@@ -119,6 +119,8 @@ class LanchesterSquares:
 
                 # get player's $ invested
                 self.investment[self.currentPlayer] = float(self.investInputDict[0].get())
+                if self.investment[self.currentPlayer] < 0 :
+                    raise ValueError('Negative input')
                 tempInvestment = self.investment[self.currentPlayer]*1000000
                 tempInvestment = "$" + locale.format('%0.2f', tempInvestment, True)
 
