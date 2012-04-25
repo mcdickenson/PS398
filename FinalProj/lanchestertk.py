@@ -17,6 +17,7 @@ class LanchesterSquares:
         self.myContainer1.grid()
         self.start()                # sets all starting variables
         self.makeLayout()           # makes the frame layout
+        self.makeStartPhoto()       # sets a default start photo
         self.makeText('getPlayerName') # set starting text
 
     def start(self):
@@ -76,7 +77,7 @@ class LanchesterSquares:
         self.enterButton = Button(self.myContainer1, text='Enter', width=6, height=1, command=lambda: self.enterStrategy())
         self.enterButton.grid(row=23, column=6)
 
-        # make starting photo
+    def makeStartPhoto(self): # make starting photo
         startPhoto = PhotoImage(file='reinfTester.gif')
         self.photoLabel = Label(self.myContainer1, image=startPhoto)
         self.photoLabel.image = startPhoto
@@ -269,8 +270,31 @@ class LanchesterSquares:
             self.photoLabel = Label(self.myContainer1, image=simPhoto)
             self.photoLabel.image = simPhoto
             self.photoLabel.grid(row=2, column=1, rowspan=20,columnspan=3, sticky=W)
+
+            # ask players whether to quit or replay
+            self.popupEnd()
+            
         else:
             pass
+
+    def popupEnd(self):
+        self.top = Toplevel()
+        self.top.title("End of Round")
+        self.top.geometry('300x170+830+400')
+
+        msg = Label(self.top, text="Player 1 beat Player 2\nin 2 seconds\nwith 1000 remaining troops.") #TODO: make this a real message
+        msg.grid(row=1, column=0, columnspan=4, rowspan=3)
+
+        replayButton = Button(self.top, text="Replay", command=lambda: self.replay()) 
+        replayButton.grid(row=4, column=1)
+
+        quitButton = Button(self.top, text="Quit", command=lambda: root.destroy())
+        quitButton.grid(row=4, column=2)
+
+    def replay(self):
+        self.top.destroy()
+        self.currentPlayer = 1
+        self.makeText('getStrategy')
 
 def verifyQuit():
     if tkMessageBox.askokcancel("Quit", "Are you sure you want to quit?"):
@@ -291,4 +315,4 @@ root.mainloop()                     # start the game
 
 #User-friendliness
 #TODO: popup announcing who won, at what time, and with how many troops
-#TODO: make it easy to begin another round
+
