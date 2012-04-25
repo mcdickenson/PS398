@@ -218,8 +218,8 @@ class LanchesterSquares:
             self.makeText('getStrategy')
 
     def pressSimulate(self):
-        outputName = 'simTester1'
-        #outputName = self.gameTime[0:10]
+        #outputName = 'simTester1'
+        outputName = self.gameTime
         if self.allowSimulate:
             # create slopefield plot
             sp.slopefieldPlotter(0, self.totalTroops[1], .2,
