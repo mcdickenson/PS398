@@ -184,7 +184,7 @@ class LanchesterSquares:
         if labelsExist:
             errButton = Button(self.top, text="OK", command=lambda: self.clearError())
         else:
-            errButton = Button(self.top, text="OK", command=lambda: self.top.destroy())
+            errButton = Button(self.top, text="OK", command=lambda: self.top.destroy()) # to be used when troop labels don't exist
         errButton.grid(row=4, column=1)
 
     def clearError(self): # clear player input after they have committed and acknowledged an input error
