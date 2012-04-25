@@ -142,14 +142,14 @@ class LanchesterSquares:
                 self.grandTotalLabel.grid(row=20, column=7, sticky=N+E+S+W)
 
             except ValueError:
-                self.popupError2("Only non-negative numbers are allowed.\nAll cells must contain a value.")
+                self.popupError2("Only non-negative numbers are allowed.\nAll cells must contain a value.", False)
 
             # check for forbidden input
             if grandTotal > self.maxResource:
-                self.popupError("You have exceeded your total resources.\nPlease re-enter.")
+                self.popupError("You have exceeded your total resources.\nPlease re-enter.", True)
 
             elif grandTotal < self.maxResource*0.9:
-                self.popupError("You are using less than 90 percent of\n your total resources. Please re-enter.")
+                self.popupError("You are using less than 90 percent of\n your total resources. Please re-enter.", True)
 
             elif self.currentPlayer == 1:
                 self.makeLayout() # clear unneeded text
@@ -173,7 +173,7 @@ class LanchesterSquares:
         else:
             pass
 
-    def popupError(self, messageText):
+    def popupError(self, messageText, labelsExist=False): # error message for when players enter bad input
         self.top = Toplevel()
         self.top.title("Error")
         self.top.geometry('300x170+830+400')
@@ -181,18 +181,10 @@ class LanchesterSquares:
         msg = Label(self.top, text=messageText)
         msg.grid(row=1, column=0, columnspan=3, rowspan=3)
 
-        errButton = Button(self.top, text="OK", command=lambda: self.clearError())
-        errButton.grid(row=4, column=1)
-
-    def popupError2(self, messageText): # to be used when troopLabel etc have not been created yet
-        self.top = Toplevel()
-        self.top.title("Error")
-        self.top.geometry('300x170+830+400')
-
-        msg = Label(self.top, text=messageText)
-        msg.grid(row=1, column=0, columnspan=3, rowspan=3)
-
-        errButton = Button(self.top, text="OK", command=lambda: self.top.destroy())
+        if labelsExist:
+            errButton = Button(self.top, text="OK", command=lambda: self.clearError())
+        else:
+            errButton = Button(self.top, text="OK", command=lambda: self.top.destroy())
         errButton.grid(row=4, column=1)
 
     def clearError(self): # clear player input after they have committed and acknowledged an input error
