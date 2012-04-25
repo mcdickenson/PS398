@@ -195,13 +195,13 @@ class LanchesterSquares:
         errButton = Button(self.top, text="OK", command=lambda: self.top.destroy())
         errButton.grid(row=4, column=1)
 
-    def clearError(self):
+    def clearError(self): # clear player input after they have committed and acknowledged an input error
         self.troopLabel.grid_forget()
         self.investmentLabel.grid_forget()
         self.grandTotalLabel.grid_forget()
         self.top.destroy()
         
-    def enterName(self):
+    def enterName(self): # function by which players enter their names
         self.playerNames[self.currentPlayer] = self.nameBox.get()[0:12] # maximum name length = 12
 
         if self.currentPlayer == 1:
@@ -293,7 +293,7 @@ class LanchesterSquares:
         else:
             pass
 
-    def getWinner(self, xfinal, yfinal, numsteps):
+    def getWinner(self, xfinal, yfinal, numsteps): # figure out which player had troops left and which one didn't
         if xfinal > yfinal:
             self.battleWinner = 1
             self.battleLoser = 2
@@ -305,12 +305,12 @@ class LanchesterSquares:
             self.remTroops = yfinal*10000
         self.battleLength = numsteps
 
-    def popupEnd(self):
+    def popupEnd(self): # announce who won, how long the battle took, and how many troops the winner had left; give option to quit or replay
         self.top = Toplevel()
         self.top.title("End of Round")
         self.top.geometry('300x170+830+400')
 
-        msg = Label(self.top, text="%s beat %s\nin %d periods\nwith %d remaining troops." % (self.playerNames[self.battleWinner], self.playerNames[self.battleLoser], self.battleLength, self.remTroops)) #TODO: make this a real message
+        msg = Label(self.top, text="%s beat %s\nin %d periods\nwith %d remaining troops." % (self.playerNames[self.battleWinner], self.playerNames[self.battleLoser], self.battleLength, self.remTroops)) 
         msg.grid(row=1, column=0, columnspan=4, rowspan=3)
 
         replayButton = Button(self.top, text="Replay", command=lambda: self.replay()) 
@@ -319,12 +319,12 @@ class LanchesterSquares:
         quitButton = Button(self.top, text="Quit", command=lambda: root.destroy())
         quitButton.grid(row=4, column=2)
 
-    def replay(self):
+    def replay(self): # go back to point at which players enter their strategies
         self.top.destroy()
         self.currentPlayer = 1
         self.makeText('getStrategy')
 
-def verifyQuit():
+def verifyQuit(): # when red "x" is clicked, verif that player wants to exit
     if tkMessageBox.askokcancel("Quit", "Are you sure you want to quit?"):
         root.destroy()
          
@@ -338,7 +338,6 @@ root.title('Lanchester Squares')    # window title
 root.mainloop()                     # start the game
 
 #Behind-the-scenes functionality
-#TODO: call slopefieldPlot with current time as filename
 #TODO: instructions
 
 
