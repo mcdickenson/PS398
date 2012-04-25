@@ -6,12 +6,10 @@
 from Tkinter import *
 import slopefieldPlot as sp # my script for plotting slope fields
 import pngToGif as ptg # my script for converting png to gif
-import locale, csv, datetime
+import locale, csv, datetime, tkMessageBox
 locale.setlocale(locale.LC_ALL, "")
 
 periodLabels = ['10', '20', '30', '40', '50', 'Subtotal', 'Total']
-# TODO: add csv writing functionality to record player actions
-
 
 class LanchesterSquares:
     def __init__(self, myParent):   # this is where I initialize the game
@@ -30,7 +28,7 @@ class LanchesterSquares:
         self.totalTroops = [0, 0, 0]
         self.allowEnter = False
         self.allowSimulate = False
-        self.maxResource = 1000000000 # maximum resources, in dollars
+        self.maxResource = 1000000000 # maximum resources alotted to players, in "dollars"
         # create csv output file
         Headers = ["p1name", "p2name", "p1deploy1", "p1deploy2", "p1deploy3", "p1deploy4", "p1deploy5", "p1invest", "p2deploy1", "p2deploy2", "p2deploy3", "p2deploy4", "p2deploy5", "p2invest", "gametime"]
         nameOutput = "LanchesterSim.csv"
@@ -222,7 +220,6 @@ class LanchesterSquares:
             self.nameBox.grid_forget()
             self.nameButton.grid_forget()
             self.makeText('getStrategy')
-            
 
     def pressSimulate(self):
         outputName = 'simTester1'
@@ -274,18 +271,22 @@ class LanchesterSquares:
             self.photoLabel.grid(row=2, column=1, rowspan=20,columnspan=3, sticky=W)
         else:
             pass
+
+def verifyQuit():
+    if tkMessageBox.askokcancel("Quit", "Are you sure you want to quit?"):
+        root.destroy()
          
 
 # initialize the game
 root = Tk()
 root.geometry('1100x700+150+40')    # size and position of the game window; width, height, w.offset, h.offset
+root.protocol("WM_DELETE_WINDOW", verifyQuit) # make sure user wants to quit when they click "x" 
 mygame = LanchesterSquares(root)    # place elements in window
 root.title('Lanchester Squares')    # window title
 root.mainloop()                     # start the game
 
 #Defensive programming/behind-the-scenes functionality
 #TODO: call slopefieldPlot with current time as filename
-#TODO: write player input to CSV, with an id to match the plot
 #TODO: add a different default plot, possibly including instructions
 
 #User-friendliness
