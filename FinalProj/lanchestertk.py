@@ -38,7 +38,7 @@ class LanchesterSquares:
         self.csvwriter.writerow(Headers)
 
     def makeLayout(self): # makes basic layout, with optional title
-        self.mainLabel = Label(self.myContainer1, font=('Helvetica',24), text = 'Lanchester Squares', fg='blue')
+        self.mainLabel = Label(self.myContainer1, font=('Helvetica',24), text = 'The Lanchester Squares Game', fg='blue')
         self.mainLabel.grid(row=0, column=0, columnspan=9, sticky=N+E+S+W) # make sure that columnspan is the width of the whole frame
 
         # make text labels
@@ -78,7 +78,7 @@ class LanchesterSquares:
         self.enterButton.grid(row=23, column=6)
 
     def makeStartPhoto(self): # make starting photo
-        startPhoto = PhotoImage(file='reinfTester.gif')
+        startPhoto = PhotoImage(file='reinfTester5.gif')
         self.photoLabel = Label(self.myContainer1, image=startPhoto)
         self.photoLabel.image = startPhoto
         self.photoLabel.grid(row=2, column=1, rowspan=20,columnspan=3, sticky=W+E)
@@ -219,7 +219,7 @@ class LanchesterSquares:
 
     def pressSimulate(self):
         outputName = 'simTester1'
-        #outputName = self.gameTime)[0:10]
+        #outputName = self.gameTime[0:10]
         if self.allowSimulate:
             # create slopefield plot
             sp.slopefieldPlotter(0, self.totalTroops[1], .2,
@@ -235,16 +235,17 @@ class LanchesterSquares:
                                       x_temp+self.troopDeployments[1][p], y_temp+self.troopDeployments[2][p],
                                       100, 0.1) # num steps and stepsize
 
-                # find ending point of vector (as starting point for arrows)
+                # see if one player has won yet
                 xfinal, yfinal, numsteps = sp.getFinalCoord(0, self.dx, self.dy, 0,
                                       x_temp+self.troopDeployments[1][p], y_temp+self.troopDeployments[2][p], 1000)
-                if (xfinal <=0) | (yfinal <=0):
+                if (xfinal <=0) | (yfinal <=0): 
                     self.getWinner(xfinal, yfinal, numsteps)
                     x_temp, y_temp = sp.getEndVector(0, self.dx, self.dy, 0,
                                       x_temp+self.troopDeployments[1][p], y_temp+self.troopDeployments[2][p],
                                       100, 0.1)
                     break
-                    
+
+                # find ending point of vector (as starting point for arrows)
                 x_temp, y_temp = sp.getEndVector(0, self.dx, self.dy, 0,
                                       x_temp+self.troopDeployments[1][p], y_temp+self.troopDeployments[2][p],
                                       100, 0.1)
@@ -336,8 +337,8 @@ mygame = LanchesterSquares(root)    # place elements in window
 root.title('Lanchester Squares')    # window title
 root.mainloop()                     # start the game
 
-#Defensive programming/behind-the-scenes functionality
+#Behind-the-scenes functionality
 #TODO: call slopefieldPlot with current time as filename
-#TODO: add a different default plot, possibly including instructions
+#TODO: instructions
 
 

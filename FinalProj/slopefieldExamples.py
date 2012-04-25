@@ -39,3 +39,11 @@ sp.getFinalCoord(0, -0.05, -0.01, 0, 5.4, 2.1)
 # convert png output to gif (for use in Tkinter)
 import pngToGif
 pngToGif.pngToGif('reinfTester4')
+
+# create sample output for startPhoto
+sp.slopefieldPlotter(0, 6, .2, 0, 3, .2, -0.05, -0.01, xLab='US', yLab='Japan', mainLab='SAMPLE OUTPUT: Iwo Jima', drawAxes=True, filename='reinfTester5')
+sp.drawVector(0, -0.05, -0.01, 0, 5.4, 2.15, 300, stepsize=0.1, colorVar='b')
+sp.drawArrow(3.2, 5.05, .9, .9, headlength=0.05, direction='R', lineColor='r')
+sp.drawVector(0, -0.05, -0.01, 0, 5.1, 0.9, 200, stepsize=0.1, colorVar='b')
+sp.pngSave('reinfTester5')
+pngToGif.pngToGif('reinfTester5')
