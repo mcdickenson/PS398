@@ -33,6 +33,9 @@ sp.drawArrow(xtmp+1, xtmp+1, ytmp, ytmp+1, headlength=0.05, direction='U', lineC
 sp.drawFinalVector(0, -0.05, -0.01, 0, xtmp+1, ytmp+1, stepsize=.1, colorVar='g')
 sp.pngSave('vecTester')
 
+# check how/whether getFinalCoord is working
+sp.getFinalCoord(0, -0.05, -0.01, 0, 5.4, 2.1)
+
 # convert png output to gif (for use in Tkinter)
 import pngToGif
 pngToGif.pngToGif('reinfTester4')

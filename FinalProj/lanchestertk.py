@@ -31,7 +31,7 @@ class LanchesterSquares:
         self.allowSimulate = False
         self.maxResource = 1000000000 # maximum resources alotted to players, in "dollars"
         # create csv output file
-        Headers = ["p1name", "p2name", "p1deploy1", "p1deploy2", "p1deploy3", "p1deploy4", "p1deploy5", "p1invest", "p2deploy1", "p2deploy2", "p2deploy3", "p2deploy4", "p2deploy5", "p2invest", "gametime"]
+        Headers = ["p1name", "p2name", "p1deploy1", "p1deploy2", "p1deploy3", "p1deploy4", "p1deploy5", "p1invest", "p2deploy1", "p2deploy2", "p2deploy3", "p2deploy4", "p2deploy5", "p2invest", "pWin", "pLose", "winnerTroops", "battlePeriods", "gametime"]
         nameOutput = "LanchesterSim.csv"
         self.outputFile = open(nameOutput,"wb")
         self.csvwriter = csv.writer(self.outputFile)
@@ -168,11 +168,6 @@ class LanchesterSquares:
                 self.investmentLabel.grid_forget()
                 self.grandTotalLabel.grid_forget()
                 self.gameTime = str(datetime.datetime.now())
-                self.csvwriter.writerow([self.playerNames[1], self.playerNames[2], self.troopDeployments[1][0], self.troopDeployments[1][1],
-                                self.troopDeployments[1][2], self.troopDeployments[1][3], self.troopDeployments[1][4],
-                                self.investment[1], self.troopDeployments[2][0], self.troopDeployments[1][1],
-                                self.troopDeployments[2][2], self.troopDeployments[2][3], self.troopDeployments[2][4],
-                    self.investment[2], self.gameTime])
                 self.makeText('getSimulation')
             
         else:
@@ -241,9 +236,19 @@ class LanchesterSquares:
                                       100, 0.1) # num steps and stepsize
 
                 # find ending point of vector (as starting point for arrows)
+                xfinal, yfinal, numsteps = sp.getFinalCoord(0, self.dx, self.dy, 0,
+                                      x_temp+self.troopDeployments[1][p], y_temp+self.troopDeployments[2][p], 1000)
+                if (xfinal <=0) | (yfinal <=0):
+                    self.getWinner(xfinal, yfinal, numsteps)
+                    x_temp, y_temp = sp.getEndVector(0, self.dx, self.dy, 0,
+                                      x_temp+self.troopDeployments[1][p], y_temp+self.troopDeployments[2][p],
+                                      100, 0.1)
+                    break
+                    
                 x_temp, y_temp = sp.getEndVector(0, self.dx, self.dy, 0,
                                       x_temp+self.troopDeployments[1][p], y_temp+self.troopDeployments[2][p],
                                       100, 0.1)
+                
                 # arrows
                 if p < 4:
                     thresh = .2 # set threshold for when to draw arrows
@@ -257,9 +262,19 @@ class LanchesterSquares:
                         sp.drawArrow(x_temp, x_temp+self.troopDeployments[1][p+1], y_temp, y_temp, headlength=0.05, direction='R', lineColor='r')
                         sp.drawArrow(x_temp+self.troopDeployments[1][p+1], x_temp+self.troopDeployments[1][p+1],
                                      y_temp, y_temp+self.troopDeployments[2][p+1], headlength=0.05, direction='U', lineColor='r')
-                        
+                elif p ==4:
+                    xfinal, yfinal, numsteps = sp.getFinalCoord(0, self.dx, self.dy, 0, x_temp, y_temp)
+                    self.getWinner(xfinal, yfinal, numsteps)
+
             # battle proceeds until someone is annihilated
-            sp.drawFinalVector(0, self.dx, self.dy, 0, x_temp, y_temp, stepsize=.1, colorVar ='g')
+            sp.drawFinalVector(0, self.dx, self.dy, 0, x_temp, y_temp, stepsize=.1, colorVar ='b')
+
+            # record strategies and outcome in csv
+            self.csvwriter.writerow([self.playerNames[1], self.playerNames[2], self.troopDeployments[1][0], self.troopDeployments[1][1],
+                                self.troopDeployments[1][2], self.troopDeployments[1][3], self.troopDeployments[1][4],
+                                self.investment[1], self.troopDeployments[2][0], self.troopDeployments[1][1],
+                                self.troopDeployments[2][2], self.troopDeployments[2][3], self.troopDeployments[2][4],
+                    self.investment[2], self.battleWinner, self.battleLoser, self.remTroops, self.battleLength, self.gameTime])
  
             #save file and convert to gif
             sp.pngSave(outputName)
@@ -277,12 +292,24 @@ class LanchesterSquares:
         else:
             pass
 
+    def getWinner(self, xfinal, yfinal, numsteps):
+        if xfinal > yfinal:
+            self.battleWinner = 1
+            self.battleLoser = 2
+            self.remTroops = xfinal*10000
+
+        elif yfinal > xfinal:
+            self.battleWinner = 2
+            self.battleLoser = 1
+            self.remTroops = yfinal*10000
+        self.battleLength = numsteps
+
     def popupEnd(self):
         self.top = Toplevel()
         self.top.title("End of Round")
         self.top.geometry('300x170+830+400')
 
-        msg = Label(self.top, text="Player 1 beat Player 2\nin 2 seconds\nwith 1000 remaining troops.") #TODO: make this a real message
+        msg = Label(self.top, text="%s beat %s\nin %d periods\nwith %d remaining troops." % (self.playerNames[self.battleWinner], self.playerNames[self.battleLoser], self.battleLength, self.remTroops)) #TODO: make this a real message
         msg.grid(row=1, column=0, columnspan=4, rowspan=3)
 
         replayButton = Button(self.top, text="Replay", command=lambda: self.replay()) 
@@ -313,6 +340,4 @@ root.mainloop()                     # start the game
 #TODO: call slopefieldPlot with current time as filename
 #TODO: add a different default plot, possibly including instructions
 
-#User-friendliness
-#TODO: popup announcing who won, at what time, and with how many troops
 

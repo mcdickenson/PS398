@@ -80,6 +80,23 @@ def drawFinalVector(dXx, dXy, dYx, dYy, X0, Y0, stepsize=.1, colorVar='b'): # cu
 
     pyplot.plot(xCoords, yCoords, color=colorVar)
 
+def getFinalCoord(dXx, dXy, dYx, dYy, X0, Y0, maxsteps=1000, stepsize=.1): # currently implemented for implicit diffEq's
+    x_tk = X0+((dXx*X0)+(dXy*X0))*stepsize
+    y_tk = Y0+((dYx*X0)+(dYy*Y0))*stepsize
+    x_tk_last = x_tk
+    y_tk_last = y_tk
+    numsteps = 1
+    # compute coordinates using Euler's method
+    while (x_tk > -0.01) & (y_tk > -0.01) & (x_tk_last > 0) & (y_tk_last > 0) & (numsteps <= maxsteps): 
+        x_tk_last = x_tk
+        y_tk_last = y_tk
+        x_tk = x_tk_last+((dXx*x_tk_last)+(dXy*y_tk_last))*stepsize
+        y_tk = y_tk_last+((dYx*x_tk_last)+(dYy*y_tk_last))*stepsize
+        numsteps += 1
+
+    return x_tk_last, y_tk_last, numsteps*stepsize
+    #return round(x_tk_last, 2), round(y_tk_last,2), round(numsteps*stepsize,0) #preprocessing option
+ 
 def getEndVector(dXx, dXy, dYx, dYy, X0, Y0, numsteps, stepsize=0.01): # find where vector ends
     # compute coordinates using Euler's method
     for i in range(1,numsteps): # maybe numsteps+1
