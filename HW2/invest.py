@@ -44,7 +44,7 @@ class Portfolio(object):
                                    # check the amt to be withdrawn
         self.transactions += ("$%.2f withdrawn. \n" % amount)
 
-        def buyStock(self, shares, stock): # what if i'm buying for the 2
+     def buyStock(self, shares, stock): # what if i'm buying for the 2
         purchase_amount = shares * stock.price
         if (shares % 1 == 0) & (purchase_amount <= self.cashBalance):
             self.cashBalance -= purchase_amount
