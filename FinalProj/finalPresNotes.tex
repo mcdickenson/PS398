@@ -1,0 +1,112 @@
+\documentclass[12pt,letter]{article}
+\usepackage{amsmath}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{amssymb}
+\usepackage{dcolumn}
+\usepackage{fullpage}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage[longnamesfirst]{natbib}
+\usepackage{rotating}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{enumerate}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage[longnamesfirst]{natbib}
+\usepackage{array}
+%\usepackage[math]{kurier} % kurier font
+%\usepackage[T1]{fontenc} % special fonts
+%\usepackage{textgreek}
+%\usepackage{subfig}
+%\usepackage{floatrow}
+%\usepackage[sc,osf]{mathpazo} % palatino-style font
+%\usepackage{kmath,kerkis} % nice serif font
+%\usepackage[adobe-utopia]{mathdesign} % fancy serif font
+
+% Custom commands
+\newcommand{\compresslist}{%
+\setlength{\itemsep}{1pt}%
+\setlength{\parskip}{0pt}%
+\setlength{\parsep}{0pt}%
+}
+
+% Custom section fonts
+\usepackage{sectsty}
+\sectionfont{\rmfamily\mdseries\Large}
+\subsectionfont{\rmfamily\mdseries\itshape\large}
+
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobat�s bookmarks
+    pdftoolbar=true,        % show Acrobat�s toolbar?
+    pdfmenubar=true,        % show Acrobat�s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={FitH},    % fits the width of the page to the window
+    %pdftitle={Leadership Transitions and Violence in Mexican Drug Trafficking Organizations, 2006-2010},    % title
+    pdfauthor={Matt Dickenson},     % author
+    %pdfsubject={Violence},   % subject of the document
+    pdfcreator={Matt Dickenson},   % creator of the document
+    pdfproducer={Producer}, % producer of the document
+    pdfkeywords={keywords}, % list of keywords
+    pdfnewwindow=true,      % links in new window
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=black,          % color of internal links
+    linkbordercolor={0 0 0},  %border color
+    citebordercolor={0 0 0},
+    citecolor=black,        % color of links to bibliography
+    filecolor=black,      % color of file links
+    urlcolor=blue,         % color of external links
+}
+
+
+\begin{document}
+
+\begin{center}
+\Huge{\textbf{Lanchester Squares}} \\
+\normalsize \today \\
+\end{center}
+\onehalfspacing
+\section{Theory}
+\begin{itemize}\compresslist
+\item Lanchester (1914) developed
+  the Squares Law of Modern Combat 
+\item $ {dy \over dt} = -\beta x$, ${dx \over dt} = -\alpha y$
+\item Problem: coefficients can't be estimated \emph{a priori}, low
+  res, deterministic
+\item Solution: Hirshleifer's (1989) formulation of the contest model
+\item $\alpha \over {c(\alpha+\beta +\epsilon)}$, where $c$ in this case is $-100$
+\end{itemize}
+
+\section{Back-End}
+\begin{itemize}\compresslist
+\item Goal: plot slope fields for differential equations and IV problems
+\item Tool: \texttt{matplotlib} and its dependencies, Euler's method (show code)
+\end{itemize}
+
+\section{Front-End}
+\begin{itemize}\compresslist
+\item Two-player game based on Square Laws and contest model
+\item Tkinter GUI
+\item easy replay
+\item saves plot and all ``moves''
+\end{itemize}
+
+\section{Demo}
+\begin{itemize}\compresslist
+\item Cassy vs. Matthias (show plot, csv)
+\item Would the make different moves now? 
+\end{itemize}
+
+\section{Questions?}
+\begin{itemize}\compresslist
+\item Do the assumptions make sense? Will it work experimentally?
+\item Should technology have a lesser role? one-time or multiple?
+\item Add Blotto component? Offense/defense?
+\end{itemize}
+
+
+\end{document}
+

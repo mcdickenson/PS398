@@ -296,6 +296,7 @@ class LanchesterSquares:
             self.battleLoser = 1
             self.remTroops = yfinal*10000
         self.battleLength = numsteps
+        # TODO: add case for tie
 
     def popupEnd(self): # announce who won, how long the battle took, and how many troops the winner had left; give option to quit or replay
         self.top = Toplevel()
