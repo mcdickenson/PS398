@@ -5,12 +5,8 @@ Matt Dickenson """
 # /Users/mcdickenson/github/PS398/
 
 # Which libraries do we need? 
-import urllib2, urllib, datetime, re, string, time, csv
-import nltk
-from nltk import util
+import urllib2, re, time, csv
 from nltk.util import clean_html
-import cookielib
-from twill import get_browser
 from BeautifulSoup import BeautifulSoup
 
 
